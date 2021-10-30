@@ -1,0 +1,58 @@
+<html>
+<head>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="sequencer">
+      <!-- this "tape" should slide left when "play" is pressed -->
+      <div class="sequencer-tape"></div>
+      <div class="sequencer-dots"></div>
+      <div class="sequencer-channels">
+        <div class="channel"></div>
+        <div class="channel"></div>
+        <div class="channel"></div>
+        <div class="channel"></div>
+      </div>
+    </div>
+    <div class="transport">
+      <button class="transport-button play"></button>
+      <button class="transport-button stop"></button>
+      <button class="transport-button record"></button>
+    </div>
+    <div class="settings">
+      <div class="bpm">
+        <label>bpm
+          <input type="number" min="1" max="1000" value="99" />
+        </label>
+      </div>
+      <div class="reset-interval">
+        <label>reset every
+          <input type="number" min="0" max="64" value="5" />
+        </label>
+        <select>
+          <option value="bars">bars</option>
+          <option value="beats">beats</option>
+          <option value="quarters">quarters</option>
+        </select>
+      </div>
+    </div>
+    <label class="crossfader">crossfade
+      <input class="crossfader-range" type="range" min="0" max="100" value="50" />
+    </label>
+    <div style="text-align: center; margin: .3rem;">&bull;</div>
+    <div class="visualizations">
+      <meter class="loose"
+              min="0" max="10"
+              low="5" high="8"
+              optimum="0"
+              value="3"></meter>
+      <meter class="tight"
+              min="0" max="10"
+              low="5" high="8"
+              optimum="0"
+              value="8"></meter>
+    </div>
+  </div>
+</body>
+</html>
