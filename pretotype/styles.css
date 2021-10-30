@@ -79,6 +79,14 @@ input[type="number"] {
   width: 3rem;
 }
 
+input[type="range"] {
+  filter: grayscale();
+  opacity: .5;
+}
+
+meter {
+  opacity: .25;
+}
 
 
 .app {
@@ -304,7 +312,6 @@ input[type="number"] {
 
 .crossfader-range {
   flex-grow: 1;
-  opacity: .5;
 }
 
 
@@ -323,7 +330,6 @@ input[type="number"] {
   flex-grow: 1;
   min-height: 2rem;
   background-color: transparent;
-  opacity: .5;
 }
 
 .visualizations .tight {
