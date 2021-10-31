@@ -1,8 +1,16 @@
 :root {
   --background-color: #4a4a4a;
-  --background-color-tint: #5a5a5a;
+  --background-color-complement: #5c5c5c;
+  --background-color-tint: #6a6a6ab0;
+  --background-color-shade: #2a2a2ab0;
   --foreground-color: #ccc;
   --accent-color: #a3aae5;
+}
+
+
+*,
+*::* {
+  box-sizing: border-box;
 }
 
 html,
@@ -33,7 +41,6 @@ button {
   height: var(--form-control-height);
   outline: none;
   border: 0 none;
-  border-radius: calc(var(--form-control-height) * .5);
 }
 
 label {
@@ -41,24 +48,34 @@ label {
   white-space: nowrap;
 }
 
-input,
+input[type="text"],
+input[type="number"],
 select,
 option,
 button {
   color: var(--accent-color);
-  background-color: var(--background-color-tint);
+  background-color: var(--background-color-complement);
 }
 
-input:hover,
-input:focus,
-input:active,
-select:hover,
-select:focus,
-select:active,
-button:hover,
-button:focus,
-button:active {
-  box-shadow: 0 0 calc(var(--form-control-height) * .25) var(--background-color-tint);
+input[type="text"],
+input[type="number"],
+select,
+button {
+  --form-control-shadow-offset: calc(var(--form-control-height) * .025);
+  --form-control-shadow-blur: calc(var(--form-control-shadow-offset) * 10);
+  --form-control-shadow-spread: calc(var(--form-control-shadow-offset) * -.5);
+  border-radius: calc(var(--form-control-height) * .5);
+  box-shadow:
+    calc(var(--form-control-shadow-offset) * -1)
+    calc(var(--form-control-shadow-offset) * -1)
+    var(--form-control-shadow-blur)
+    var(--form-control-shadow-spread)
+    var(--background-color-tint),
+    var(--form-control-shadow-offset)
+    var(--form-control-shadow-offset)
+    var(--form-control-shadow-blur)
+    var(--form-control-shadow-spread)
+    var(--background-color-shade);
 }
 
 button:active {
@@ -79,48 +96,136 @@ input[type="number"] {
   width: 3rem;
 }
 
+meter,
 input[type="range"] {
-  filter: grayscale();
   opacity: .5;
 }
 
-meter {
-  opacity: .25;
+meter:not(:hover),
+input[type="range"]:not(:hover) {
+  filter: grayscale();
 }
+
 
 
 .app {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-  padding: 2rem;
 }
 
-.app > :not(:last-of-type) {
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 2rem;
+}
+
+.main > :not(:last-of-type) {
   margin-block-end: 1rem;
+}
+
+.aside {
+  position: relative;
+  display: flex;
+  width: 0;
+  padding: 2rem;
+  padding-right: 0;
+  background-color: var(--background-color-complement);
+  transition: all 444ms ease-in 44ms;
+}
+
+.aside:before {
+  content: 's\0000a0\0000a0\0000a0\0000a0\0000a0ettings';
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+}
+
+.aside:hover {
+  width: max(44vw, 15rem);
+  padding-right: 2rem;
+}
+
+
+
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 2rem .4rem;
+}
+
+.settings > * {
+  margin-block-end: .5rem;
+}
+
+.settings :not(:last-child) {
+  margin-inline-end: 1.5rem;
+}
+
+.settings .reset-interval {
+  white-space: nowrap;
+}
+
+.settings .reset-interval :not(:last-child) {
+  margin-inline-end: .1rem;
 }
 
 
 
 .sequencer {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-grow: 1;
+  height: 30vh;
+}
+
+.sequencer-timeline {
   --seq-tick-offset: .5rem;
   position: relative;
   overflow: hidden;
-  height: 20vh;
+  flex-grow: 1;
 }
 
-.sequencer-dots,
-.sequencer-tape {
-  position: absolute;
+.sequencer-gutter {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 100%;
+  margin-inline-end: 1rem;
+}
+
+.sequencer-gutter.sequencer-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.sequencer-gutter.sequencer-controls .channel {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.sequencer-gutter.sequencer-controls .channel:before {
+  content: '\0000a0\01f399\0000a0\01f56a\0000a0';
+  line-height: 0;
+  color: var(--background-color-tint);
+  cursor: pointer;
+}
+
+.sequencer-gutter.sequencer-controls .channel:hover:before {
+  color: var(--accent-color);
 }
 
 .sequencer-dots {
   --seq-dot-size: .4rem;
   position: absolute;
-  top: -.6rem;
+  top: -1.1rem;
   left: -.7rem;
   width: var(--seq-dot-size);
   height: var(--seq-dot-size);
@@ -143,12 +248,13 @@ meter {
   --seq-tick-beat-border: calc(var(--seq-tick-beat) - .1rem);
   --seq-tick-bar-border: calc(var(--seq-tick-bar) - .2rem);
   --seq-tick-quarter-border: calc(var(--seq-tick-quarter) - .05rem);
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 100%;
   width: 200%;
-  background-color: var(--background-color-tint);
+  background-color: var(--background-color-complement);
 }
 
 @media (min-width: 200px) { .sequencer-tape { --seq-ticks: 4 } }
@@ -157,6 +263,8 @@ meter {
 @media (min-width: 800px) { .sequencer-tape { --seq-ticks: 16 } }
 @media (min-width: 1000px) { .sequencer-tape { --seq-ticks: 20 } }
 @media (min-width: 1200px) { .sequencer-tape { --seq-ticks: 24 } }
+@media (min-width: 1400px) { .sequencer-tape { --seq-ticks: 28 } }
+@media (min-width: 1600px) { .sequencer-tape { --seq-ticks: 32 } }
 
 .sequencer-tape:hover {
   animation: slideLeft 4s linear reverse infinite;
@@ -248,8 +356,11 @@ meter {
   height: var(--transport-icon-size);
   border-style: solid;
   /* faux icon fill color */
-  /* border-color: var(--accent-color); */
   border-color: var(--background-color);
+}
+
+.transport-button:hover:after {
+  border-color: var(--accent-color);
 }
 
 .transport-button.play:after {
@@ -276,31 +387,6 @@ meter {
 .transport-button.record:after {
   border-radius: calc(var(--transport-icon-size) * .5);
   border-width: calc(var(--transport-icon-size) * .5);
-}
-
-
-
-.settings {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.settings * {
-  margin-block-end: .25rem;
-}
-
-.settings :not(:last-child) {
-  margin-inline-end: 1.5rem;
-}
-
-.settings .reset-interval {
-  white-space: nowrap;
-}
-
-.settings .reset-interval :not(:last-child) {
-  margin-inline-end: .1rem;
 }
 
 
