@@ -392,6 +392,7 @@ input[type="range"]:not(:hover) {
 }
 
 .transport-button:after {
+  --transport-button-icon-color: var(--background-color);
   content: '';
   box-sizing: border-box;
   display: block;
@@ -399,11 +400,11 @@ input[type="range"]:not(:hover) {
   height: var(--transport-icon-size);
   border-style: solid;
   /* faux icon fill color */
-  border-color: var(--background-color);
+  border-color: var(--transport-button-icon-color);
 }
 
 .transport-button:hover:after {
-  border-color: var(--accent-color);
+  --transport-button-icon-color: var(--accent-color);
 }
 
 .transport-button.play:after {
@@ -424,7 +425,7 @@ input[type="range"]:not(:hover) {
   --transport-icon-size-stop: calc(var(--transport-icon-size) * .9);
   width: var(--transport-icon-size-stop);
   height: var(--transport-icon-size-stop);
-  border-width: calc(var(--transport-icon-size-stop) * .5);
+  background-color: var(--transport-button-icon-color);
 }
 
 .transport-button.record:after {
