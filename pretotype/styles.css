@@ -1,8 +1,10 @@
 :root {
   --background-color: #4a4a4a;
-  --background-color-complement: #5c5c5c;
   --background-color-tint: #6a6a6ab0;
   --background-color-shade: #2a2a2ab0;
+  --background-color-complement: #5c5c5c;
+  --background-color-complement-tint: #7c7c7cb0;
+  --background-color-complement-shade: #3c3c3cb0;
   --foreground-color: #ccc;
   --accent-color: #a3aae5;
 }
@@ -44,6 +46,7 @@ button {
 }
 
 label {
+  display: block;
   line-height: 1.5;
   white-space: nowrap;
 }
@@ -78,6 +81,23 @@ button {
     var(--background-color-shade);
 }
 
+.settings input[type="text"],
+.settings input[type="number"],
+.settings select,
+.settings button {
+  box-shadow:
+    calc(var(--form-control-shadow-offset) * -1)
+    calc(var(--form-control-shadow-offset) * -1)
+    var(--form-control-shadow-blur)
+    var(--form-control-shadow-spread)
+    var(--background-color-complement-tint),
+    var(--form-control-shadow-offset)
+    var(--form-control-shadow-offset)
+    var(--form-control-shadow-blur)
+    var(--form-control-shadow-spread)
+    var(--background-color-complement-shade);
+}
+
 button:active {
   --form-control-active-offset: calc(var(--form-control-height) * .005);
   transform: translate(
@@ -109,9 +129,35 @@ input[type="range"]:not(:hover) {
 
 
 .app {
+  --aside-width: 44vw;
   display: flex;
   width: 100vw;
   height: 100vh;
+}
+
+.box {
+  width: calc((100vw - var(--aside-width)) - 2rem);
+  overflow: hidden;
+  padding: .3rem;
+  border: .1rem solid var(--accent-color);
+  border-radius: .6rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap row-reverse;
+}
+
+.header .title {
+  flex-grow: 1;
+  margin: 0;
+  padding-inline-start: .5em;
+  font-size: 4rem;
+  letter-spacing: -.05em;
+  font-weight: 100;
+  text-align: right;
+  color: var(--accent-color);
 }
 
 .main {
@@ -121,7 +167,7 @@ input[type="range"]:not(:hover) {
   margin: 2rem;
 }
 
-.main > :not(:last-of-type) {
+.main > :not(:last-child) {
   margin-block-end: 1rem;
 }
 
@@ -143,7 +189,7 @@ input[type="range"]:not(:hover) {
 }
 
 .aside:hover {
-  width: max(44vw, 15rem);
+  width: max(var(--aside-width), 15rem);
   padding-right: 2rem;
 }
 
@@ -176,15 +222,13 @@ input[type="range"]:not(:hover) {
 
 
 .sequencer {
+  --channel-height: 1.2rem;
   display: flex;
   align-items: stretch;
-  justify-content: stretch;
-  flex-grow: 1;
-  height: 30vh;
+  height: min-content;
 }
 
 .sequencer-timeline {
-  --seq-tick-offset: .5rem;
   position: relative;
   overflow: hidden;
   flex-grow: 1;
@@ -207,7 +251,8 @@ input[type="range"]:not(:hover) {
 .sequencer-gutter.sequencer-controls .channel {
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  height: var(--channel-height);
+  border-block-start: .5vh solid transparent;
   overflow: hidden;
 }
 
@@ -226,7 +271,7 @@ input[type="range"]:not(:hover) {
   --seq-dot-size: .4rem;
   position: absolute;
   top: -1.1rem;
-  left: -.7rem;
+  left: -.5rem;
   width: var(--seq-dot-size);
   height: var(--seq-dot-size);
   border-radius: calc(var(--seq-dot-size) * .5);
@@ -278,7 +323,6 @@ input[type="range"]:not(:hover) {
   bottom: 0;
   left: 0;
   right: 0;
-  background-position: var(--seq-tick-offset) 0;
   background-image:
     repeating-linear-gradient(
       90deg,
@@ -308,17 +352,15 @@ input[type="range"]:not(:hover) {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: stretch;
-  height: 100%;
   pointer-events: none;
 }
 
 .sequencer-channels .channel {
-  flex-grow: 1;
+  height: var(--channel-height);
 }
 
 .sequencer-channels .channel:not(:last-of-type) {
-  border-bottom: .5vh solid var(--background-color);
+  border-block-end: .5vh solid var(--background-color);
 }
 
 
@@ -327,6 +369,7 @@ input[type="range"]:not(:hover) {
   display: flex;
   align-items: stretch;
   justify-content: center;
+  padding: .5rem;
 }
 
 .transport-button {
@@ -404,11 +447,15 @@ input[type="range"]:not(:hover) {
 
 .visualizations {
   display: flex;
+  align-items: center;
   justify-content: stretch;
+  align-self: flex-end;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.visualizations :not(:last-of-type) {
-  margin-inline-end: 1rem;
+.visualizations :not(:last-child) {
+  margin-inline-end: .5rem;
 }
 
 .visualizations .tight,
