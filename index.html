@@ -5,13 +5,16 @@
 <body>
   <div class="app">
     <main class="main">
-      <div class="sequencer">
-        <div class="sequencer-gutter sequencer-controls">
+      <header class="header">
+        <h1 class="title">d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rifter</h1>
+      </header>
+      <div class="sequencer box">
+        <!-- <div class="sequencer-gutter sequencer-controls">
           <div class="channel"></div>
           <div class="channel"></div>
           <div class="channel"></div>
           <div class="channel"></div>
-        </div>
+        </div> -->
         <div class="sequencer-timeline">
           <!-- this "tape" should slide left when "play" is pressed -->
           <div class="sequencer-tape"></div>
@@ -29,14 +32,13 @@
         <button class="transport-button stop"></button>
         <button class="transport-button record"></button>
       </div>
-      <div style="text-align: center; margin: .3rem;">&bull;</div>
-      <input class="crossfader-range" type="range" min="0" max="100" value="50" />
-      <div class="visualizations">
+      <div class="visualizations box">
         <meter class="loose"
                 min="0" max="10"
                 low="5" high="8"
                 optimum="0"
                 value="3"></meter>
+        <input class="crossfader-range" type="range" min="0" max="100" value="50" />
         <meter class="tight"
                 min="0" max="10"
                 low="5" high="8"
@@ -47,19 +49,19 @@
     <aside class="aside">
       <div class="settings">
         <div class="bpm">
-          <label>bpm
-            <input type="number" min="1" max="1000" value="99" />
-          </label>
+          <label for="setting-bpm">bpm:</label>
+          <input id="setting-bpm" type="number" min="1" max="1000" value="99" />
         </div>
         <div class="reset-interval">
-          <label>reset every
-            <input type="number" min="0" max="64" value="5" />
-          </label>
-          <select>
-            <option value="bars">bars</option>
-            <option value="beats">beats</option>
-            <option value="quarters">quarters</option>
-          </select>
+          <label for="setting-reset-interval">reset every:</label>
+          <div>
+            <input id="setting-reset-interval" type="number" min="0" max="64" value="5" />
+            <select>
+              <option value="bars">bars</option>
+              <option value="beats">beats</option>
+              <option value="quarters">quarters</option>
+            </select>
+          </div>
         </div>
       </div>
     </aside>
