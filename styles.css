@@ -11,7 +11,8 @@
 
 
 *,
-*::* {
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -21,7 +22,7 @@ label,
 input,
 button,
 select {
-  font-size: 4.5vmin;
+  font-size: calc(16px + .5vmax);
   font-family: trench, sans-serif;
 }
 
@@ -129,30 +130,23 @@ input[type="range"]:not(:hover) {
 
 
 .app {
-  --aside-width: 44vw;
+  --panel-pad: 2rem;
+  --aside-width: max(37vw, 16rem);
   display: flex;
   width: 100vw;
   height: 100vh;
 }
 
 .box {
-  width: calc((100vw - var(--aside-width)) - 2rem);
+  width: calc(100vw - (var(--panel-pad) * 2) - var(--aside-width));
   overflow: hidden;
   padding: .3rem;
   border: .1rem solid var(--accent-color);
   border-radius: .6rem;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  flex-flow: wrap row-reverse;
-}
-
-.header .title {
-  flex-grow: 1;
+.title {
   margin: 0;
-  padding-inline-start: .5em;
   font-size: 4rem;
   letter-spacing: -.05em;
   font-weight: 100;
@@ -161,21 +155,23 @@ input[type="range"]:not(:hover) {
 }
 
 .main {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   flex-grow: 1;
-  margin: 2rem;
+  margin: var(--panel-pad);
 }
 
 .main > :not(:last-child) {
-  margin-block-end: 1rem;
+  margin-block-end: .75rem;
 }
 
 .aside {
   position: relative;
   display: flex;
   width: 0;
-  padding: 2rem;
+  padding: var(--panel-pad);
   padding-right: 0;
   background-color: var(--background-color-complement);
   transition: all 444ms ease-in 44ms;
@@ -189,8 +185,7 @@ input[type="range"]:not(:hover) {
 }
 
 .aside:hover {
-  width: max(var(--aside-width), 15rem);
-  padding-right: 2rem;
+  width: var(--aside-width);
 }
 
 
@@ -200,7 +195,7 @@ input[type="range"]:not(:hover) {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 2rem .4rem;
+  margin: 2.4rem .4rem;
 }
 
 .settings > * {
@@ -373,9 +368,8 @@ input[type="range"]:not(:hover) {
 }
 
 .transport-button {
-  --transport-button-size: 2rem;
+  --transport-button-size: 2.6rem;
   --transport-icon-size: calc(var(--transport-button-size) * .333);
-  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -394,7 +388,6 @@ input[type="range"]:not(:hover) {
 .transport-button:after {
   --transport-button-icon-color: var(--background-color);
   content: '';
-  box-sizing: border-box;
   display: block;
   width: var(--transport-icon-size);
   height: var(--transport-icon-size);
