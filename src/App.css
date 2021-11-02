@@ -1,10 +1,9 @@
+
+/* make animations available only if the user enabled animations in the OS settings */
+@import url('./animations.css') (prefers-reduced-motion: no-preference);
+
+
 .App {
+  height: 100vh;
+  background-color: #4c4c4c;
 }
-
-
-/* interesting! */
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
