@@ -1,7 +1,7 @@
 {
   "name": "drifter",
   "version": "0.1.0",
-  "description": "use your browser's poor timing to make rich musical gems!",
+  "description": "use your browser's poor timers to make rich beats!",
   "scripts": {
     "start:pretotype": "npx serve pretotype",
     "deploy": "gh-pages -b gh-deploy -d pretotype",
