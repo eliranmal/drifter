@@ -470,7 +470,8 @@ input[type="range"]:not(:hover) {
 
 
 @font-face {
-  src: url('./trench100free.otf') format('opentype');
+  src:  url('./trench100.ttf') format('truetype'),
+        url('./trench100.otf') format('opentype');
   font-family: trench;
   font-weight: 700;
 }
