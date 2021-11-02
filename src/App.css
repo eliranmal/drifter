@@ -1,9 +1,31 @@
 
+@import url("./styles/fonts.css");
+@import url("./styles/colors.css");
 /* make animations available only if the user enabled animations in the OS settings */
-@import url('./animations.css') (prefers-reduced-motion: no-preference);
+@import url('./styles/animations.css') (prefers-reduced-motion: no-preference);
+
+/* fixme - clean this up */
+html,
+body,
+label,
+input,
+button,
+select {
+  font-size: calc(16px + .5vmax);
+  font-family: trench, sans-serif;
+}
 
 
 .App {
   height: 100vh;
   background-color: #4c4c4c;
+}
+
+.App-title {
+  margin: 0;
+  font-size: 4rem;
+  letter-spacing: -.05em;
+  font-weight: 100;
+  text-align: right;
+  color: var(--accent-color);
 }
