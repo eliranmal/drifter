@@ -1,4 +1,8 @@
 
+:root {
+  font-size: calc(16px + .5vmax);
+}
+
 @font-face {
   src:  url('../fonts/trench100.ttf') format('truetype'),
         url('../fonts/trench100.otf') format('opentype');

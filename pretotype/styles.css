@@ -16,23 +16,25 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  font-size: calc(16px + .5vmax);
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
 body,
-label,
 input,
 button,
 select {
-  font-size: calc(16px + .5vmax);
   font-family: trench, sans-serif;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  color: var(--foreground-color);
-  background-color: var(--background-color);
+input,
+select {
+  font-size: 1rem;
 }
 
 label,
@@ -82,10 +84,10 @@ button {
     var(--background-color-shade);
 }
 
-.settings input[type="text"],
-.settings input[type="number"],
-.settings select,
-.settings button {
+.theme-complement input[type="text"],
+.theme-complement input[type="number"],
+.theme-complement select,
+.theme-complement button {
   box-shadow:
     calc(var(--form-control-shadow-offset) * -1)
     calc(var(--form-control-shadow-offset) * -1)
@@ -135,6 +137,8 @@ input[type="range"]:not(:hover) {
   display: flex;
   width: 100vw;
   height: 100vh;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
 }
 
 .box {
