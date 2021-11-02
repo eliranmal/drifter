@@ -6,12 +6,10 @@ import './App.css';
 
 
 const App = () => (
-  <div className="App">
-    <Layout
-      main={MainView}
-      sideBar={Settings}
-    />
-  </div>
+  <Layout
+    main={MainView}
+    sideBar={Settings}
+  />
 )
 
 

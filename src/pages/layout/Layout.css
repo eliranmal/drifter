@@ -1,4 +1,38 @@
 
 .Layout {
+  --panel-pad: 2rem;
+  --aside-width: max(37vw, 16rem);
+  display: flex;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  font-family: trench, sans-serif;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+}
+
+.Layout-main {
+  overflow: hidden;
+  flex-grow: 1;
+  margin: var(--panel-pad);
+}
+
+.Layout-sidebar {
+  position: relative;
+  width: 0;
+  padding: var(--panel-pad);
+  padding-right: 0;
+  background-color: var(--background-color-complement);
+  transition: all 444ms ease-in 44ms;
+}
+
+.Layout-sidebar:before {
+  content: attr(data-heading);
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+}
+
+.Layout-sidebar:hover {
+  width: var(--aside-width);
 }

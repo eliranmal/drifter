@@ -3,15 +3,3 @@
 @import url("./styles/colors.css");
 /* make animations available only if the user enabled animations in the OS settings */
 @import url('./styles/animations.css') (prefers-reduced-motion: no-preference);
-
-
-.App {
-  /* todo - move these to their owning module */
-  /* --panel-pad: 2rem; */
-  /* --aside-width: max(37vw, 16rem); */
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  color: var(--foreground-color);
-  background-color: var(--background-color);
-}
