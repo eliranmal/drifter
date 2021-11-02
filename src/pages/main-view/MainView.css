@@ -1,0 +1,19 @@
+
+.MainView {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.MainView > :not(:last-child) {
+  margin-block-end: .75rem;
+}
+
+.MainView-title {
+  margin: 0;
+  font-size: 4rem;
+  letter-spacing: -.05em;
+  font-weight: 100;
+  text-align: right;
+  color: var(--accent-color);
+}

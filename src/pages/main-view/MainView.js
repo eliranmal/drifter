@@ -1,9 +1,11 @@
 import './MainView.css'
 
 
-const MainView = () => {
-  return <div className="MainView"></div>
-}
+const MainView = () => (
+  <div className="MainView">
+    <h1 class="MainView-title">d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rifter</h1>
+  </div>
+)
 
 
 export default MainView
