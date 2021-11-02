@@ -1,6 +1,6 @@
 # drifter
 
-use your browser's poor timers to make rich beats!
+> use your browser's poor timers to make rich beats!
 
 
 ## what
