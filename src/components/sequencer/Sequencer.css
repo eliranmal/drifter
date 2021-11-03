@@ -1,0 +1,142 @@
+
+.Sequencer {
+  --channel-height: 1.2rem;
+  display: flex;
+  align-items: stretch;
+  height: min-content;
+}
+
+.Sequencer-timeline {
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.Sequencer-gutter {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 100%;
+  margin-inline-end: 1rem;
+}
+
+.Sequencer-gutter.Sequencer-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.Sequencer-gutter.Sequencer-controls .channel {
+  display: flex;
+  align-items: center;
+  height: var(--channel-height);
+  border-block-start: .5vh solid transparent;
+  overflow: hidden;
+}
+
+.Sequencer-gutter.Sequencer-controls .channel:before {
+  content: '\0000a0\01f399\0000a0\01f56a\0000a0';
+  line-height: 0;
+  color: var(--background-color-tint);
+  cursor: pointer;
+}
+
+.Sequencer-gutter.Sequencer-controls .channel:hover:before {
+  color: var(--accent-color);
+}
+
+.Sequencer-dots {
+  --seq-dot-size: .4rem;
+  position: absolute;
+  top: -1.1rem;
+  left: -.5rem;
+  width: var(--seq-dot-size);
+  height: var(--seq-dot-size);
+  border-radius: calc(var(--seq-dot-size) * .5);
+  background-color: var(--background-color);
+  box-shadow:
+    1rem 1.5rem 0 #333,
+    3rem 3rem 0 #333,
+    7rem 1.5rem 0 #333,
+    11rem 3rem 0 #333,
+    17rem 1.5rem 0 #333;
+}
+
+.Sequencer-tape {
+  --seq-ticks: 2;
+  /* dividing by 2 as the container width is 200% */
+  --seq-tick-beat: calc((100% / var(--seq-ticks)) / 2);
+  --seq-tick-bar: calc(var(--seq-tick-beat) * 4);
+  --seq-tick-quarter: calc(var(--seq-tick-beat) / 4);
+  --seq-tick-beat-border: calc(var(--seq-tick-beat) - .1rem);
+  --seq-tick-bar-border: calc(var(--seq-tick-bar) - .2rem);
+  --seq-tick-quarter-border: calc(var(--seq-tick-quarter) - .05rem);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  width: 200%;
+  background-color: var(--background-color-complement);
+}
+
+@media (min-width: 200px) { .Sequencer-tape { --seq-ticks: 4 } }
+@media (min-width: 400px) { .Sequencer-tape { --seq-ticks: 8 } }
+@media (min-width: 600px) { .Sequencer-tape { --seq-ticks: 12 } }
+@media (min-width: 800px) { .Sequencer-tape { --seq-ticks: 16 } }
+@media (min-width: 1000px) { .Sequencer-tape { --seq-ticks: 20 } }
+@media (min-width: 1200px) { .Sequencer-tape { --seq-ticks: 24 } }
+@media (min-width: 1400px) { .Sequencer-tape { --seq-ticks: 28 } }
+@media (min-width: 1600px) { .Sequencer-tape { --seq-ticks: 32 } }
+
+.Sequencer-tape:hover {
+  animation: slideLeft 4s linear reverse infinite;
+  animation-fill-mode: both;
+}
+
+.Sequencer-tape:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent var(--seq-tick-quarter-border),
+      var(--background-color) var(--seq-tick-quarter-border),
+      var(--background-color) var(--seq-tick-quarter)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent var(--seq-tick-beat-border),
+      var(--background-color) var(--seq-tick-beat-border),
+      var(--background-color) var(--seq-tick-beat)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent var(--seq-tick-bar-border),
+      var(--background-color) var(--seq-tick-bar-border),
+      var(--background-color) var(--seq-tick-bar)
+    );
+}
+
+.Sequencer-channels {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  pointer-events: none;
+}
+
+.Sequencer-channels .channel {
+  height: var(--channel-height);
+}
+
+.Sequencer-channels .channel:not(:last-of-type) {
+  border-block-end: .5vh solid var(--background-color);
+}
