@@ -1,0 +1,8 @@
+
+.Meter {
+  opacity: .5;
+}
+
+.Meter:not(:hover) {
+  filter: grayscale();
+}
