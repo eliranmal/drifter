@@ -2,6 +2,8 @@
 .Input {
   --input-height: 1.5rem;
   height: var(--input-height);
+  padding: 0;
+  margin: 0;
   outline: none;
   border: 0 none;
   border-radius: calc(var(--input-height) * .5);
