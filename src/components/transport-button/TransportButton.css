@@ -1,0 +1,62 @@
+.Transport-button {
+  --transport-button-size: 2.6rem;
+  --transport-icon-size: calc(var(--transport-button-size) * .333);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--transport-button-size);
+  height: var(--transport-button-size);
+  margin-inline-end: var(--transport-icon-size);
+  outline: none;
+  border: 0 none;
+  border-radius: calc(var(--transport-button-size) * .5);
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.Transport-button:last-of-type {
+  margin-inline-end: 0;
+}
+
+.Transport-button:after {
+  --transport-button-icon-color: var(--background-color);
+
+  content: '';
+  display: block;
+  width: var(--transport-icon-size);
+  height: var(--transport-icon-size);
+  border-style: solid;
+  /* faux icon fill color */
+  border-color: var(--transport-button-icon-color);
+}
+
+.Transport-button:hover:after {
+  --transport-button-icon-color: var(--accent-color);
+}
+
+.Transport-button.Transport-button-play:after {
+  --transport-icon-size-play: calc(var(--transport-icon-size) * 1.1);
+  width: var(--transport-icon-size-play);
+  height: var(--transport-icon-size-play);
+  margin-right: -20%;
+  border-width: calc(var(--transport-icon-size-play) * .5)
+                calc(var(--transport-icon-size-play) * .2)
+                calc(var(--transport-icon-size-play) * .5)
+                calc(var(--transport-icon-size-play) * .8);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.Transport-button.Transport-button-stop:after {
+  --transport-icon-size-stop: calc(var(--transport-icon-size) * .9);
+  width: var(--transport-icon-size-stop);
+  height: var(--transport-icon-size-stop);
+  background-color: var(--transport-button-icon-color);
+}
+
+.Transport-button.Transport-button-record:after {
+  border-radius: calc(var(--transport-icon-size) * .5);
+  border-width: calc(var(--transport-icon-size) * .5);
+}
