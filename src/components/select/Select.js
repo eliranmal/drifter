@@ -7,9 +7,10 @@ const Select = ({ options = [], ...props}) => (
   <select
     {...props}
     className={`Select ${props.className ?? ''}`}>
-      {options.map(({value, label, selected, className}) => (
+      {options.map(({value, label, selected, className}, key) => (
         <option
           className={`Select-option ${className ?? ''}`}
+          key={key}
           value={value}
           selected={selected}
           >{label}</option>
