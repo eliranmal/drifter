@@ -1,36 +1,22 @@
-.Neumorphism,
-.Neumorphism-complement {
+.Neumorphism {
+  --neumorphism-bg-color: var(--background-color-complement);
+  --neumorphism-shadow-color-tint: var(--background-color-tint);
+  --neumorphism-shadow-color-shade: var(--background-color-shade);
+
   --neumorphism-shadow-offset: .0375rem;
   --neumorphism-shadow-blur: calc(var(--neumorphism-shadow-offset) * 10);
   --neumorphism-shadow-spread: calc(var(--neumorphism-shadow-offset) * -.5);
 
-  background-color: var(--background-color-complement);
-}
-
-.Neumorphism {
+  background-color: var(--neumorphism-bg-color);
   box-shadow:
     calc(var(--neumorphism-shadow-offset) * -1)
     calc(var(--neumorphism-shadow-offset) * -1)
     var(--neumorphism-shadow-blur)
     var(--neumorphism-shadow-spread)
-    var(--background-color-tint),
+    var(--neumorphism-shadow-color-tint),
     var(--neumorphism-shadow-offset)
     var(--neumorphism-shadow-offset)
     var(--neumorphism-shadow-blur)
     var(--neumorphism-shadow-spread)
-    var(--background-color-shade);
-}
-
-.Neumorphism-complement {
-  box-shadow:
-    calc(var(--neumorphism-shadow-offset) * -1)
-    calc(var(--neumorphism-shadow-offset) * -1)
-    var(--neumorphism-shadow-blur)
-    var(--neumorphism-shadow-spread)
-    var(--background-color-complement-tint),
-    var(--neumorphism-shadow-offset)
-    var(--neumorphism-shadow-offset)
-    var(--neumorphism-shadow-blur)
-    var(--neumorphism-shadow-spread)
-    var(--background-color-complement-shade);
+    var(--neumorphism-shadow-color-shade);
 }
