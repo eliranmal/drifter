@@ -12,39 +12,6 @@
   flex-grow: 1;
 }
 
-.Sequencer-gutter {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 3rem;
-  height: 100%;
-  margin-inline-end: 1rem;
-}
-
-.Sequencer-gutter.Sequencer-controls {
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-}
-
-.Sequencer-gutter.Sequencer-controls .channel {
-  display: flex;
-  align-items: center;
-  height: var(--channel-height);
-  border-block-start: .5vh solid transparent;
-  overflow: hidden;
-}
-
-.Sequencer-gutter.Sequencer-controls .channel:before {
-  content: '\0000a0\01f399\0000a0\01f56a\0000a0';
-  line-height: 0;
-  color: var(--background-color-tint);
-  cursor: pointer;
-}
-
-.Sequencer-gutter.Sequencer-controls .channel:hover:before {
-  color: var(--accent-color);
-}
-
 .Sequencer-dots {
   --seq-dot-size: .4rem;
   position: absolute;
@@ -63,6 +30,11 @@
 }
 
 .Sequencer-tape {
+
+  /* todo - port whatever is required from this block,
+  and think of another way of representing the rolling tape */
+  display: none;
+
   --seq-ticks: 2;
   /* dividing by 2 as the container width is 200% */
   --seq-tick-beat: calc((100% / var(--seq-ticks)) / 2);
@@ -130,13 +102,23 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  pointer-events: none;
 }
 
-.Sequencer-channels .channel {
+.Sequencer-channels .Sequencer-channel {
   height: var(--channel-height);
 }
 
-.Sequencer-channels .channel:not(:last-of-type) {
-  border-block-end: .5vh solid var(--background-color);
+.Sequencer-channels .Sequencer-channel .Sequencer-tick {
+  appearance: none;
+  width: calc(100% / var(--ticks-count));
+  height: 100%;
+  border-radius: calc(var(--channel-height) * .25);
+  border: calc(var(--channel-height) * .1) solid var(--background-color);
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.Sequencer-channels .Sequencer-channel .Sequencer-tick:hover,
+.Sequencer-channels .Sequencer-channel .Sequencer-tick:checked {
+  background-color: var(--accent-color);
 }
