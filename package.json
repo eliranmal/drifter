@@ -7,7 +7,7 @@
     "start": "env PUBLIC_URL='.' react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "preserve": "npm run build",
+    "preserve": "env PUBLIC_URL=http://localhost:5000 npm run build",
     "serve": "npx serve build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b gh-deploy -d build"
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/eliranmal/drifter/issues"
   },
-  "homepage": "https://github.com/eliranmal/drifter#readme",
+  "homepage": "https://eliranmal.github.io/drifter/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
