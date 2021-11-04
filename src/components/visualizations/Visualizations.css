@@ -1,0 +1,25 @@
+.Visualizations {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  align-self: flex-end;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.Visualizations :not(:last-child) {
+  margin-inline-end: .5rem;
+}
+
+.Visualizations .Visualization-tight,
+.Visualizations .Visualization-loose {
+  flex-grow: 1;
+  min-height: 2rem;
+  background-color: transparent;
+}
+
+.Visualizations .Visualization-tight {
+}
+
+.Visualizations .Visualization-loose {
+}
