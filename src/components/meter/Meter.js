@@ -8,12 +8,14 @@ const Meter = ({
   value = 30,
   className,
   ...props}) => (
-  <meter className={`Meter ${className}`}
-          min={min} max={max}
-          low={low} high={high}
-          optimum={optimum}
-          value={value}
-          {...props}></meter>
+  <meter
+    min={min} max={max}
+    low={low} high={high}
+    optimum={optimum}
+    value={value}
+    {...props}
+    className={`Meter ${className}`}
+    ></meter>
 )
 
 
