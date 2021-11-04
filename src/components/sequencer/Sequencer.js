@@ -2,23 +2,23 @@ import './Sequencer.css'
 
 
 const Sequencer = ({className}) => (
-  <div class={`Sequencer ${className}`}>
+  <div className={`Sequencer ${className}`}>
   {/*
-    <div class="Sequencer-gutter Sequencer-controls">
-      <div class="channel"></div>
-      <div class="channel"></div>
-      <div class="channel"></div>
-      <div class="channel"></div>
+    <div className="Sequencer-gutter Sequencer-controls">
+      <div className="channel"></div>
+      <div className="channel"></div>
+      <div className="channel"></div>
+      <div className="channel"></div>
     </div>
     */}
-    <div class="Sequencer-timeline">
-      <div class="Sequencer-tape"></div>
-      <div class="Sequencer-dots"></div>
-      <div class="Sequencer-channels">
-        <div class="channel"></div>
-        <div class="channel"></div>
-        <div class="channel"></div>
-        <div class="channel"></div>
+    <div className="Sequencer-timeline">
+      <div className="Sequencer-tape"></div>
+      <div className="Sequencer-dots"></div>
+      <div className="Sequencer-channels">
+        <div className="channel"></div>
+        <div className="channel"></div>
+        <div className="channel"></div>
+        <div className="channel"></div>
       </div>
     </div>
   </div>
