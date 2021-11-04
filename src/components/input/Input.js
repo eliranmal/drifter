@@ -1,5 +1,3 @@
-import {withNeumorphism} from '../../hoc/neumorphism/Neumorphism'
-
 import './Input.css'
 
 
