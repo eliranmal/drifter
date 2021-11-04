@@ -1,0 +1,17 @@
+
+.Select,
+.Select .Select-option {
+  height: var(--select-height);
+  outline: none;
+  border: 0 none;
+}
+
+.Select {
+  --select-height: 1.5rem;
+  padding-inline-start: .5em;
+  padding-inline-end: 0;
+  border-radius: calc(var(--select-height) * .5);
+  font: 1rem trench, sans-serif;
+  color: var(--accent-color);
+  background-color: var(--background-color-complement);
+}
