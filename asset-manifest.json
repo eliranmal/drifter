@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/eliranmal/drifterstatic/css/main.2e5e48c6.chunk.css",
+    "main.js": "/eliranmal/drifterstatic/js/main.bca4587f.chunk.js",
+    "main.js.map": "/eliranmal/drifterstatic/js/main.bca4587f.chunk.js.map",
+    "runtime-main.js": "/eliranmal/drifterstatic/js/runtime-main.88a3ecf7.js",
+    "runtime-main.js.map": "/eliranmal/drifterstatic/js/runtime-main.88a3ecf7.js.map",
+    "static/js/2.d307b1c0.chunk.js": "/eliranmal/drifterstatic/js/2.d307b1c0.chunk.js",
+    "static/js/2.d307b1c0.chunk.js.map": "/eliranmal/drifterstatic/js/2.d307b1c0.chunk.js.map",
+    "static/js/3.0b2e242b.chunk.js": "/eliranmal/drifterstatic/js/3.0b2e242b.chunk.js",
+    "static/js/3.0b2e242b.chunk.js.map": "/eliranmal/drifterstatic/js/3.0b2e242b.chunk.js.map",
+    "index.html": "/eliranmal/drifterindex.html",
+    "static/css/main.2e5e48c6.chunk.css.map": "/eliranmal/drifterstatic/css/main.2e5e48c6.chunk.css.map",
+    "static/js/2.d307b1c0.chunk.js.LICENSE.txt": "/eliranmal/drifterstatic/js/2.d307b1c0.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/eliranmal/drifterstatic/media/trench100.f4fa94b7.otf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.88a3ecf7.js",
+    "static/js/2.d307b1c0.chunk.js",
+    "static/css/main.2e5e48c6.chunk.css",
+    "static/js/main.bca4587f.chunk.js"
+  ]
+}
