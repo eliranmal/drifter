@@ -4,10 +4,13 @@
   "description": "use your browser's poor timers to make rich beats!",
   "scripts": {
     "start:pretotype": "npx serve pretotype",
-    "deploy": "gh-pages -b gh-deploy -d build",
     "start": "env PUBLIC_URL='.' react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "preserve": "npm run build",
+    "serve": "npx serve build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b gh-deploy -d build"
   },
   "private": true,
   "repository": {
