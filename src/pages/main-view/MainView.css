@@ -25,7 +25,7 @@
   width: calc(100vw - (var(--panel-pad) * 2) - var(--aside-width));
   overflow: hidden;
   padding: .3rem;
-  border: .1rem solid var(--accent-color);
+  border: .125rem solid var(--accent-color);
   border-radius: .6rem;
 }
 
