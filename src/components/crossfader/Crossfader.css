@@ -1,0 +1,10 @@
+
+.Crossfader {
+  flex-grow: 1;
+  opacity: .5;
+}
+
+/* todo - extract this to a hoc for reuse */
+.Crossfader:not(:hover) {
+  filter: grayscale();
+}
