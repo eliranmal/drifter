@@ -118,6 +118,7 @@
   cursor: pointer;
 }
 
+.Sequencer-channels .Sequencer-channel .Sequencer-tick:checked:active,
 .Sequencer-channels .Sequencer-channel .Sequencer-tick:hover:not(:active) {
   background-color: var(--accent-color-complement);
 }
