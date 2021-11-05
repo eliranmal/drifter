@@ -15,7 +15,7 @@ const Settings = () => (
         id="setting-input-bpm"
         min="1"
         max="1000"
-        value="99" />
+        defaultValue="99" />
     </div>
     <div className="Setting-reset-interval">
       <Label htmlFor="setting-input-reset-interval">reset every:</Label>
@@ -24,7 +24,7 @@ const Settings = () => (
           id="setting-input-reset-interval"
           min="0"
           max="64"
-          value="5" />
+          defaultValue="5" />
         <Select
           options={[
             { label: 'bars', value: 4 },

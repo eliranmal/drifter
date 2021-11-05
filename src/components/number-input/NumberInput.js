@@ -4,18 +4,11 @@ import Input from '../input/Input'
 import './NumberInput.css'
 
 
-const NumberInput = ({
-  min = 0,
-  max = 10,
-  value = 5,
-  ...props}) => (
+const NumberInput = ({className, ...props}) => (
   <Input
     {...props}
-    className={`NumberInput ${props.className ?? ''}`}
-    type="number"
-    min={min}
-    max={max}
-    value={value} />
+    className={`NumberInput ${className ?? ''}`}
+    type="number" />
 )
 
 
