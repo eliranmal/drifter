@@ -12,7 +12,6 @@ const Sequencer = ({
   <div className={`Sequencer ${className}`}>
     <div className="Sequencer-timeline">
       <div className="Sequencer-tape"></div>
-      <div className="Sequencer-dots"></div>
       <div
         className="Sequencer-channels"
         style={{ '--ticks-count': ticks }}>

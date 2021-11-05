@@ -12,27 +12,11 @@
   flex-grow: 1;
 }
 
-.Sequencer-dots {
-  --seq-dot-size: .4rem;
-  position: absolute;
-  top: -1.1rem;
-  left: -.5rem;
-  width: var(--seq-dot-size);
-  height: var(--seq-dot-size);
-  border-radius: calc(var(--seq-dot-size) * .5);
-  background-color: var(--background-color);
-  box-shadow:
-    1rem 1.5rem 0 #333,
-    3rem 3rem 0 #333,
-    7rem 1.5rem 0 #333,
-    11rem 3rem 0 #333,
-    17rem 1.5rem 0 #333;
-}
 
 .Sequencer-tape {
 
-  /* todo - port whatever is required from this block,
-  and think of another way of representing the rolling tape */
+  /* todo - port whatever is required from the tape rules,
+  and think of another way of implementing the rolling tape */
   display: none;
 
   --seq-ticks: 2;
