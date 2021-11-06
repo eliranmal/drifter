@@ -1,13 +1,26 @@
-import TransportButton from '../transport-button/TransportButton'
+import TransportButton, {transportButtonName} from '../transport-button/TransportButton'
 
 import './Transport.css'
 
 
-const Transport = () => (
+const Transport = ({
+  isPlaying,
+  isRecording,
+  onPlay,
+  onStop,
+  onRecord}) => (
   <div className="Transport">
-    <TransportButton name="play" />
-    <TransportButton name="stop" />
-    <TransportButton name="record" />
+    <TransportButton
+      name={transportButtonName.play}
+      onClick={onPlay}
+      isActive={isPlaying} />
+    <TransportButton
+      name={transportButtonName.stop}
+      onClick={onStop} />
+    <TransportButton
+      name={transportButtonName.record}
+      onClick={onRecord}
+      isActive={isRecording} />
   </div>
 )
 

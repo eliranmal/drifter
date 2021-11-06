@@ -1,5 +1,5 @@
 .Transport-button {
-  --transport-button-size: 2.6rem;
+  --transport-button-size: 3rem;
   --transport-icon-size: calc(var(--transport-button-size) * .333);
   display: inline-flex;
   align-items: center;
@@ -34,7 +34,7 @@
   --transport-button-icon-color: var(--accent-color-complement);
 }
 
-.Transport-button.active:after {
+.Transport-button.Transport-button-active:after {
   --transport-button-icon-color: var(--accent-color);
   animation: softBlink 1.5s ease-in infinite;
   animation-fill-mode: both;
