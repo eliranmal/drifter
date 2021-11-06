@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: calc(100% - (var(--panel-pad) * 2));
+  margin: var(--panel-pad);
 }
 
 .MainView > :not(:last-child) {
@@ -12,7 +13,7 @@
 
 .MainView-title {
   margin: 0;
-  font-size: 4rem;
+  font-size: 15vmin;
   letter-spacing: -.05em;
   font-weight: 100;
   text-align: right;
