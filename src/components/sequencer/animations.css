@@ -3,9 +3,3 @@
   from { left: 0; right: 100%; }
   to { left: -100%; right: 0; }
 }
-
-@keyframes softBlink {
-  0% { opacity: 1 }
-  66% { opacity: .3 }
-  100% { opacity: 1 }
-}

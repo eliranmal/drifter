@@ -1,0 +1,6 @@
+
+@keyframes softBlink {
+  0% { opacity: 1 }
+  66% { opacity: .3 }
+  100% { opacity: 1 }
+}

@@ -1,3 +1,7 @@
+
+/* make animations available only if the user enabled animations in the OS settings */
+@import url('./animations.css') (prefers-reduced-motion: no-preference);
+
 .Transport-button {
   --transport-button-size: 3rem;
   --transport-icon-size: calc(var(--transport-button-size) * .333);
@@ -37,7 +41,6 @@
 .Transport-button.Transport-button-active:after {
   --transport-button-icon-color: var(--accent-color);
   animation: softBlink 1.5s ease-in infinite;
-  animation-fill-mode: both;
 }
 
 .Transport-button.Transport-button-play:after {

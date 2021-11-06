@@ -1,5 +1,15 @@
 
+/* make animations available only if the user enabled animations in the OS settings */
+@import url('./animations.css') (prefers-reduced-motion: no-preference);
+
 .Sequencer {
+  /* todo - get bpm from outside */
+  --bpm: 99;
+  --sequencer-ticks: 4;
+  --sequencer-ticks-per-beat: 4;
+  --sequencer-tape-speed: calc(
+    ((60s / var(--bpm)) / var(--sequencer-ticks-per-beat)) * var(--sequencer-ticks)
+  );
   --channel-height: 1.2rem;
   display: flex;
   align-items: stretch;
@@ -13,72 +23,37 @@
 }
 
 
-.Sequencer-tape {
-
-  /* todo - port whatever is required from the tape rules,
-  and think of another way of implementing the rolling tape */
-  display: none;
-
-  --seq-ticks: 2;
+.Sequencer .Sequencer-tape {
   /* dividing by 2 as the container width is 200% */
-  --seq-tick-beat: calc((100% / var(--seq-ticks)) / 2);
-  --seq-tick-bar: calc(var(--seq-tick-beat) * 4);
-  --seq-tick-quarter: calc(var(--seq-tick-beat) / 4);
-  --seq-tick-beat-border: calc(var(--seq-tick-beat) - .1rem);
-  --seq-tick-bar-border: calc(var(--seq-tick-bar) - .2rem);
-  --seq-tick-quarter-border: calc(var(--seq-tick-quarter) - .05rem);
+  --sequencer-tick-width: calc((100% / var(--sequencer-ticks) / 2));
+  display: none;
   position: absolute;
+  z-index: 9;
   top: 0;
   bottom: 0;
   left: 0;
   right: 100%;
   width: 200%;
-  background-color: var(--background-color-complement);
+  /* create a background image with a transparent stripe at the begining,
+    and repeat it twice to span the full width */
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    transparent var(--sequencer-tick-width),
+    var(--background-color) var(--sequencer-tick-width),
+    var(--background-color) 50%,
+    transparent 50%,
+    transparent calc(50% + var(--sequencer-tick-width)),
+    var(--background-color) calc(50% + var(--sequencer-tick-width)),
+    var(--background-color) 100%
+  );
+  opacity: .9;
+  pointer-events: none;
 }
 
-@media (min-width: 200px) { .Sequencer-tape { --seq-ticks: 4 } }
-@media (min-width: 400px) { .Sequencer-tape { --seq-ticks: 8 } }
-@media (min-width: 600px) { .Sequencer-tape { --seq-ticks: 12 } }
-@media (min-width: 800px) { .Sequencer-tape { --seq-ticks: 16 } }
-@media (min-width: 1000px) { .Sequencer-tape { --seq-ticks: 20 } }
-@media (min-width: 1200px) { .Sequencer-tape { --seq-ticks: 24 } }
-@media (min-width: 1400px) { .Sequencer-tape { --seq-ticks: 28 } }
-@media (min-width: 1600px) { .Sequencer-tape { --seq-ticks: 32 } }
-
-.Sequencer-tape:hover {
-  animation: slideLeft 4s linear reverse infinite;
-  animation-fill-mode: both;
-}
-
-.Sequencer-tape:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent var(--seq-tick-quarter-border),
-      var(--background-color) var(--seq-tick-quarter-border),
-      var(--background-color) var(--seq-tick-quarter)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent var(--seq-tick-beat-border),
-      var(--background-color) var(--seq-tick-beat-border),
-      var(--background-color) var(--seq-tick-beat)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent var(--seq-tick-bar-border),
-      var(--background-color) var(--seq-tick-bar-border),
-      var(--background-color) var(--seq-tick-bar)
-    );
+.Sequencer.Sequencer-running .Sequencer-tape {
+  display: block;
+  animation: slideLeft var(--sequencer-tape-speed) steps(var(--sequencer-ticks)) reverse infinite;
 }
 
 .Sequencer-channels {
@@ -94,7 +69,7 @@
 
 .Sequencer-channels .Sequencer-channel .Sequencer-tick {
   appearance: none;
-  width: calc(100% / var(--ticks-count));
+  width: calc(100% / var(--sequencer-ticks));
   height: 100%;
   border-radius: calc(var(--channel-height) * .25);
   border: calc(var(--channel-height) * .1) solid var(--background-color);
