@@ -1,7 +1,7 @@
 
 .Layout {
   --panel-pad: 2rem;
-  --aside-width: max(37vw, 16rem);
+  --aside-width: min(max(30vmax, 12rem), 100vmin);
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -14,10 +14,10 @@
 .Layout-main {
   overflow: hidden;
   flex-grow: 1;
-  margin: var(--panel-pad);
 }
 
 .Layout-sidebar {
+  flex-shrink: 0;
   position: relative;
   width: 0;
   padding: var(--panel-pad);
