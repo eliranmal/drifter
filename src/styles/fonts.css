@@ -1,6 +1,6 @@
 
 :root {
-  font-size: calc(16px + .5vmax);
+  font-size: calc(14px + 1vmin);
 }
 
 @font-face {
