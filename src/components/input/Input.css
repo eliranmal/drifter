@@ -7,7 +7,12 @@
   outline: none;
   border: 0 none;
   border-radius: calc(var(--input-height) * .5);
-  font: 1rem trench, sans-serif;
+  font: bold 1rem trench, sans-serif;
   color: var(--accent-color);
   background-color: transparent;
+}
+
+.Input:hover,
+.Input:focus {
+  color: var(--accent-color-complement);
 }
