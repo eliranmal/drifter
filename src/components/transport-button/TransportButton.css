@@ -1,10 +1,10 @@
 .Transport-button {
   --transport-button-size: 2.6rem;
   --transport-icon-size: calc(var(--transport-button-size) * .333);
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: var(--transport-button-size);
   height: var(--transport-button-size);
   margin-inline-end: var(--transport-icon-size);
@@ -21,7 +21,6 @@
 
 .Transport-button:after {
   --transport-button-icon-color: var(--background-color);
-
   content: '';
   display: block;
   width: var(--transport-icon-size);
@@ -32,7 +31,13 @@
 }
 
 .Transport-button:hover:after {
+  --transport-button-icon-color: var(--accent-color-complement);
+}
+
+.Transport-button.active:after {
   --transport-button-icon-color: var(--accent-color);
+  animation: softBlink 1.5s ease-in infinite;
+  animation-fill-mode: both;
 }
 
 .Transport-button.Transport-button-play:after {
