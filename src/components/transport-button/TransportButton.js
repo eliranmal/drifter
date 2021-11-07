@@ -3,22 +3,25 @@ import {withNeumorphism} from '../../hoc/neumorphism/Neumorphism.js'
 import './TransportButton.css'
 
 
-const transportButtonName = {
-  play: 'play',
-  stop: 'stop',
-  record: 'record',
+const tooltipByType = {
+  play: 'play (space)',
+  stop: 'stop (space)',
+  record: 'record (R)',
 }
 
-const TransportButton = ({name, isActive, ...props}) => <button
-  {...props}
-  className={[
-    'Transport-button',
-    name in transportButtonName ? `Transport-button-${transportButtonName[name]}` : '',
-    isActive ? 'Transport-button-active' : '',
-    props.className,
-  ].filter(Boolean).join(' ')}></button>
 
+const TransportButton = ({type, isActive, ...props}) => (
+  <button
+    {...props}
+    className={[
+      'Transport-button',
+      type ? `Transport-button-${type}` : '',
+      isActive ? 'Transport-button-active' : '',
+      props.className,
+    ].filter(Boolean).join(' ')}
+    data-tip={tooltipByType[type]}
+  ></button>
+)
 
-export {transportButtonName}
 
 export default withNeumorphism(TransportButton)

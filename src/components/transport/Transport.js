@@ -1,4 +1,4 @@
-import TransportButton, {transportButtonName} from '../transport-button/TransportButton'
+import TransportButton from '../transport-button/TransportButton'
 
 import './Transport.css'
 
@@ -11,14 +11,14 @@ const Transport = ({
   onRecord}) => (
     <div className="Transport">
       <TransportButton
-        name={transportButtonName.play}
+        type="play"
         onClick={onPlay}
         isActive={isPlaying} />
       <TransportButton
-        name={transportButtonName.stop}
+        type="stop"
         onClick={onStop} />
       <TransportButton
-        name={transportButtonName.record}
+        type="record"
         onClick={onRecord}
         isActive={isRecording} />
     </div>
