@@ -10,6 +10,8 @@
   --sequencer-tape-speed: calc(
     ((60s / var(--bpm)) / var(--sequencer-ticks-per-beat)) * var(--sequencer-ticks)
   );
+  /* --sequencer-tape-timing: linear; */
+  --sequencer-tape-timing: steps(var(--sequencer-ticks));
   --channel-height: 1.2rem;
   display: flex;
   align-items: stretch;
@@ -47,13 +49,18 @@
     var(--background-color) calc(50% + var(--sequencer-tick-width)),
     var(--background-color) 100%
   );
-  opacity: .9;
+  opacity: .75;
   pointer-events: none;
 }
 
 .Sequencer.Sequencer-running .Sequencer-tape {
   display: block;
-  animation: slideLeft var(--sequencer-tape-speed) steps(var(--sequencer-ticks)) reverse infinite;
+  animation:
+    slideLeft
+    var(--sequencer-tape-speed)
+    var(--sequencer-tape-timing)
+    reverse
+    infinite;
 }
 
 .Sequencer-channels {
