@@ -5,15 +5,18 @@ import MainView from './pages/main-view/MainView'
 import Settings from './pages/settings/Settings'
 
 import './App.css';
+import './styles/react-tooltip.css'
 
 
 const App = () => (
   <>
     <ReactTooltip
+      className="drifter-react-tooltip"
       effect="solid"
-      type="dark"
       delayShow={300}
       delayHide={300}
+      textColor="var(--background-color)"
+      backgroundColor="var(--accent-color-complement)"
       multiline
     />
     <Layout
