@@ -13,9 +13,9 @@ const TransportButton = ({name, isActive, ...props}) => <button
   {...props}
   className={[
     'Transport-button',
-    name in transportButtonName ? `Transport-button-${name}` : '',
-    props.className,
+    name in transportButtonName ? `Transport-button-${transportButtonName[name]}` : '',
     isActive ? 'Transport-button-active' : '',
+    props.className,
   ].filter(Boolean).join(' ')}></button>
 
 
