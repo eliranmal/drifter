@@ -12,8 +12,8 @@ const App = () => (
     <ReactTooltip
       effect="solid"
       type="dark"
-      delayShow="300"
-      delayHide="300"
+      delayShow={300}
+      delayHide={300}
       multiline
     />
     <Layout
