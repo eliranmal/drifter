@@ -21,7 +21,8 @@ const useMediaQueries = (mediaQueryMap, dependencies) => {
 
     return () => mediaQueries
       .forEach(([query, listener]) => query.removeEventListener('change', listener))
-  }, [dependencies])
+  // eslint-disable-next-line 
+  }, [mediaQueryMap, ...dependencies])
 }
 
 
