@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useCallback} from 'react'
 
 import useKeyboard from '../../hooks/useKeyboard'
 import Sequencer from '../../components/sequencer/Sequencer'
@@ -16,7 +16,7 @@ const MainView = () => {
   const stop = () => { setPlaying(false); setRecording(false) }
   const record = () => setRecording(true)
 
-  useKeyboard(({keyCode}) => {
+  useKeyboard(useCallback(({keyCode}) => {
     switch (keyCode) {
       case 32: // space
         isPlaying ? stop() : play()
@@ -28,7 +28,7 @@ const MainView = () => {
       default:
         break
     }
-  }, [isPlaying])
+  }, [isPlaying]))
 
   return (
     <div className="MainView">

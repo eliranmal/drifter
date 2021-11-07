@@ -1,13 +1,12 @@
-import {useEffect, useCallback} from 'react'
+import {useEffect} from 'react'
 
 
-const useKeyboard = (listener = () => {}, dependencies) => {
-  const memoisedListener = useCallback(listener, dependencies)
+const useKeyboard = (listener = () => {}) => {
   useEffect(() => {
     // keydown is best for capturing backspace and such
-    document.addEventListener('keydown', memoisedListener)
+    document.addEventListener('keydown', listener)
     return () => {
-      document.removeEventListener('keydown', memoisedListener)
+      document.removeEventListener('keydown', listener)
     }
   })
 }
