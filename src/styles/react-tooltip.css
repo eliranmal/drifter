@@ -1,6 +1,7 @@
 
 .drifter-react-tooltip {
-  max-width: 14rem;
-  padding: .6rem .8rem !important;
-  font-size: .8rem !important;
+  min-width: 6em;
+  max-width: 20em;
+  padding: .75em 1em !important;
+  font-size: .7rem !important;
 }

@@ -12,18 +12,24 @@ const MainView = () => {
   const [isPlaying, setPlaying] = useState(false)
   const [isRecording, setRecording] = useState(false)
 
-  const play = () => setPlaying(true)
+  const play = () => !isPlaying && setPlaying(true)
   const stop = () => { setPlaying(false); setRecording(false) }
   const record = () => setRecording(true)
+  const togglePlay = () => isPlaying ? stop() : play()
 
-  useKeyboard(useCallback(({keyCode}) => {
+  useKeyboard(useCallback(e => {
+    const {keyCode, shiftKey} = e
     switch (keyCode) {
       case 32: // space
-        isPlaying ? stop() : play()
+        e.preventDefault()
+        togglePlay()
         break
       case 82: // r
-        !isPlaying && play()
-        record()
+        if (shiftKey) {
+          e.preventDefault()
+          play()
+          record()
+        }
         break
       default:
         break

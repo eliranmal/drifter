@@ -4,9 +4,9 @@ import './TransportButton.css'
 
 
 const tooltipByType = {
-  play: 'play (space)',
-  stop: 'stop (space)',
-  record: 'record (R)',
+  play: 'play<br/>(space)',
+  stop: 'stop<br/>(space)',
+  record: 'record<br/>(shift+r)',
 }
 
 
