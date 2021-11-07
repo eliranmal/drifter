@@ -1,22 +1,22 @@
-.Settings {
+.drifter-settings {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin: 2.4rem .4rem;
 }
 
-.Settings > * {
+.drifter-settings > * {
   margin-block-end: .5rem;
 }
 
-.Settings :not(:last-child) {
+.drifter-settings :not(:last-child) {
   margin-inline-end: 1.5rem;
 }
 
-.Settings .Setting-reset-interval {
+.drifter-settings .drifter-setting-reset-interval {
   white-space: nowrap;
 }
 
-.Settings .Setting-reset-interval :not(:last-child) {
+.drifter-settings .drifter-setting-reset-interval :not(:last-child) {
   margin-inline-end: .1rem;
 }

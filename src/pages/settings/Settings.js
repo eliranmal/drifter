@@ -16,15 +16,15 @@ const Settings = () => {
   })
 
   return (
-    <div className="Settings">
+    <div className="drifter-settings">
       <div
-        className="Setting-bpm"
+        className="drifter-setting-bpm"
         data-tip="set the speed in beats per minutes"
         data-place="left"
       >
-        <Label htmlFor="setting-input-bpm">bpm:</Label>
+        <Label htmlFor="drifter-setting-input-bpm">bpm:</Label>
         <NumberInput
-          id="setting-input-bpm"
+          id="drifter-setting-input-bpm"
           min={1}
           max={1000}
           value={bpm}
@@ -32,14 +32,14 @@ const Settings = () => {
         />
       </div>
       <div
-        className="Setting-reset-interval"
+        className="drifter-setting-reset-interval"
         data-tip="synchronize the original source and the drifting source using this interval (0 means never)"
         data-place="left"
       >
-        <Label htmlFor="setting-input-reset-interval">reset every:</Label>
+        <Label htmlFor="drifter-setting-input-reset-interval">reset every:</Label>
         <div>
           <NumberInput
-            id="setting-input-reset-interval"
+            id="drifter-setting-input-reset-interval"
             min={0}
             max={64}
             value={resetInterval.value}

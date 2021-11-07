@@ -10,14 +10,14 @@ const tooltipByType = {
 }
 
 
-const TransportButton = ({type, isActive, ...props}) => (
+const TransportButton = ({type, isActive, className, ...props}) => (
   <button
     {...props}
     className={[
-      'Transport-button',
-      type ? `Transport-button-${type}` : '',
-      isActive ? 'Transport-button-active' : '',
-      props.className,
+      'drifter-transport-button',
+      type ? `drifter-transport-button-type-${type}` : '',
+      isActive ? 'drifter-transport-button-active' : '',
+      className,
     ].filter(Boolean).join(' ')}
     data-tip={tooltipByType[type]}
   ></button>

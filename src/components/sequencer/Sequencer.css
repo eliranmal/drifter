@@ -2,7 +2,8 @@
 /* make animations available only if the user enabled animations in the OS settings */
 @import url('./animations.css') (prefers-reduced-motion: no-preference);
 
-.Sequencer {
+
+.drifter-sequencer {
   /* todo - get bpm from outside */
   --bpm: 99;
   --sequencer-ticks: 4;
@@ -18,14 +19,14 @@
   height: min-content;
 }
 
-.Sequencer-timeline {
+.drifter-sequencer-timeline {
   position: relative;
   overflow: hidden;
   flex-grow: 1;
 }
 
 
-.Sequencer .Sequencer-tape {
+.drifter-sequencer .drifter-sequencer-tape {
   /* dividing by 2 as the container width is 200% */
   --sequencer-tick-width: calc((100% / var(--sequencer-ticks) / 2));
   display: none;
@@ -53,7 +54,7 @@
   pointer-events: none;
 }
 
-.Sequencer.Sequencer-running .Sequencer-tape {
+.drifter-sequencer.drifter-sequencer-running .drifter-sequencer-tape {
   display: block;
   animation:
     slideLeft
@@ -63,18 +64,18 @@
     infinite;
 }
 
-.Sequencer-channels {
+.drifter-sequencer-channels {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.Sequencer-channels .Sequencer-channel {
+.drifter-sequencer-channels .drifter-sequencer-channel {
   height: var(--channel-height);
 }
 
-.Sequencer-channels .Sequencer-channel .Sequencer-tick {
+.drifter-sequencer-channel .drifter-sequencer-tick {
   appearance: none;
   width: calc(100% / var(--sequencer-ticks));
   height: 100%;
@@ -84,12 +85,12 @@
   cursor: pointer;
 }
 
-.Sequencer-channels .Sequencer-channel .Sequencer-tick:checked:active,
-.Sequencer-channels .Sequencer-channel .Sequencer-tick:hover:not(:active) {
+.drifter-sequencer-channel .drifter-sequencer-tick:checked:active,
+.drifter-sequencer-channel .drifter-sequencer-tick:hover:not(:active) {
   background-color: var(--accent-color-complement);
 }
 
-.Sequencer-channels .Sequencer-channel .Sequencer-tick:active,
-.Sequencer-channels .Sequencer-channel .Sequencer-tick:checked:not(:active) {
+.drifter-sequencer-channel .drifter-sequencer-tick:active,
+.drifter-sequencer-channel .drifter-sequencer-tick:checked:not(:active) {
   background-color: var(--accent-color);
 }

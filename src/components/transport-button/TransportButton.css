@@ -2,7 +2,8 @@
 /* make animations available only if the user enabled animations in the OS settings */
 @import url('./animations.css') (prefers-reduced-motion: no-preference);
 
-.Transport-button {
+
+.drifter-transport-button {
   --transport-button-size: 3rem;
   --transport-icon-size: calc(var(--transport-button-size) * .333);
   display: inline-flex;
@@ -19,11 +20,11 @@
   cursor: pointer;
 }
 
-.Transport-button:last-of-type {
+.drifter-transport-button:last-of-type {
   margin-inline-end: 0;
 }
 
-.Transport-button:after {
+.drifter-transport-button:after {
   --transport-button-icon-color: var(--background-color);
   content: '';
   display: block;
@@ -34,16 +35,16 @@
   border-color: var(--transport-button-icon-color);
 }
 
-.Transport-button:hover:after {
+.drifter-transport-button:hover:after {
   --transport-button-icon-color: var(--accent-color-complement);
 }
 
-.Transport-button.Transport-button-active:after {
+.drifter-transport-button.drifter-transport-button-active:after {
   --transport-button-icon-color: var(--accent-color);
   animation: softBlink 1.5s ease-in infinite;
 }
 
-.Transport-button.Transport-button-play:after {
+.drifter-transport-button.drifter-transport-button-type-play:after {
   --transport-icon-size-play: calc(var(--transport-icon-size) * 1.1);
   width: var(--transport-icon-size-play);
   height: var(--transport-icon-size-play);
@@ -57,14 +58,14 @@
   border-bottom-color: transparent;
 }
 
-.Transport-button.Transport-button-stop:after {
+.drifter-transport-button.drifter-transport-button-type-stop:after {
   --transport-icon-size-stop: calc(var(--transport-icon-size) * .9);
   width: var(--transport-icon-size-stop);
   height: var(--transport-icon-size-stop);
   background-color: var(--transport-button-icon-color);
 }
 
-.Transport-button.Transport-button-record:after {
+.drifter-transport-button.drifter-transport-button-type-record:after {
   border-radius: calc(var(--transport-icon-size) * .5);
   border-width: calc(var(--transport-icon-size) * .5);
 }

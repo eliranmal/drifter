@@ -1,8 +1,8 @@
 
-.Meter {
+.drifter-meter {
   opacity: .5;
 }
 
-.Meter:not(:hover) {
+.drifter-meter:not(:hover) {
   filter: grayscale();
 }

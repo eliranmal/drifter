@@ -6,7 +6,7 @@ import './Crossfader.css'
 const Crossfader = ({className, ...props}) => (
   <Input
     {...props}
-    className={`Crossfader ${className}`}
+    className={`drifter-crossfader ${className}`}
     type="range" />
 )
 

@@ -1,13 +1,13 @@
 
-.Select,
-.Select .Select-option {
+.drifter-select,
+.drifter-select .drifter-select-option {
   height: var(--select-height);
   outline: none;
   border: 0 none;
   color: var(--accent-color);
 }
 
-.Select {
+.drifter-select {
   --select-height: 1.5rem;
   padding-inline-start: .5em;
   padding-inline-end: 0;
@@ -16,7 +16,7 @@
   background-color: var(--background-color-complement);
 }
 
-.Select:hover,
-.Select:focus {
+.drifter-select:hover,
+.drifter-select:focus {
   color: var(--accent-color-complement);
 }

@@ -1,11 +1,11 @@
 import './Input.css'
 
 
-const Input = ({ type = 'text', ...props}) => (
+const Input = ({ type = 'text', className, ...props}) => (
   <input
     {...props}
     type={type}
-    className={`Input ${props.className ?? ''}`}
+    className={`drifter-input ${className ?? ''}`}
     />
 )
 

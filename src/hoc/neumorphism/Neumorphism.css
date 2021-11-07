@@ -1,4 +1,4 @@
-.Neumorphism {
+.drifter-has-neumorphism {
   --neumorphism-bg-color: var(--background-color-complement);
   --neumorphism-shadow-color-tint: var(--background-color-tint);
   --neumorphism-shadow-color-shade: var(--background-color-shade);

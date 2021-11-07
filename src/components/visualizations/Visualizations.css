@@ -1,4 +1,4 @@
-.Visualizations {
+.drifter-visualizations {
   display: flex;
   align-items: center;
   justify-content: stretch;
@@ -7,19 +7,19 @@
   padding-bottom: 0;
 }
 
-.Visualizations :not(:last-child) {
+.drifter-visualizations :not(:last-child) {
   margin-inline-end: .5rem;
 }
 
-.Visualizations .Visualization-tight,
-.Visualizations .Visualization-loose {
+.drifter-visualizations .drifter-visualization-tight,
+.drifter-visualizations .drifter-visualization-loose {
   flex-grow: 1;
   min-height: 2rem;
   background-color: transparent;
 }
 
-.Visualizations .Visualization-tight {
+.drifter-visualizations .drifter-visualization-tight {
 }
 
-.Visualizations .Visualization-loose {
+.drifter-visualizations .drifter-visualization-loose {
 }

@@ -1,10 +1,10 @@
 import './Label.css'
 
 
-const Label = ({children, ...props}) => (
+const Label = ({children, className, ...props}) => (
   <label
     {...props}
-    className={`Label ${props.className}`}>{
+    className={`drifter-label ${className ?? ''}`}>{
       children && children.length ? children : null
     }</label>
 )

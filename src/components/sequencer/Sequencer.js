@@ -29,15 +29,15 @@ const Sequencer = ({
 
     return (
       <div
-        className={`Sequencer ${isRunning ? 'Sequencer-running' : ''} ${className}`}
+        className={`drifter-sequencer ${isRunning ? 'drifter-sequencer-running' : ''} ${className}`}
         style={{ '--sequencer-ticks': tickCount }}>
-        <div className="Sequencer-timeline">
-          <div className="Sequencer-tape"></div>
-          <div className="Sequencer-channels">
+        <div className="drifter-sequencer-timeline">
+          <div className="drifter-sequencer-tape"></div>
+          <div className="drifter-sequencer-channels">
             {range(channelCount).map(channelIndex => (
-              <div key={channelIndex} className="Sequencer-channel">
+              <div key={channelIndex} className="drifter-sequencer-channel">
                   {range(tickCount).map(tickIndex => (
-                    <Input type="checkbox" className="Sequencer-tick" key={tickIndex} defaultChecked={!!checkedTicks[channelIndex] && checkedTicks[channelIndex].includes(tickIndex)} />
+                    <Input type="checkbox" className="drifter-sequencer-tick" key={tickIndex} defaultChecked={!!checkedTicks[channelIndex] && checkedTicks[channelIndex].includes(tickIndex)} />
                   ))}
               </div>
             ))}

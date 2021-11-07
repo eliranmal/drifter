@@ -6,10 +6,10 @@ import './Select.css'
 const Select = ({ options = [], className, ...props}) => (
   <select
     {...props}
-    className={`Select ${className ?? ''}`}>
+    className={`drifter-select ${className ?? ''}`}>
       {options.map(({value, label, className: optionClassName}, key) => (
         <option
-          className={`Select-option ${optionClassName ?? ''}`}
+          className={`drifter-select-option ${optionClassName ?? ''}`}
           key={key}
           value={value}
           >{label}</option>

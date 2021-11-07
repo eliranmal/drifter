@@ -1,5 +1,5 @@
 
-.Layout {
+.drifter-layout {
   --panel-pad: 2rem;
   --aside-width: min(max(30vmax, 12rem), 100vmin);
   display: flex;
@@ -11,12 +11,12 @@
   background-color: var(--background-color);
 }
 
-.Layout-main {
+.drifter-layout-main {
   overflow: hidden;
   flex-grow: 1;
 }
 
-.Layout-sidebar {
+.drifter-layout-sidebar {
   flex-shrink: 0;
   position: relative;
   width: 0;
@@ -26,13 +26,13 @@
   transition: all 444ms ease-in 44ms;
 }
 
-.Layout-sidebar:before {
+.drifter-layout-sidebar:before {
   content: attr(data-heading);
   position: absolute;
   top: .75rem;
   left: .75rem;
 }
 
-.Layout-sidebar:hover {
+.drifter-layout-sidebar:hover {
   width: var(--aside-width);
 }

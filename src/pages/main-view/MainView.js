@@ -31,19 +31,19 @@ const MainView = () => {
   }, [isPlaying]))
 
   return (
-    <div className="MainView">
-      <h1 className="MainView-title">d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rifter</h1>
+    <div className="drifter-main-view">
+      <h1 className="drifter-main-view-title">d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rifter</h1>
       <Sequencer
-        className="MainView-panel"
+        className="drifter-main-view-panel"
         isRunning={isPlaying} />
       <Transport
-        className="MainView-panel-center"
+        className="drifter-main-view-panel-center"
         isPlaying={isPlaying}
         isRecording={isRecording}
         onPlay={play}
         onStop={stop}
         onRecord={record} />
-      <Visualizations className="MainView-panel-end" />
+      <Visualizations className="drifter-main-view-panel-end" />
     </div>
   )
 }

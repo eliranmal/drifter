@@ -6,11 +6,11 @@ const Layout = ({
   main: Main,
   sideBar: SideBar = () => null,
 }) => (
-  <div className="Layout">
-    <main className="Layout-main">
+  <div className="drifter-layout">
+    <main className="drifter-layout-main">
       { Main ? <Main /> : children }
     </main>
-    <aside className="Layout-sidebar" data-heading={spaceOut(SideBar.name.toLowerCase())}>
+    <aside className="drifter-layout-sidebar" data-heading={spaceOut(SideBar.name.toLowerCase())}>
       <SideBar />
     </aside>
   </div>

@@ -14,7 +14,7 @@ const Meter = ({
     optimum={optimum}
     value={value}
     {...props}
-    className={`Meter ${className}`}
+    className={`drifter-meter ${className ?? ''}`}
     ></meter>
 )
 

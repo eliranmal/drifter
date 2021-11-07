@@ -1,5 +1,5 @@
 
-.MainView {
+.drifter-main-view {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,11 +7,11 @@
   margin: var(--panel-pad);
 }
 
-.MainView > :not(:last-child) {
+.drifter-main-view > :not(:last-child) {
   margin-block-end: .75rem;
 }
 
-.MainView-title {
+.drifter-main-view-title {
   margin: 0;
   font-size: 15vmin;
   letter-spacing: -.05em;
@@ -20,9 +20,9 @@
   color: var(--accent-color);
 }
 
-.MainView-panel,
-.MainView-panel-center,
-.MainView-panel-end {
+.drifter-main-view-panel,
+.drifter-main-view-panel-center,
+.drifter-main-view-panel-end {
   width: calc(100vw - (var(--panel-pad) * 2) - var(--aside-width));
   overflow: hidden;
   padding: .3rem;
@@ -30,10 +30,10 @@
   border-radius: .6rem;
 }
 
-.MainView-panel-end {
+.drifter-main-view-panel-end {
   align-self: flex-end;
 }
 
-.MainView-panel-center {
+.drifter-main-view-panel-center {
   align-self: center;
 }

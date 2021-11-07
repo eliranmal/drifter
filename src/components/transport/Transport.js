@@ -9,7 +9,7 @@ const Transport = ({
   onPlay,
   onStop,
   onRecord}) => (
-    <div className="Transport">
+    <div className="drifter-transport">
       <TransportButton
         type="play"
         onClick={onPlay}

@@ -7,7 +7,7 @@ import './NumberInput.css'
 const NumberInput = ({className, ...props}) => (
   <Input
     {...props}
-    className={`NumberInput ${className ?? ''}`}
+    className={`drifter-number-input ${className ?? ''}`}
     type="number" />
 )
 
