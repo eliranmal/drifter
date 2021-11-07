@@ -9,7 +9,11 @@ import './Settings.css'
 
 const Settings = () => (
   <div className="Settings">
-    <div className="Setting-bpm">
+    <div
+      className="Setting-bpm"
+      data-tip="set the speed in beats per minutes"
+      data-place="left"
+    >
       <Label htmlFor="setting-input-bpm">bpm:</Label>
       <NumberInput
         id="setting-input-bpm"
@@ -17,7 +21,11 @@ const Settings = () => (
         max="1000"
         defaultValue="99" />
     </div>
-    <div className="Setting-reset-interval">
+    <div
+      className="Setting-reset-interval"
+      data-tip="synchronize the original source and the drifting source using this interval (0 means never)"
+      data-place="left"
+    >
       <Label htmlFor="setting-input-reset-interval">reset every:</Label>
       <div>
         <NumberInput
