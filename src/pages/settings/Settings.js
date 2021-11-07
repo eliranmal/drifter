@@ -7,8 +7,6 @@ import NumberInput from '../../components/number-input/NumberInput'
 import './Settings.css'
 
 
-// todo - useLocalStorage, and if it makess sense - withLocalStorage
-
 const Settings = () => {
 
   const [bpm, setBpm] = useLocalStorage('drifter-setting-bpm', 99)
