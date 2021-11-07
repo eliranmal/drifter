@@ -3,16 +3,15 @@ import {withNeumorphism} from '../../hoc/neumorphism/Neumorphism'
 import './Select.css'
 
 
-const Select = ({ options = [], ...props}) => (
+const Select = ({ options = [], className, ...props}) => (
   <select
     {...props}
-    className={`Select ${props.className ?? ''}`}>
-      {options.map(({value, label, selected, className}, key) => (
+    className={`Select ${className ?? ''}`}>
+      {options.map(({value, label, className: optionClassName}, key) => (
         <option
-          className={`Select-option ${className ?? ''}`}
+          className={`Select-option ${optionClassName ?? ''}`}
           key={key}
           value={value}
-          selected={selected}
           >{label}</option>
       ))}
   </select>
