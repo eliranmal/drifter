@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/drifter/static/css/main.63783554.chunk.css",
-    "main.js": "/drifter/static/js/main.fa8c82d2.chunk.js",
-    "main.js.map": "/drifter/static/js/main.fa8c82d2.chunk.js.map",
-    "runtime-main.js": "/drifter/static/js/runtime-main.6117153f.js",
-    "runtime-main.js.map": "/drifter/static/js/runtime-main.6117153f.js.map",
-    "static/js/2.edfe382e.chunk.js": "/drifter/static/js/2.edfe382e.chunk.js",
-    "static/js/2.edfe382e.chunk.js.map": "/drifter/static/js/2.edfe382e.chunk.js.map",
-    "static/js/3.c737299c.chunk.js": "/drifter/static/js/3.c737299c.chunk.js",
-    "static/js/3.c737299c.chunk.js.map": "/drifter/static/js/3.c737299c.chunk.js.map",
+    "main.js": "/drifter/static/js/main.96801ad8.chunk.js",
+    "main.js.map": "/drifter/static/js/main.96801ad8.chunk.js.map",
+    "runtime-main.js": "/drifter/static/js/runtime-main.544feb7f.js",
+    "runtime-main.js.map": "/drifter/static/js/runtime-main.544feb7f.js.map",
+    "static/js/2.e3e7b021.chunk.js": "/drifter/static/js/2.e3e7b021.chunk.js",
+    "static/js/2.e3e7b021.chunk.js.map": "/drifter/static/js/2.e3e7b021.chunk.js.map",
+    "static/js/3.20d7a07f.chunk.js": "/drifter/static/js/3.20d7a07f.chunk.js",
+    "static/js/3.20d7a07f.chunk.js.map": "/drifter/static/js/3.20d7a07f.chunk.js.map",
     "index.html": "/drifter/index.html",
     "static/css/main.63783554.chunk.css.map": "/drifter/static/css/main.63783554.chunk.css.map",
-    "static/js/2.edfe382e.chunk.js.LICENSE.txt": "/drifter/static/js/2.edfe382e.chunk.js.LICENSE.txt",
+    "static/js/2.e3e7b021.chunk.js.LICENSE.txt": "/drifter/static/js/2.e3e7b021.chunk.js.LICENSE.txt",
     "static/media/App.css": "/drifter/static/media/trench100.f4fa94b7.otf"
   },
   "entrypoints": [
-    "static/js/runtime-main.6117153f.js",
-    "static/js/2.edfe382e.chunk.js",
+    "static/js/runtime-main.544feb7f.js",
+    "static/js/2.e3e7b021.chunk.js",
     "static/css/main.63783554.chunk.css",
-    "static/js/main.fa8c82d2.chunk.js"
+    "static/js/main.96801ad8.chunk.js"
   ]
 }
