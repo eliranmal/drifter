@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/drifter/static/css/main.64157746.chunk.css",
-    "main.js": "/drifter/static/js/main.4fdccc9d.chunk.js",
-    "main.js.map": "/drifter/static/js/main.4fdccc9d.chunk.js.map",
+    "main.css": "/drifter/static/css/main.63783554.chunk.css",
+    "main.js": "/drifter/static/js/main.27504c7e.chunk.js",
+    "main.js.map": "/drifter/static/js/main.27504c7e.chunk.js.map",
     "runtime-main.js": "/drifter/static/js/runtime-main.f17c0f49.js",
     "runtime-main.js.map": "/drifter/static/js/runtime-main.f17c0f49.js.map",
     "static/js/2.66fb5fb9.chunk.js": "/drifter/static/js/2.66fb5fb9.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.b2f1100e.chunk.js": "/drifter/static/js/3.b2f1100e.chunk.js",
     "static/js/3.b2f1100e.chunk.js.map": "/drifter/static/js/3.b2f1100e.chunk.js.map",
     "index.html": "/drifter/index.html",
-    "static/css/main.64157746.chunk.css.map": "/drifter/static/css/main.64157746.chunk.css.map",
+    "static/css/main.63783554.chunk.css.map": "/drifter/static/css/main.63783554.chunk.css.map",
     "static/js/2.66fb5fb9.chunk.js.LICENSE.txt": "/drifter/static/js/2.66fb5fb9.chunk.js.LICENSE.txt",
     "static/media/App.css": "/drifter/static/media/trench100.f4fa94b7.otf"
   },
   "entrypoints": [
     "static/js/runtime-main.f17c0f49.js",
     "static/js/2.66fb5fb9.chunk.js",
-    "static/css/main.64157746.chunk.css",
-    "static/js/main.4fdccc9d.chunk.js"
+    "static/css/main.63783554.chunk.css",
+    "static/js/main.27504c7e.chunk.js"
   ]
 }
