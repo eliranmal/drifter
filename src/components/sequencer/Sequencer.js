@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 import useMediaQueries from '../../hooks/useMediaQueries'
 import {range} from '../../lib/util'
