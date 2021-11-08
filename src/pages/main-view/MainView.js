@@ -12,10 +12,10 @@ const MainView = () => {
   const [isPlaying, setPlaying] = useState(false)
   const [isRecording, setRecording] = useState(false)
 
-  const play = () => !isPlaying && setPlaying(true)
-  const stop = () => { setPlaying(false); setRecording(false) }
-  const record = () => setRecording(true)
-  const togglePlay = () => isPlaying ? stop() : play()
+  const play = useCallback(() => !isPlaying && setPlaying(true), [isPlaying])
+  const stop = useCallback(() => { setPlaying(false); setRecording(false) }, [])
+  const record = useCallback(() => setRecording(true), [])
+  const togglePlay = useCallback(() => isPlaying ? stop() : play(), [isPlaying, play, stop])
 
   useKeyboard(useCallback(e => {
     const {keyCode, shiftKey} = e
@@ -34,7 +34,7 @@ const MainView = () => {
       default:
         break
     }
-  }, [isPlaying]))
+  }, [play, record, togglePlay]))
 
   return (
     <div className="drifter-main-view">
