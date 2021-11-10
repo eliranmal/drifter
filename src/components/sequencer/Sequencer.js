@@ -6,12 +6,14 @@ import Input from '../input/Input'
 
 import './Sequencer.css'
 
-// todo - externalize, persist
+// todo - generalize, externalize, persist
 const checkedTicks = [
   [0, 6, 10, 16, 22, 26],
   [4, 12, 20, 28],
 ]
 
+
+// todo - expose 'cursor' property to enable linking animation steps with audio events
 const Sequencer = ({
   isRunning,
   channelCount = 4,
