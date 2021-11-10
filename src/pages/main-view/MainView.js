@@ -26,7 +26,7 @@ const MainView = () => {
   const [sampler/*, loaded, error*/] = useSampler(sampleMap.rolandTr808)
 
   const play = useCallback(() => {
-    if (!isPlaying) {()
+    if (!isPlaying) {
       audio.play()
       setPlaying(true)
     }
