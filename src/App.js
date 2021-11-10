@@ -29,6 +29,10 @@ const App = () => {
       />
       <Layout
         main={MainView}
+        mainProps={{
+          bpm,
+          resetInterval,
+        }}
         sideBar={Settings}
         sideBarProps={{
           bpm,

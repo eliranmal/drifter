@@ -12,7 +12,10 @@ import './MainView.css'
 
 
 
-const MainView = () => {
+const MainView = ({
+  bpm,
+  resetInterval,
+}) => {
   const [isPlaying, setPlaying] = useState(false)
   const [isRecording, setRecording] = useState(false)
 
@@ -22,8 +25,6 @@ const MainView = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
     // [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ])
-
-  const [sampler/*, loaded, error*/] = useSampler(sampleMap.rolandTr808)
 
   const play = useCallback(() => {
     if (!isPlaying) {
@@ -42,9 +43,14 @@ const MainView = () => {
 
   const togglePlay = useCallback(() => isPlaying ? stop() : play(), [isPlaying, play, stop])
 
+  
+  const [sampler/*, loaded, error*/] = useSampler(sampleMap.rolandTr808)
 
   useEffect(() => {
-    audio.init()
+    audio.init({bpm})
+  }, [bpm])
+
+  useEffect(() => {
     audio.loadTriggers(sampler, triggerMatrix)
     return () => sampler.dispose()
   }, [sampler, triggerMatrix])
