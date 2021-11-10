@@ -5,13 +5,16 @@ const Layout = ({
   children,
   main: Main,
   sideBar: SideBar = () => null,
+  mainProps = {},
+  sideBarProps = {},
 }) => (
   <div className="drifter-layout">
     <main className="drifter-layout-main">
-      { Main ? <Main /> : children }
+      { Main ? <Main {...mainProps} /> : children }
     </main>
-    <aside className="drifter-layout-sidebar" data-heading={spaceOut(SideBar.name.toLowerCase())}>
-      <SideBar />
+    <aside className="drifter-layout-sidebar"
+      data-heading={spaceOut(SideBar.name.toLowerCase())}>
+      <SideBar {...sideBarProps} />
     </aside>
   </div>
 )
