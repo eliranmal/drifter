@@ -22,13 +22,13 @@ every piece is unique, no two beats are alike! use them in your work! they're si
 
 ## why
 
-i dunno.
+i dunno. cuz it's kwel.
 
 
 ## who
 
 - [Trench][trench-font-website] font by [NimaType][nimatype-website]
-
+- drum machine samples by [Ingo Vogelmann][ingo-vogelmann-website] / [Studio Slave][studio-slave-website]
 
 
 
@@ -39,3 +39,5 @@ i dunno.
 [nimatype-website]: https://www.nimatype.com/
 [trench-font-website]: https://www.nimatype.com/p/kzi3/
 [js-timers-info-website]: https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#reasons_for_delays_longer_than_specified
+[ingo-vogelmann-website]: https://ingovogelmann.net/
+[studio-slave-website]: https://studioslave.com/
