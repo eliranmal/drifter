@@ -22,7 +22,6 @@ const asTransportTime = sixteenthIndex => [
 export const init = ({bpm = 99} = {}) => {
   Tone.Transport.loop = true
   Tone.Transport.bpm.value = bpm
-  // Tone.Transport.PPQ = 1
 }
 
 // todo - extract play() / stop() to useTransport? maybe

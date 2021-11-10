@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import useTone from './useTone'
+import useToneRef from './useToneRef'
 
 
 const sampleMap = {
@@ -18,7 +18,7 @@ const useSampler = (sampleMap = {}, samplerOptions = {}) => {
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(null)
 
-  return [useTone('Sampler', {
+  return [useToneRef('Sampler', {
     ...samplerOptions,
     ...sampleMap,
     onload: () => setLoaded(true),
