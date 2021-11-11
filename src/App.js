@@ -4,7 +4,7 @@ import ReactTooltip from 'react-tooltip'
 import Layout from './pages/layout/Layout'
 import Settings from './pages/settings/Settings'
 import MainView from './pages/main-view/MainView'
-import ErrorBoundary from './components/error-boundary/ErrorBoundary'
+import AppErrorBoundary from './components/error-boundary/AppErrorBoundary'
 
 import './App.css';
 import './styles/react-tooltip.css'
@@ -28,7 +28,7 @@ const App = () => {
         backgroundColor="var(--accent-color-complement)"
         multiline
       />
-      <ErrorBoundary>
+      <AppErrorBoundary>
         <Layout
           main={MainView}
           mainProps={{
@@ -43,7 +43,7 @@ const App = () => {
             setResetInterval,
           }}
         />
-        </ErrorBoundary>
+        </AppErrorBoundary>
     </>
   )
 }

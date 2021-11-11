@@ -1,0 +1,33 @@
+
+.drifter-app-error-view {
+  height: 100vh;
+  padding: 2em 4em;
+  font-size: calc(.5rem + 1.75vmin);
+  color: var(--accent-color);
+  background-color: var(--background-color);
+}
+
+.drifter-app-error-view .drifter-app-error-view-title {
+  text-align: right;
+  font: bold 2.75em trench, sans-serif;
+  margin-block-end: 1.25em;
+}
+
+.drifter-app-error-view .drifter-app-error-view-details {
+  padding: .4em .6em;
+  border: .1em solid var(--accent-color);
+  border-radius: .6em;
+  font-weight: normal;
+}
+
+.drifter-app-error-view .drifter-app-error-view-pre {
+  padding-inline-start: 1em;
+  padding-inline-end: 1em;
+  font-size: .8em;
+}
+
+.drifter-app-error-view .drifter-app-error-view-stacktrace {
+  overflow-y: auto;
+  max-height: 25vh;
+  white-space: pre-wrap;
+}
