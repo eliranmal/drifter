@@ -4,8 +4,8 @@
 
 
 .drifter-transport-button {
-  --transport-button-size: 3rem;
-  --transport-icon-size: calc(var(--transport-button-size) * .333);
+  --transport-button-size: 2.8rem;
+  --transport-icon-size: calc(var(--transport-button-size) * .4);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@
   margin-inline-end: var(--transport-icon-size);
   outline: none;
   border: 0 none;
-  border-radius: calc(var(--transport-button-size) * .333);
+  border-radius: calc(var(--transport-button-size) * .4);
   background-color: var(--background-color-complement);
   cursor: pointer;
 }
