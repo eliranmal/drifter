@@ -33,12 +33,15 @@ class AppErrorBoundary extends React.Component {
           <h1
             className="drifter-app-error-view-title"
           >{this.props.message ?? 'something\'s wrong :('}</h1>
-          <div className="drifter-app-error-view-details">
+          <div className="drifter-app-error-view-details-box">
             <label>message</label>
             <pre
               className="drifter-app-error-view-pre"
             >{this.state.errorMessage}</pre>
-            <details>
+            <details
+              className="drifter-app-error-view-details"
+              open
+            >
               <summary>stack trace</summary>
               <pre
                 className="drifter-app-error-view-pre drifter-app-error-view-stacktrace"
