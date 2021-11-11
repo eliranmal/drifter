@@ -72,7 +72,9 @@
 }
 
 .drifter-sequencer-channels .drifter-sequencer-channel {
+  overflow: hidden;
   height: var(--channel-height);
+  white-space: nowrap;
 }
 
 .drifter-sequencer-channel .drifter-sequencer-tick {

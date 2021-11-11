@@ -12,24 +12,12 @@ const noteByChannelIndex = [
 ]
 
 
-const asTransportTime = sixteenthIndex => [
+export const asTransportTime = sixteenthIndex => [
   Math.floor(sixteenthIndex / 16) % 4,
   Math.floor(sixteenthIndex / 4) % 4,
   sixteenthIndex % 4,
 ].join(':')
 
-
-export const init = ({bpm = 99} = {}) => {
-  Tone.Transport.loop = true
-  Tone.Transport.bpm.value = bpm
-}
-
-// todo - extract play() / stop() to useTransport? maybe
-export const play = () => Tone.start()
-  .then(() => Tone.Transport.start())
-
-export const stop = () => Tone.loaded()
-  .then(() => Tone.Transport.stop())
 
 export const loadTriggers = (sampler, matrix) => {
   const firstChannel = matrix[0]
