@@ -18,10 +18,11 @@ export const asTransportTime = sixteenthIndex => [
 ].join(':')
 
 
+/**
+* this function is not pure!
+* it causes side effects by invoking the sampler instance imperatively
+*/
 export const loadTriggers = (sampler, matrix) => {
-  const firstChannel = matrix[0]
-  const sixteenthsInLoop = firstChannel && firstChannel.length
-
   rotateMatrix(matrix)
     .map(sixteenthValues => sixteenthValues
       .map((value, channelIndex) => value && noteByChannelIndex[channelIndex])
