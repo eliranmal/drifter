@@ -15,7 +15,7 @@
   margin-inline-end: var(--transport-icon-size);
   outline: none;
   border: 0 none;
-  border-radius: calc(var(--transport-button-size) * .5);
+  border-radius: calc(var(--transport-button-size) * .333);
   background-color: var(--background-color-complement);
   cursor: pointer;
 }
