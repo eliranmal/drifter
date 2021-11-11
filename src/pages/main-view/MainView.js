@@ -2,8 +2,10 @@ import {useState, useEffect} from 'react'
 import useLocalStorage from 'use-local-storage'
 
 import * as audio from '../../lib/audio'
+
 import useMediaQueries from '../../hooks/useMediaQueries'
 import useSampler, {sampleMap} from '../../hooks/useSampler'
+
 import Sequencer from '../../components/sequencer/Sequencer'
 import Transport from '../../components/transport/Transport'
 import Visualizations from '../../components/visualizations/Visualizations'

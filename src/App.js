@@ -2,8 +2,9 @@ import useLocalStorage from 'use-local-storage'
 import ReactTooltip from 'react-tooltip'
 
 import Layout from './pages/layout/Layout'
-import MainView from './pages/main-view/MainView'
 import Settings from './pages/settings/Settings'
+import MainView from './pages/main-view/MainView'
+import ErrorBoundary from './components/error-boundary/ErrorBoundary'
 
 import './App.css';
 import './styles/react-tooltip.css'
@@ -27,20 +28,22 @@ const App = () => {
         backgroundColor="var(--accent-color-complement)"
         multiline
       />
-      <Layout
-        main={MainView}
-        mainProps={{
-          bpm,
-          resetInterval,
-        }}
-        sideBar={Settings}
-        sideBarProps={{
-          bpm,
-          setBpm,
-          resetInterval,
-          setResetInterval,
-        }}
-      />
+      <ErrorBoundary>
+        <Layout
+          main={MainView}
+          mainProps={{
+            bpm,
+            resetInterval,
+          }}
+          sideBar={Settings}
+          sideBarProps={{
+            bpm,
+            setBpm,
+            resetInterval,
+            setResetInterval,
+          }}
+        />
+        </ErrorBoundary>
     </>
   )
 }
