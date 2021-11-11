@@ -1,6 +1,4 @@
-import {useState} from 'react'
-
-  import Input from '../input/Input'
+import Input from '../input/Input'
 
 import './Sequencer.css'
 
