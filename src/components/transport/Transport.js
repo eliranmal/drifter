@@ -7,6 +7,7 @@ import TransportButton from '../transport-button/TransportButton'
 
 import './Transport.css'
 
+
 const init = ({bpm, loop, loopLengthInSixteenths} = {}) => {
   Tone.Transport.loop = loop
   Tone.Transport.bpm.value = bpm
@@ -28,7 +29,6 @@ const Transport = ({
   onStop = () => {},
   onRecord = () => {},
 }) => {
-  console.log(loopLengthInSixteenths)
   const [isPlaying, setPlaying] = useState(false)
   const [isRecording, setRecording] = useState(false)
 
@@ -62,7 +62,9 @@ const Transport = ({
   }, [bpm, loop, loopLengthInSixteenths])
 
   useKeyboard(useCallback(e => mapKeyboardEvents([
+    // space
     [32, () => toggleListener()],
+    // shift+r
     [82, ['shiftKey'], () => {
       playListener()
       recordListener()
