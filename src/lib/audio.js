@@ -23,8 +23,6 @@ export const loadTriggers = (sampler, matrix) => {
   const firstChannel = matrix[0]
   const sixteenthsInLoop = firstChannel && firstChannel.length
 
-  Tone.Transport.setLoopPoints(0, `${sixteenthsInLoop / 16}m`)
-
   rotateMatrix(matrix)
     .map(sixteenthValues => sixteenthValues
       .map((value, channelIndex) => value && noteByChannelIndex[channelIndex])
