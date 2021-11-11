@@ -11,15 +11,6 @@
   margin-block-end: .75rem;
 }
 
-.drifter-main-view-title {
-  margin: 0;
-  font-size: 15vmin;
-  letter-spacing: -.05em;
-  font-weight: 100;
-  text-align: right;
-  color: var(--accent-color);
-}
-
 .drifter-main-view-panel,
 .drifter-main-view-panel-center,
 .drifter-main-view-panel-end {

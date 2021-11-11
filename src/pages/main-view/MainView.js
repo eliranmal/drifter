@@ -6,6 +6,7 @@ import * as audio from '../../lib/audio'
 import useMediaQueries from '../../hooks/useMediaQueries'
 import useSampler, {sampleMap} from '../../hooks/useSampler'
 
+import Heading from '../../components/heading/Heading'
 import Sequencer from '../../components/sequencer/Sequencer'
 import Transport from '../../components/transport/Transport'
 import Visualizations from '../../components/visualizations/Visualizations'
@@ -44,12 +45,12 @@ const MainView = ({
 
   return (
     <div className="drifter-main-view">
-      <h1 className="drifter-main-view-title">d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rifter</h1>
+      <Heading text="drifter" />
       <Sequencer
         className="drifter-main-view-panel"
         isRunning={isPlaying}
         triggerMatrix={triggerMatrix}
-        displayedTickCount={loopLengthInSixteenths}
+        displayedSixteenths={loopLengthInSixteenths}
       />
       <Transport
         className="drifter-main-view-panel-center"

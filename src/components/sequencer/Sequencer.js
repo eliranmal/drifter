@@ -8,14 +8,14 @@ const Sequencer = ({
   className,
   sampler,
   isRunning,
-  displayedTickCount = 20,
+  displayedSixteenths = 20,
   triggerMatrix = [],
 }) => {
 
     return (
       <div
         className={`drifter-sequencer ${isRunning ? 'drifter-sequencer-running' : ''} ${className}`}
-        style={{ '--sequencer-ticks': displayedTickCount }}>
+        style={{ '--sequencer-ticks': displayedSixteenths }}>
         <div className="drifter-sequencer-timeline">
           <div className="drifter-sequencer-tape"></div>
           <div className="drifter-sequencer-channels">

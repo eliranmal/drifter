@@ -1,0 +1,9 @@
+
+.drifter-heading {
+  margin: 0;
+  font-size: 15vmin;
+  letter-spacing: -.05em;
+  font-weight: 100;
+  text-align: right;
+  color: var(--accent-color);
+}
