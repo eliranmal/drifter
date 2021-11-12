@@ -18,12 +18,21 @@ const useSampler = (sampleMap = {}, samplerOptions = {}) => {
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(null)
 
-  return [useToneRef('Sampler', {
+  const analyserRef = useToneRef('Analyser')
+  const samperRef = useToneRef('Sampler', {
     ...samplerOptions,
     ...sampleMap,
-    onload: () => setLoaded(true),
-    onerror: err => setError(err),
-  }).sync(), loaded, error]
+    onload: (...args) => {
+      setLoaded(true)
+      samplerOptions.onload && samplerOptions.onload()
+    },
+    onerror: err => {
+      setError(err)
+      samplerOptions.onerror && samplerOptions.onerror(err)
+    },
+  })
+
+  return [samperRef.chain(analyserRef), analyserRef, loaded, error]
 }
 
 

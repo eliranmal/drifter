@@ -3,32 +3,32 @@
 @import url('./animations.css') (prefers-reduced-motion: no-preference);
 
 
-.drifter-sequencer {
+.drifter-sampler {
   /* todo - get bpm from outside */
   --bpm: 99;
-  --sequencer-ticks: 4;
-  --sequencer-ticks-per-beat: 4;
-  --sequencer-tape-speed: calc(
-    ((60s / var(--bpm)) / var(--sequencer-ticks-per-beat)) * var(--sequencer-ticks)
+  --sampler-ticks: 4;
+  --sampler-ticks-per-beat: 4;
+  --sampler-tape-speed: calc(
+    ((60s / var(--bpm)) / var(--sampler-ticks-per-beat)) * var(--sampler-ticks)
   );
-  /* --sequencer-tape-timing: linear; */
-  --sequencer-tape-timing: steps(var(--sequencer-ticks));
+  /* --sampler-tape-timing: linear; */
+  --sampler-tape-timing: steps(var(--sampler-ticks));
   --channel-height: 1.2rem;
   display: flex;
   align-items: stretch;
   height: min-content;
 }
 
-.drifter-sequencer-timeline {
+.drifter-sampler-timeline {
   position: relative;
   overflow: hidden;
   flex-grow: 1;
 }
 
 
-.drifter-sequencer .drifter-sequencer-tape {
+.drifter-sampler .drifter-sampler-tape {
   /* dividing by 2 as the container width is 200% */
-  --sequencer-tick-width: calc((100% / var(--sequencer-ticks) / 2));
+  --sampler-tick-width: calc((100% / var(--sampler-ticks) / 2));
   display: none;
   position: absolute;
   z-index: 9;
@@ -42,44 +42,44 @@
   background-image: linear-gradient(
     90deg,
     transparent,
-    transparent var(--sequencer-tick-width),
-    var(--background-color) var(--sequencer-tick-width),
+    transparent var(--sampler-tick-width),
+    var(--background-color) var(--sampler-tick-width),
     var(--background-color) 50%,
     transparent 50%,
-    transparent calc(50% + var(--sequencer-tick-width)),
-    var(--background-color) calc(50% + var(--sequencer-tick-width)),
+    transparent calc(50% + var(--sampler-tick-width)),
+    var(--background-color) calc(50% + var(--sampler-tick-width)),
     var(--background-color) 100%
   );
   opacity: .75;
   pointer-events: none;
 }
 
-.drifter-sequencer.drifter-sequencer-running .drifter-sequencer-tape {
+.drifter-sampler.drifter-sampler-running .drifter-sampler-tape {
   display: block;
   animation:
     slideLeft
-    var(--sequencer-tape-speed)
-    var(--sequencer-tape-timing)
+    var(--sampler-tape-speed)
+    var(--sampler-tape-timing)
     reverse
     infinite;
 }
 
-.drifter-sequencer-channels {
+.drifter-sampler-channels {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.drifter-sequencer-channels .drifter-sequencer-channel {
+.drifter-sampler-channels .drifter-sampler-channel {
   overflow: hidden;
   height: var(--channel-height);
   white-space: nowrap;
 }
 
-.drifter-sequencer-channel .drifter-sequencer-tick {
+.drifter-sampler-channel .drifter-sampler-tick {
   appearance: none;
-  width: calc(100% / var(--sequencer-ticks));
+  width: calc(100% / var(--sampler-ticks));
   height: 100%;
   border-radius: calc(var(--channel-height) * .25);
   border: calc(var(--channel-height) * .1) solid var(--background-color);
@@ -87,12 +87,12 @@
   cursor: pointer;
 }
 
-.drifter-sequencer-channel .drifter-sequencer-tick:checked:active,
-.drifter-sequencer-channel .drifter-sequencer-tick:hover:not(:active) {
+.drifter-sampler-channel .drifter-sampler-tick:checked:active,
+.drifter-sampler-channel .drifter-sampler-tick:hover:not(:active) {
   background-color: var(--accent-color-complement);
 }
 
-.drifter-sequencer-channel .drifter-sequencer-tick:active,
-.drifter-sequencer-channel .drifter-sequencer-tick:checked:not(:active) {
+.drifter-sampler-channel .drifter-sampler-tick:active,
+.drifter-sampler-channel .drifter-sampler-tick:checked:not(:active) {
   background-color: var(--accent-color);
 }

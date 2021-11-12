@@ -1,14 +1,10 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import useLocalStorage from 'use-local-storage'
 
-import * as audio from '../../lib/audio'
-import {matrixInsertValue} from '../../lib/util'
-
 import useMediaQueries from '../../hooks/useMediaQueries'
-import useSampler, {sampleMap} from '../../hooks/useSampler'
 
 import Heading from '../../components/heading/Heading'
-import Sequencer from '../../components/sequencer/Sequencer'
+import Sampler from '../../components/sampler/Sampler'
 import Transport from '../../components/transport/Transport'
 import Visualizations from '../../components/visualizations/Visualizations'
 
@@ -37,24 +33,16 @@ const MainView = ({
     '(min-width: 1200px)': setLoopLengthInSixteenths.bind(null, 32),
   }, [setLoopLengthInSixteenths])
 
-  const [sampler/*, loaded, error*/] = useSampler(sampleMap.rolandTr808)
-
-  useEffect(() => {
-    audio.loadTriggers(sampler, triggerMatrix)
-  }, [sampler, triggerMatrix])
-
 
   return (
     <div className="drifter-main-view">
       <Heading text="drifter" />
-      <Sequencer
+      <Sampler
         className="drifter-main-view-panel"
         isRunning={isPlaying}
         triggerMatrix={triggerMatrix}
-        onTriggerMatrixChange={(value, channelIndex, tickIndex) => {
-          const newTriggerMatrix = matrixInsertValue(triggerMatrix, channelIndex, tickIndex, value)
+        onTriggerMatrixChange={newTriggerMatrix => {
           setTriggerMatrix(newTriggerMatrix)
-          audio.loadTriggers(sampler, newTriggerMatrix)
         }}
         displayedSixteenths={loopLengthInSixteenths}
       />
