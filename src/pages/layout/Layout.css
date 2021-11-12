@@ -65,7 +65,7 @@
   width: var(--aside-width);
 }
 
-/* avoid the sidebar jumping back when hovering over the pin button */
-.drifter-layout .drifter-layout-sidebar-pin:hover + .drifter-layout-sidebar {
+/* avoid the sidebar jumping back when it's open and the user hovers over the pin button */
+.drifter-layout .drifter-layout-sidebar-pin:not(:checked):hover + .drifter-layout-sidebar {
   transition-delay: 1000000s;
 }
