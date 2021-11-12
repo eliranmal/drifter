@@ -10,7 +10,7 @@ const sampleMap = {
       'D4': 'TR-808Clap01.wav',
       'D#4': 'TR-808Hat_C01.wav',
     },
-    baseUrl: '/audio/drum-machines/roland-tr-808/',
+    baseUrl: './audio/drum-machines/roland-tr-808/',
   }
 }
 
