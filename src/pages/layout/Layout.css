@@ -36,3 +36,30 @@
 .drifter-layout-sidebar:hover {
   width: var(--aside-width);
 }
+
+.drifter-layout .drifter-layout-sidebar-pin {
+  appearance: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--panel-pad);
+  height: var(--panel-pad);
+}
+
+.drifter-layout .drifter-layout-sidebar-pin:before {
+  content: '\01f588';
+  color: var(--accent-color);
+}
+
+.drifter-layout .drifter-layout-sidebar-pin:hover:before,
+.drifter-layout .drifter-layout-sidebar-pin:checked:before {
+  color: var(--accent-color-complement);
+}
+
+.drifter-layout .drifter-layout-sidebar-pin:checked + .drifter-layout-sidebar {
+  width: var(--aside-width);
+}

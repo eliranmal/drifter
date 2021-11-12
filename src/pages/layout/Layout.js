@@ -1,3 +1,5 @@
+import Input from '../../components/input/Input'
+
 import './Layout.css'
 
 
@@ -12,6 +14,10 @@ const Layout = ({
     <main className="drifter-layout-main">
       { Main ? <Main {...mainProps} /> : children }
     </main>
+    <Input
+      className="drifter-layout-sidebar-pin"
+      type="checkbox"
+    />
     <aside className="drifter-layout-sidebar"
       data-heading={spaceOut(SideBar.name.toLowerCase())}>
       <SideBar {...sideBarProps} />
