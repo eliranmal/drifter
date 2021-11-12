@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import useLocalStorage from 'use-local-storage'
 
 import * as audio from '../../lib/audio'
+import {matrixInsertValue} from '../../lib/util'
 
 import useMediaQueries from '../../hooks/useMediaQueries'
 import useSampler, {sampleMap} from '../../hooks/useSampler'
@@ -20,11 +21,11 @@ const MainView = ({
 }) => {
   const [isPlaying, setPlaying] = useState(false)
 
-  const [triggerMatrix/*, setTriggerMatrix*/] = useLocalStorage('drifter-trigger-matrix', [
+  const [triggerMatrix, setTriggerMatrix] = useLocalStorage('drifter-trigger-matrix', [
     [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    // [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ])
 
   const [loopLengthInSixteenths, setLoopLengthInSixteenths] = useState(20)
@@ -50,6 +51,11 @@ const MainView = ({
         className="drifter-main-view-panel"
         isRunning={isPlaying}
         triggerMatrix={triggerMatrix}
+        onTriggerMatrixChange={(value, channelIndex, tickIndex) => {
+          const newTriggerMatrix = matrixInsertValue(triggerMatrix, channelIndex, tickIndex, value)
+          setTriggerMatrix(newTriggerMatrix)
+          audio.loadTriggers(sampler, newTriggerMatrix)
+        }}
         displayedSixteenths={loopLengthInSixteenths}
       />
       <Transport

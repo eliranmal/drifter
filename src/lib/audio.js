@@ -1,4 +1,4 @@
-import {rotateMatrix} from './util'
+import {matrixRotate} from './util'
 
 
 // todo - how to get notes dynamically from the sampler instance?
@@ -23,7 +23,8 @@ export const asTransportTime = sixteenthIndex => [
 * it causes side effects by invoking the sampler instance imperatively
 */
 export const loadTriggers = (sampler, matrix) => {
-  rotateMatrix(matrix)
+  sampler.unsync().sync()
+  matrixRotate(matrix)
     .map(sixteenthValues => sixteenthValues
       .map((value, channelIndex) => value && noteByChannelIndex[channelIndex])
       .filter(Boolean))
