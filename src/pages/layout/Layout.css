@@ -48,6 +48,7 @@
   justify-content: center;
   width: var(--panel-pad);
   height: var(--panel-pad);
+  cursor: pointer;
 }
 
 .drifter-layout .drifter-layout-sidebar-pin:before {
@@ -62,4 +63,9 @@
 
 .drifter-layout .drifter-layout-sidebar-pin:checked + .drifter-layout-sidebar {
   width: var(--aside-width);
+}
+
+/* avoid the sidebar jumping back when hovering over the pin button */
+.drifter-layout .drifter-layout-sidebar-pin:hover + .drifter-layout-sidebar {
+  transition-delay: 1000000s;
 }
