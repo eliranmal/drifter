@@ -24,7 +24,7 @@ const Sequencer = ({
               <Input type="checkbox" className="drifter-sequencer-tick"
                 key={tickIndex}
                 defaultChecked={tickValue}
-                onChange={({target: {checked}}) => onTriggerMatrixChange(
+                onChange={({currentTarget: {checked}}) => onTriggerMatrixChange(
                   +Boolean(checked), channelIndex, tickIndex
                 )}
               />

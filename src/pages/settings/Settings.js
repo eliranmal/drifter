@@ -24,7 +24,7 @@ const Settings = ({
         min={1}
         max={1000}
         value={bpm}
-        onChange={({target: {value}}) => setBpm(+value)}
+        onChange={({currentTarget: {value}}) => setBpm(+value)}
       />
     </div>
     <div
@@ -39,7 +39,7 @@ const Settings = ({
           min={0}
           max={64}
           value={resetInterval.value}
-          onChange={({target: {value}}) => setResetInterval({
+          onChange={({currentTarget: {value}}) => setResetInterval({
             ...resetInterval,
             value: +value,
           })}
@@ -50,7 +50,7 @@ const Settings = ({
             { label: 'beats', value: 'beats' },
           ]}
           defaultValue={resetInterval.unit}
-          onChange={({target: {value}}) => setResetInterval({
+          onChange={({currentTarget: {value}}) => setResetInterval({
             ...resetInterval,
             unit: value,
           })}
