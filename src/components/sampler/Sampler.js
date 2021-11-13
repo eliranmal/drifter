@@ -24,12 +24,6 @@ const Sampler = ({
     samplerHasError
   ] = useSampler(sampleMap.rolandTr808)
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     console.log(samplerAnalyser.getValue())
-  //   }, 1000)
-  // }, [samplerAnalyser, samplerAnalyser.getValue()])
-
   useEffect(() => {
     if (isSamplerLoaded) {
       audio.loadTriggers(sampler, triggerMatrix)
@@ -40,7 +34,8 @@ const Sampler = ({
   return (
     <div
       className={`drifter-sampler ${isRunning ? 'drifter-sampler-running' : ''} ${className}`}
-      style={{ '--sampler-ticks': displayedSixteenths }}>
+      style={{ '--sampler-ticks': displayedSixteenths }}
+    >
       <div className="drifter-sampler-timeline">
         <div className="drifter-sampler-tape"></div>
         <div className="drifter-sampler-channels">
