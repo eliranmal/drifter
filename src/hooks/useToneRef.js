@@ -2,8 +2,8 @@ import {useRef} from 'react'
 import * as Tone from 'tone'
 
 
-const useToneRef = (type = '', options) => useRef(
-  new Tone[type](options).toDestination()
+const useToneRef = (type = '', ...args) => useRef(
+  new Tone[type](...args).toDestination()
 ).current
 
 
