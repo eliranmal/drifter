@@ -19,14 +19,16 @@ const Layout = ({
       type="checkbox"
     />
     <aside className="drifter-layout-sidebar"
-      data-heading={spaceOut(SideBar.name.toLowerCase())}>
+      data-heading={spaceOut(SideBar.displayName)}>
       <SideBar {...sideBarProps} />
     </aside>
   </div>
 )
 
 // todo - find a better way
-const spaceOut = term => `${term.charAt(0)}${String.fromCharCode('0000a0').repeat(5)}${term.substring(1)}`
+const spaceOut = term => term ?
+  `${term.charAt(0)}${String.fromCharCode('0000a0').repeat(5)}${term.substring(1)}` :
+    ''
 
 
 export default Layout

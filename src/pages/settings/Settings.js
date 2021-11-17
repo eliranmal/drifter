@@ -60,5 +60,7 @@ const Settings = ({
   </div>
 )
 
+Settings.displayName = 'settings'
+
 
 export default Settings
