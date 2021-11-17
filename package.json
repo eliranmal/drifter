@@ -8,7 +8,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "preserve": "env PUBLIC_URL=http://localhost:5000 npm run build",
-    "serve": "npx serve build",
+    "serve": "npx serve -s build -l 5000",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b gh-deploy -d build"
   },
