@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useCallback} from 'react'
 
 import * as audio from '../../lib/audio'
 import {matrixInsertValue} from '../../lib/util'
@@ -8,27 +8,48 @@ import Input from '../input/Input'
 import './Sampler.css'
 
 
-// todo - expose 'cursor' property to enable linking animation steps with audio events
 const Sampler = ({
   className,
+  bpm,
+  // todo - replace 'isRunning' with 'cursor' to enable linking animation steps with audio events
   isRunning,
   displayedSixteenths = 20,
   triggerMatrix = [],
   onTriggerMatrixChange = () => {},
 }) => {
+  const isStoppedCallback = useCallback(() => !isRunning, [isRunning])
 
   const [
     sampler,
-    samplerAnalyser,
     isSamplerLoaded,
-    samplerHasError
   ] = useSampler(sampleMap.rolandTr808)
+
+  useEffect(() => sampler.unsync().sync(), [sampler, triggerMatrix])
 
   useEffect(() => {
     if (isSamplerLoaded) {
       audio.loadTriggers(sampler, triggerMatrix)
     }
   }, [isSamplerLoaded, sampler, triggerMatrix])
+
+  const [
+    driftingSampler,
+    isDriftingSamplerLoaded,
+  ] = useSampler(sampleMap.rolandTr808)
+
+  useEffect(() => driftingSampler.sync().unsync(), [driftingSampler, triggerMatrix])
+
+  useEffect(() => {
+    if (isDriftingSamplerLoaded) {
+      audio.executeTriggers(
+        driftingSampler, triggerMatrix, bpm,
+        isStoppedCallback, displayedSixteenths,
+      )
+    }
+  }, [
+    isDriftingSamplerLoaded, driftingSampler, triggerMatrix,
+    bpm, isStoppedCallback, displayedSixteenths,
+  ])
 
 
   return (
@@ -46,13 +67,9 @@ const Sampler = ({
                   key={tickIndex}
                   defaultChecked={tickValue}
                   onChange={({currentTarget: {checked}}) => {
-                    const newTriggerMatrix = matrixInsertValue(
+                    onTriggerMatrixChange(matrixInsertValue(
                       triggerMatrix, channelIndex, tickIndex, +Boolean(checked)
-                    )
-                    onTriggerMatrixChange(newTriggerMatrix)
-                    if (isSamplerLoaded) {
-                      audio.loadTriggers(sampler, newTriggerMatrix)
-                    }
+                    ))
                   }}
                   />
               ))}

@@ -21,27 +21,22 @@ const resolveSampleMapDirName = samplerSampleMap => {
   return sampleMapEntry && sampleMapEntry[0] && kebabCase(sampleMapEntry[0])
 }
 
-const useSampler = (samplerSampleMap = {}, samplerOptions = {}) => {
+// const analyserRef = useToneRef('Analyser')
+const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => {
   const [loaded, setLoaded] = useState(false)
-  const [error, setError] = useState(null)
 
   const samplerKitDirName = resolveSampleMapDirName(samplerSampleMap)
 
-  const analyserRef = useToneRef('Analyser')
   const samperRef = useToneRef('Sampler', samplerSampleMap, {
     ...samplerOptions,
     baseUrl: `audio/drum-machines/${samplerKitDirName}/`,
-    onload: (...args) => {
+    onload: () => {
       setLoaded(true)
       samplerOptions.onload && samplerOptions.onload()
     },
-    onerror: err => {
-      setError(err)
-      samplerOptions.onerror && samplerOptions.onerror(err)
-    },
   })
 
-  return [samperRef.chain(analyserRef), analyserRef, loaded, error]
+  return [analyserRef ? samperRef.chain(analyserRef) : samperRef, loaded, analyserRef]
 }
 
 
