@@ -1,19 +1,19 @@
 import {useEffect} from 'react'
 
 
-const useMediaQueries = (mediaQueryMap, dependencies) => {
+const useMediaQueries = listenerByQueryMap => {
 
   useEffect(() => {
-    const mediaQueryMappings = Object.entries(mediaQueryMap)
+    const listenerByQueryMappings = Object.entries(listenerByQueryMap)
 
-    const mediaQueries = mediaQueryMappings.map(([queryString, queryListener]) => ([
+    const mediaQueries = listenerByQueryMappings.map(([queryString, queryListener]) => ([
         window.matchMedia(queryString),
         e => e.matches && queryListener(),
       ]))
 
     const queryMatchIndex = mediaQueries.findIndex(([query]) => query.matches)
     if (queryMatchIndex !== -1) {
-      mediaQueryMappings[queryMatchIndex][1]()
+      listenerByQueryMappings[queryMatchIndex][1]()
     }
 
     mediaQueries
@@ -21,8 +21,7 @@ const useMediaQueries = (mediaQueryMap, dependencies) => {
 
     return () => mediaQueries
       .forEach(([query, listener]) => query.removeEventListener('change', listener))
-  // eslint-disable-next-line 
-  }, [mediaQueryMap, ...dependencies])
+  }, [listenerByQueryMap])
 }
 
 
