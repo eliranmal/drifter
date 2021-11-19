@@ -31,7 +31,7 @@ const MainView = ({
     '(min-width: 600px) and (max-width: 800px)': setLoopLengthInSixteenths.bind(null, 8),
     '(min-width: 800px) and (max-width: 1200px)': setLoopLengthInSixteenths.bind(null, 16),
     '(min-width: 1200px)': setLoopLengthInSixteenths.bind(null, 32),
-  }, [setLoopLengthInSixteenths])
+  })
 
 
   return (
@@ -39,6 +39,7 @@ const MainView = ({
       <Heading text="drifter" />
       <Sampler
         className="drifter-main-view-panel"
+        bpm={bpm}
         isRunning={isPlaying}
         triggerMatrix={triggerMatrix}
         onTriggerMatrixChange={newTriggerMatrix => {
