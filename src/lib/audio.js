@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import {matrixRotate} from './util'
+import {matrixRotate, blockThread} from './util'
 
 
 // todo - how to get notes dynamically from the sampler instance?
@@ -55,18 +55,23 @@ export const executeTriggers = (
   }
 
   let index = 0
+  // console.time(index)
   const tick = () => {
     if (stopPredicate(index)) {
-      // allows the sampler to be stopped by the transport
-      sampler.unsync().sync()
       if (typeof clearable !== 'undefined') {
         clearTimeout(clearable)
       }
       return
     }
 
+    // todo - externalize this parameter as part of the 'entropy' knob
+    //        (in addition to the number of concurrent samplers)
+    blockThread(.2)
+
     const notes = noteSequence[index % noteSequence.length]
+    // console.timeEnd(index)
     index += 1
+    // console.time(index)
     sampler.triggerAttack(notes, Tone.immediate())
     clearable = setTimeout(tick, sixteenthInMilliseconds)
   }
