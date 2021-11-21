@@ -37,7 +37,7 @@ const Sampler = ({
     isDriftingSamplerLoaded,
   ] = useSampler(sampleMap.rolandTr808)
 
-  useEffect(() => driftingSampler.sync().unsync(), [driftingSampler, triggerMatrix])
+  useEffect(() => driftingSampler.unsync(), [driftingSampler, triggerMatrix])
 
   useEffect(() => {
     if (isDriftingSamplerLoaded) {
