@@ -1,0 +1,8 @@
+
+.drifter-box-wrapper {
+  display: flex;
+  overflow: hidden;
+  padding: .3rem;
+  border: .125rem solid var(--accent-color);
+  border-radius: .6rem;
+}
