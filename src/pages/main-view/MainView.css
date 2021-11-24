@@ -11,10 +11,6 @@
 .drifter-main-view-panel-center,
 .drifter-main-view-panel-end {
   width: calc(100vw - (var(--panel-pad) * 2) - var(--aside-width));
-  overflow: hidden;
-  padding: .3rem;
-  border: .125rem solid var(--accent-color);
-  border-radius: .6rem;
 }
 
 .drifter-main-view-panel-end {

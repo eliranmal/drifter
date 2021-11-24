@@ -8,9 +8,14 @@ import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
 import Transport from '../../components/transport/Transport'
 import Crossfader from '../../components/crossfader/Crossfader'
+// import Visualizations from '../../components/visualizations/Visualizations'
 
 import './MainView.css'
 
+
+const BoxedSampler = withBoxWrapper(Sampler, {
+  wrapperClassName: 'drifter-main-view-panel'
+})
 
 const BoxedCrossfader = withBoxWrapper(Crossfader, {
   wrapperClassName: 'drifter-main-view-panel-end'
@@ -43,8 +48,7 @@ const MainView = ({
   return (
     <div className="drifter-main-view">
       <Heading text="drifter" />
-      <Sampler
-        className="drifter-main-view-panel"
+      <BoxedSampler
         bpm={bpm}
         balance={balance}
         isRunning={isPlaying}
@@ -65,6 +69,7 @@ const MainView = ({
         defaultValue={balance}
         onChange={value => setBalance(value)}
       />
+      {/*<Visualizations />*/}
     </div>
   )
 }

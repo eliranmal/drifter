@@ -6,3 +6,7 @@
   border: .125rem solid var(--accent-color);
   border-radius: .6rem;
 }
+
+.drifter-box-wrapper > :only-child {
+  flex-grow: 1;
+}

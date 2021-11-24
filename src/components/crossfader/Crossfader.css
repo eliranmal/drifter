@@ -1,11 +1,9 @@
 
 .drifter-crossfader {
-  flex-grow: 1;
   height: .6em;
   opacity: .5;
 }
 
-/* todo - extract this to a hoc for reuse */
 .drifter-crossfader:not(:hover) {
   filter: grayscale();
 }
