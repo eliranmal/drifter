@@ -22,8 +22,8 @@ const App = () => {
       <ReactTooltip
         className="drifter-react-tooltip"
         effect="solid"
-        delayShow={300}
-        delayHide={300}
+        delayShow={500}
+        delayHide={250}
         textColor="var(--background-color)"
         backgroundColor="var(--accent-color-complement)"
         multiline
