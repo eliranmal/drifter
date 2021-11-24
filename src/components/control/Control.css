@@ -1,14 +1,5 @@
 .drifter-control {
   display: flex;
-  align-items: center;
-  justify-content: stretch;
-  align-self: flex-end;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.drifter-control :not(:last-child) {
-  margin-inline-end: .5rem;
 }
 
 .drifter-control .drifter-control-balance {
