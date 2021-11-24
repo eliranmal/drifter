@@ -15,7 +15,7 @@ const MainView = ({
   bpm,
   resetInterval,
 }) => {
-  const [balance, setBalance] = useState(50)
+  const [balance, setBalance] = useState(33)
   const [isPlaying, setPlaying] = useState(false)
 
   const [triggerMatrix, setTriggerMatrix] = useLocalStorage('drifter-trigger-matrix', [
@@ -58,6 +58,7 @@ const MainView = ({
       />
       <Control
         className="drifter-main-view-panel-end"
+        balance={balance}
         onCrossfaderChange={value => setBalance(value)}
       />
     </div>
