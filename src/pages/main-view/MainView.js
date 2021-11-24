@@ -59,7 +59,7 @@ const MainView = ({
       <Control
         className="drifter-main-view-panel-end"
         balance={balance}
-        onCrossfaderChange={value => setBalance(value)}
+        onBalanceChange={value => setBalance(value)}
       />
     </div>
   )

@@ -16,14 +16,14 @@ import './Control.css'
 /*<div className="drifter-analyser-visualization"></div>*/
 
 
-const Control = ({className, balance, onCrossfaderChange = () => {}, ...props}) => (
+const Control = ({className, balance, onBalanceChange = () => {}, ...props}) => (
   <div {...props} className={`drifter-control ${className}`}>
     {/* todo - put audio visualization nodes here instead of the meters */}
     {/* <Meter className="drifter-visualization-loose" value={30} /> */}
     <Crossfader
       max={100}
       defaultValue={balance}
-      onChange={value => onCrossfaderChange(value)}
+      onChange={value => onBalanceChange(value)}
     />
     {/* <Meter className="drifter-visualization-tight" value={80} /> */}
   </div>
