@@ -2,14 +2,19 @@ import {useState} from 'react'
 import useLocalStorage from 'use-local-storage'
 
 import useMediaQueries from '../../hooks/useMediaQueries'
+import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
 
 import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
 import Transport from '../../components/transport/Transport'
-import Control from '../../components/control/Control'
+import Crossfader from '../../components/crossfader/Crossfader'
 
 import './MainView.css'
 
+
+const BoxedCrossfader = withBoxWrapper(Crossfader, {
+  wrapperClassName: 'drifter-main-view-panel-end'
+})
 
 const MainView = ({
   bpm,
@@ -56,10 +61,9 @@ const MainView = ({
         onPlay={() => setPlaying(true)}
         onStop={() => setPlaying(false)}
       />
-      <Control
-        className="drifter-main-view-panel-end"
-        balance={balance}
-        onBalanceChange={value => setBalance(value)}
+      <BoxedCrossfader
+        defaultValue={balance}
+        onChange={value => setBalance(value)}
       />
     </div>
   )
