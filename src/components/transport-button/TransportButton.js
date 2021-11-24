@@ -1,4 +1,4 @@
-import {withNeumorphism} from '../../hoc/neumorphism/Neumorphism.js'
+import {withNeumorphism} from '../../hoc/neumorphism/Neumorphism'
 
 import './TransportButton.css'
 
