@@ -1,19 +1,26 @@
 import {useEffect} from 'react'
+
 import * as audio from '../lib/audio'
 import useSampler from './useSampler'
 
 
-const useDriftingSampler = (triggerMatrix, bpm, isStoppedCallback, displayedSixteenths, ...samplerArgs) => {
-  const [driftingSampler, isDriftingSamplerLoaded] = useSampler(...samplerArgs)
+const useDriftingSampler = (
+  triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback,
+  ...samplerArgs
+) => {
+  const [sampler, isSamplerLoaded] = useSampler(...samplerArgs)
 
-  useEffect(() => driftingSampler.unsync(), [driftingSampler, triggerMatrix])
+  useEffect(() => sampler.unsync(), [sampler, triggerMatrix])
+
   useEffect(() => {
-    if (isDriftingSamplerLoaded) {
-      audio.executeTriggers(driftingSampler, triggerMatrix, bpm, isStoppedCallback, displayedSixteenths)
+    if (isSamplerLoaded) {
+      audio.executeTriggers(
+        sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths
+      )
     }
-  }, [isDriftingSamplerLoaded, driftingSampler, triggerMatrix, bpm, isStoppedCallback, displayedSixteenths])
+  }, [isSamplerLoaded, sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths])
 
-  return [driftingSampler, isDriftingSamplerLoaded]
+  return [sampler, isSamplerLoaded]
 }
 
 

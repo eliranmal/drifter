@@ -52,7 +52,7 @@ const MainView = ({
         onTriggerMatrixChange={newTriggerMatrix => {
           setTriggerMatrix(newTriggerMatrix)
         }}
-        displayedSixteenths={loopLengthInSixteenths}
+        loopLengthInSixteenths={loopLengthInSixteenths}
       />
       <Transport
         className="drifter-main-view-panel-center"

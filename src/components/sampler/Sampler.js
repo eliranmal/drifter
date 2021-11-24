@@ -15,7 +15,7 @@ const Sampler = ({
   balance,
   // todo - replace 'isRunning' with 'cursor' to enable linking animation steps with audio events
   isRunning,
-  displayedSixteenths = 20,
+  loopLengthInSixteenths = 20,
   triggerMatrix = [],
   onTriggerMatrixChange = () => {},
 }) => {
@@ -24,9 +24,9 @@ const Sampler = ({
 
   const [sampler, isSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808)
 
-  const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, isStoppedCallback, displayedSixteenths, sampleMap.rolandTr808)
-  const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, isStoppedCallback, displayedSixteenths, sampleMap.rolandTr808)
-  const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, isStoppedCallback, displayedSixteenths, sampleMap.rolandTr808)
+  const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808)
+  const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808)
+  const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808)
 
   useEffect(() => {
     const samplerVolumePercentage = 100 - balance
@@ -47,7 +47,7 @@ const Sampler = ({
   return (
     <div
       className={`drifter-sampler ${isRunning ? 'drifter-sampler-running' : ''} ${className}`}
-      style={{ '--sampler-ticks': displayedSixteenths }}
+      style={{ '--sampler-ticks': loopLengthInSixteenths }}
     >
       <div className="drifter-sampler-timeline">
         <div className="drifter-sampler-tape"></div>
