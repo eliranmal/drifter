@@ -7,10 +7,6 @@
   margin: var(--panel-pad);
 }
 
-.drifter-main-view > :not(:last-child) {
-  margin-block-end: .75rem;
-}
-
 .drifter-main-view-panel,
 .drifter-main-view-panel-center,
 .drifter-main-view-panel-end {
