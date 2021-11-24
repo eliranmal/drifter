@@ -1,8 +1,9 @@
 import {useEffect, useCallback} from 'react'
 
-import * as audio from '../../lib/audio'
-import {matrixInsertValue} from '../../lib/util'
-import useSampler, {sampleMap} from '../../hooks/useSampler'
+import {matrixInsertValue, percentageScale} from '../../lib/util'
+import {sampleMap} from '../../hooks/useSampler'
+import useFixedSampler from '../../hooks/useFixedSampler'
+import useDriftingSampler from '../../hooks/useDriftingSampler'
 import Input from '../input/Input'
 
 import './Sampler.css'
@@ -11,45 +12,36 @@ import './Sampler.css'
 const Sampler = ({
   className,
   bpm,
+  balance,
   // todo - replace 'isRunning' with 'cursor' to enable linking animation steps with audio events
   isRunning,
   displayedSixteenths = 20,
   triggerMatrix = [],
   onTriggerMatrixChange = () => {},
 }) => {
+
   const isStoppedCallback = useCallback(() => !isRunning, [isRunning])
 
-  const [
-    sampler,
-    isSamplerLoaded,
-  ] = useSampler(sampleMap.rolandTr808)
+  const [sampler, isSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808)
 
-  useEffect(() => sampler.unsync().sync(), [sampler, triggerMatrix])
+  const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, isStoppedCallback, displayedSixteenths, sampleMap.rolandTr808)
+  const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, isStoppedCallback, displayedSixteenths, sampleMap.rolandTr808)
+  const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, isStoppedCallback, displayedSixteenths, sampleMap.rolandTr808)
 
   useEffect(() => {
+    const samplerVolumePercentage = 100 - balance
+    const driftingSamplerVolumePercentage = 100 - samplerVolumePercentage
+    const scale = percentageScale(0, -24)
     if (isSamplerLoaded) {
-      audio.loadTriggers(sampler, triggerMatrix)
+      sampler.volume.value = scale(samplerVolumePercentage)
     }
-  }, [isSamplerLoaded, sampler, triggerMatrix])
-
-  const [
-    driftingSampler,
-    isDriftingSamplerLoaded,
-  ] = useSampler(sampleMap.rolandTr808)
-
-  useEffect(() => driftingSampler.unsync(), [driftingSampler, triggerMatrix])
-
-  useEffect(() => {
-    if (isDriftingSamplerLoaded) {
-      audio.executeTriggers(
-        driftingSampler, triggerMatrix, bpm,
-        isStoppedCallback, displayedSixteenths,
-      )
+    if (isDriftingSampler2Loaded && isDriftingSampler2Loaded && isDriftingSampler3Loaded) {
+      [driftingSampler1, driftingSampler2, driftingSampler3].forEach((driftingSampler, index, arr) => {
+        const volumePercentage = (driftingSamplerVolumePercentage / arr.length) * Math.abs(index - arr.length)
+        driftingSampler.volume.value = scale(volumePercentage)
+      })
     }
-  }, [
-    isDriftingSamplerLoaded, driftingSampler, triggerMatrix,
-    bpm, isStoppedCallback, displayedSixteenths,
-  ])
+  }, [balance, sampler, driftingSampler1, driftingSampler2, driftingSampler3, isSamplerLoaded, isDriftingSampler1Loaded, isDriftingSampler2Loaded, isDriftingSampler3Loaded])
 
 
   return (
