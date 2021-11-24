@@ -1,0 +1,36 @@
+.drifter-control {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  align-self: flex-end;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.drifter-control :not(:last-child) {
+  margin-inline-end: .5rem;
+}
+
+.drifter-control .drifter-visualization-tight,
+.drifter-control .drifter-visualization-loose {
+  flex-grow: 1;
+  min-height: 2rem;
+  background-color: transparent;
+}
+
+.drifter-control .drifter-visualization-tight {
+}
+
+.drifter-control .drifter-visualization-loose {
+}
+
+
+/* .drifter-analyser-visualization {
+  width: 3px;
+  height: 3px;
+  box-shadow:
+    3px -6px blue,
+    6px -3px blue,
+    9px -6px blue,
+    12px -9px blue;
+} */
