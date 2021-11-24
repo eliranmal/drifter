@@ -6,7 +6,7 @@ import useMediaQueries from '../../hooks/useMediaQueries'
 import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
 import Transport from '../../components/transport/Transport'
-import Visualizations from '../../components/visualizations/Visualizations'
+import Control from '../../components/control/Control'
 
 import './MainView.css'
 
@@ -15,6 +15,7 @@ const MainView = ({
   bpm,
   resetInterval,
 }) => {
+  const [balance, setBalance] = useState(50)
   const [isPlaying, setPlaying] = useState(false)
 
   const [triggerMatrix, setTriggerMatrix] = useLocalStorage('drifter-trigger-matrix', [
@@ -40,6 +41,7 @@ const MainView = ({
       <Sampler
         className="drifter-main-view-panel"
         bpm={bpm}
+        balance={balance}
         isRunning={isPlaying}
         triggerMatrix={triggerMatrix}
         onTriggerMatrixChange={newTriggerMatrix => {
@@ -54,7 +56,10 @@ const MainView = ({
         onPlay={() => setPlaying(true)}
         onStop={() => setPlaying(false)}
       />
-      <Visualizations className="drifter-main-view-panel-end" />
+      <Control
+        className="drifter-main-view-panel-end"
+        onCrossfaderChange={value => setBalance(value)}
+      />
     </div>
   )
 }
