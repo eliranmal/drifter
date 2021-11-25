@@ -48,5 +48,5 @@ export const matrixInsertValue = (matrix, row, col, value) => matrix.map(
 )
 
 export const percentageScale = (min, max) => n => (
-  ((max - min) / 100) * n
+  (((max - min) / 100) * n) + min
 )
