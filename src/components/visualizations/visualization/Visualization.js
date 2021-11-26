@@ -20,6 +20,7 @@ const Visualization = ({className = '', analyser}) => {
 
   useEffect(() => {
     if (analyser) {
+      // todo - figure out how to also mute the audio signal
       analyser.input.gain.value = muted ? 0 : 1
     }
   }, [analyser, muted])
