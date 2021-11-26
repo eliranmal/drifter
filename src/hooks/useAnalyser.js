@@ -1,7 +1,10 @@
 import useToneRef from './useToneRef'
 
 
-const useAnalyser = (...analyserArgs) => useToneRef('Analyser', ...analyserArgs)
+const useAnalyser = (
+  type = 'waveform',
+  size = 32
+) => useToneRef('Analyser', type, size)
 
 
 export default useAnalyser
