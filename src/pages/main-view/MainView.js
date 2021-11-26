@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import useLocalStorage from 'use-local-storage'
 
+import useAnalyser from '../../hooks/useAnalyser'
 import useMediaQueries from '../../hooks/useMediaQueries'
 import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
 
@@ -8,17 +9,13 @@ import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
 import Transport from '../../components/transport/Transport'
 import RangeInput from '../../components/range-input/RangeInput'
-// import Visualizations from '../../components/visualizations/Visualizations'
+import Visualizations from '../../components/visualizations/Visualizations'
 
 import './MainView.css'
 
 
 const BoxedSampler = withBoxWrapper(Sampler, {
-  wrapperClassName: 'drifter-main-view-panel'
-})
-
-const BoxedRangeInput = withBoxWrapper(RangeInput, {
-  wrapperClassName: 'drifter-main-view-panel-end'
+  wrapperClassName: 'drifter-main-view-panel',
 })
 
 const MainView = ({
@@ -44,20 +41,15 @@ const MainView = ({
     '(min-width: 1200px)': setLoopLengthInSixteenths.bind(null, 32),
   })
 
+  const fixedSamplerAnalyser = useAnalyser()
+  const driftingSampler1Analyser = useAnalyser()
+  const driftingSampler2Analyser = useAnalyser()
+  const driftingSampler3Analyser = useAnalyser()
+
 
   return (
     <div className="drifter-main-view">
       <Heading text="drifter" />
-      <BoxedSampler
-        bpm={bpm}
-        balance={balance}
-        isRunning={isPlaying}
-        triggerMatrix={triggerMatrix}
-        onTriggerMatrixChange={newTriggerMatrix => {
-          setTriggerMatrix(newTriggerMatrix)
-        }}
-        loopLengthInSixteenths={loopLengthInSixteenths}
-      />
       <Transport
         className="drifter-main-view-panel-center"
         bpm={bpm}
@@ -65,11 +57,32 @@ const MainView = ({
         onPlay={() => setPlaying(true)}
         onStop={() => setPlaying(false)}
       />
-      <BoxedRangeInput
+      <BoxedSampler
+        bpm={bpm}
+        balance={balance}
+        isRunning={isPlaying}
+        triggerMatrix={triggerMatrix}
+        loopLengthInSixteenths={loopLengthInSixteenths}
+        fixedSamplerAnalyser={fixedSamplerAnalyser}
+        driftingSampler1Analyser={driftingSampler1Analyser}
+        driftingSampler2Analyser={driftingSampler2Analyser}
+        driftingSampler3Analyser={driftingSampler3Analyser}
+        onTriggerMatrixChange={newTriggerMatrix => {
+          setTriggerMatrix(newTriggerMatrix)
+        }}
+      />
+      <RangeInput
+        className="drifter-main-view-panel-center"
         defaultValue={balance}
         onChange={value => setBalance(value)}
       />
-      {/*<Visualizations />*/}
+      <Visualizations
+        className="drifter-main-view-panel-end"
+        fixedSamplerAnalyser={fixedSamplerAnalyser}
+        driftingSampler1Analyser={driftingSampler1Analyser}
+        driftingSampler2Analyser={driftingSampler2Analyser}
+        driftingSampler3Analyser={driftingSampler3Analyser}
+      />
     </div>
   )
 }
