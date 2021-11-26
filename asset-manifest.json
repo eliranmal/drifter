@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/drifter/static/css/main.251c749e.chunk.css",
-    "main.js": "/drifter/static/js/main.77d7e547.chunk.js",
-    "main.js.map": "/drifter/static/js/main.77d7e547.chunk.js.map",
+    "main.js": "/drifter/static/js/main.7e5822ff.chunk.js",
+    "main.js.map": "/drifter/static/js/main.7e5822ff.chunk.js.map",
     "runtime-main.js": "/drifter/static/js/runtime-main.8b5d0cda.js",
     "runtime-main.js.map": "/drifter/static/js/runtime-main.8b5d0cda.js.map",
     "static/js/2.387f181b.chunk.js": "/drifter/static/js/2.387f181b.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.8b5d0cda.js",
     "static/js/2.387f181b.chunk.js",
     "static/css/main.251c749e.chunk.css",
-    "static/js/main.77d7e547.chunk.js"
+    "static/js/main.7e5822ff.chunk.js"
   ]
 }
