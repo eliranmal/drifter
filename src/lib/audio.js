@@ -36,7 +36,7 @@ export const loadTriggers = (sampler, matrix) => {
     )
 }
 
-let clearable
+const clearableMap = new WeakMap()
 
 export const executeTriggers = (
   sampler,
@@ -45,8 +45,8 @@ export const executeTriggers = (
   stopPredicate = index => index >= matrix.length - 1,
   sliceTo,
 ) => {
-  if (typeof clearable !== 'undefined') {
-    clearTimeout(clearable)
+  if (clearableMap.has(sampler)) {
+    clearTimeout(clearableMap.get(sampler))
   }
   const sixteenthInMilliseconds = ((60 / bpm) / 4) * 1000
   let noteSequence = triggerMatrixAsNoteSequence(matrix)
@@ -58,8 +58,8 @@ export const executeTriggers = (
   // console.time(index)
   const tick = () => {
     if (stopPredicate(index)) {
-      if (typeof clearable !== 'undefined') {
-        clearTimeout(clearable)
+      if (clearableMap.has(sampler)) {
+        clearTimeout(clearableMap.get(sampler))
       }
       return
     }
@@ -73,7 +73,7 @@ export const executeTriggers = (
     index += 1
     // console.time(index)
     sampler.triggerAttack(notes, Tone.immediate())
-    clearable = setTimeout(tick, sixteenthInMilliseconds)
+    clearableMap.set(sampler, setTimeout(tick, sixteenthInMilliseconds))
   }
 
   tick()
