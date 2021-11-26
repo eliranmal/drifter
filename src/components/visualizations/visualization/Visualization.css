@@ -1,5 +1,5 @@
 .drifter-visualization {
-  --visualization-box-size: 2.8rem;
+  --visualization-box-size: 2.4rem;
   box-sizing: content-box;
   overflow: hidden;
   display: flex;
@@ -8,21 +8,27 @@
   flex-grow: 1;
   height: var(--visualization-box-size);
   padding: 0;
-  border-radius: calc(var(--visualization-box-size) * .35);
+  border-radius: calc(var(--visualization-box-size) * .44);
 }
 
 .drifter-visualization:not(:last-child) {
+  position: relative;
   margin-inline-end: calc(var(--visualization-box-size) * .5);
 }
 
-.drifter-visualization:nth-child(2) {
-  --visualization-box-size: 2.4rem;
+.drifter-visualization:first-of-type {
+  --visualization-box-size: 2.1rem;
+  filter: grayscale();
 }
 
-.drifter-visualization:nth-child(3) {
-  --visualization-box-size: 2rem;
+.drifter-visualization:nth-of-type(2) {
+  --visualization-box-size: 1.8rem;
 }
 
-.drifter-visualization:nth-child(4) {
-  --visualization-box-size: 1.6rem;
+.drifter-visualization:nth-of-type(3) {
+  --visualization-box-size: 1.5rem;
+}
+
+.drifter-visualization:nth-of-type(4) {
+  --visualization-box-size: 1.2rem;
 }
