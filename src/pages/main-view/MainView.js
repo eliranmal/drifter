@@ -73,6 +73,7 @@ const MainView = ({
       />
       <RangeInput
         className="drifter-main-view-panel-center"
+        data-tip="set the balance between the fixed sampler's signal and the drifting samplers'"
         defaultValue={balance}
         onChange={value => setBalance(value)}
       />
