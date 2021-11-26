@@ -36,14 +36,14 @@ const Sampler = ({
   useEffect(() => {
     const samplerVolumePercentage = 100 - balance
     const driftingSamplerVolumePercentage = 100 - samplerVolumePercentage
-    const scale = percentageScale(0, -24)
+    const asDbSpl = percentageScale(0, -30)
     if (isSamplerLoaded) {
-      sampler.volume.value = scale(samplerVolumePercentage)
+      sampler.volume.value = asDbSpl(samplerVolumePercentage)
     }
     if (isDriftingSampler1Loaded && isDriftingSampler2Loaded && isDriftingSampler3Loaded) {
       [driftingSampler1, driftingSampler2, driftingSampler3].forEach((driftingSampler, index, arr) => {
         const volumePercentage = (driftingSamplerVolumePercentage / arr.length) * Math.abs(index - arr.length)
-        driftingSampler.volume.value = scale(volumePercentage)
+        driftingSampler.volume.value = asDbSpl(volumePercentage)
       })
     }
   }, [balance, sampler, driftingSampler1, driftingSampler2, driftingSampler3, isSamplerLoaded, isDriftingSampler1Loaded, isDriftingSampler2Loaded, isDriftingSampler3Loaded])
