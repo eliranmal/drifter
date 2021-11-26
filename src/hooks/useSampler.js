@@ -21,7 +21,6 @@ const resolveSampleMapDirName = samplerSampleMap => {
   return sampleMapEntry && sampleMapEntry[0] && kebabCase(sampleMapEntry[0])
 }
 
-// const analyserRef = useToneRef('Analyser')
 const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => {
   const [loaded, setLoaded] = useState(false)
 
@@ -36,7 +35,7 @@ const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => 
     },
   })
 
-  return [analyserRef ? samperRef.chain(analyserRef) : samperRef, loaded, analyserRef]
+  return [analyserRef ? samperRef.connect(analyserRef) : samperRef, loaded, analyserRef]
 }
 
 
