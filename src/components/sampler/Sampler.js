@@ -17,16 +17,21 @@ const Sampler = ({
   isRunning,
   loopLengthInSixteenths = 20,
   triggerMatrix = [],
+  fixedSamplerAnalyser,
+  driftingSampler1Analyser,
+  driftingSampler2Analyser,
+  driftingSampler3Analyser,
   onTriggerMatrixChange = () => {},
 }) => {
 
   const isStoppedCallback = useCallback(() => !isRunning, [isRunning])
 
-  const [sampler, isSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808)
+  const [sampler, isSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808, {}, fixedSamplerAnalyser)
 
-  const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808)
-  const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808)
-  const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808)
+  const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler1Analyser)
+  const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler2Analyser)
+  const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler3Analyser)
+
 
   useEffect(() => {
     const samplerVolumePercentage = 100 - balance
@@ -35,7 +40,7 @@ const Sampler = ({
     if (isSamplerLoaded) {
       sampler.volume.value = scale(samplerVolumePercentage)
     }
-    if (isDriftingSampler2Loaded && isDriftingSampler2Loaded && isDriftingSampler3Loaded) {
+    if (isDriftingSampler1Loaded && isDriftingSampler2Loaded && isDriftingSampler3Loaded) {
       [driftingSampler1, driftingSampler2, driftingSampler3].forEach((driftingSampler, index, arr) => {
         const volumePercentage = (driftingSamplerVolumePercentage / arr.length) * Math.abs(index - arr.length)
         driftingSampler.volume.value = scale(volumePercentage)
