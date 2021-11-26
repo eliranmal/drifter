@@ -7,7 +7,7 @@ import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
 import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
 import Transport from '../../components/transport/Transport'
-import Crossfader from '../../components/crossfader/Crossfader'
+import RangeInput from '../../components/range-input/RangeInput'
 // import Visualizations from '../../components/visualizations/Visualizations'
 
 import './MainView.css'
@@ -17,7 +17,7 @@ const BoxedSampler = withBoxWrapper(Sampler, {
   wrapperClassName: 'drifter-main-view-panel'
 })
 
-const BoxedCrossfader = withBoxWrapper(Crossfader, {
+const BoxedRangeInput = withBoxWrapper(RangeInput, {
   wrapperClassName: 'drifter-main-view-panel-end'
 })
 
@@ -65,7 +65,7 @@ const MainView = ({
         onPlay={() => setPlaying(true)}
         onStop={() => setPlaying(false)}
       />
-      <BoxedCrossfader
+      <BoxedRangeInput
         defaultValue={balance}
         onChange={value => setBalance(value)}
       />

@@ -1,9 +1,0 @@
-
-.drifter-crossfader {
-  height: .6em;
-  opacity: .5;
-}
-
-.drifter-crossfader:not(:hover) {
-  filter: grayscale();
-}

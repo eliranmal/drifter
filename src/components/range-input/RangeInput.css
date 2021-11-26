@@ -1,0 +1,70 @@
+
+.drifter-range-input {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+.drifter-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: .75rem;
+  height: .75rem;
+  margin-block-start: -.125rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.drifter-range-input::-moz-range-thumb {
+  width: .75rem;
+  height: .75rem;
+  margin-block-start: -.125rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.drifter-range-input::-ms-thumb {
+  width: .75rem;
+  height: .75rem;
+  margin-block-start: -.125rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.drifter-range-input::-webkit-slider-runnable-track {
+  height: .5rem;
+  border-radius: .25rem;
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.drifter-range-input::-moz-range-track {
+  height: .5rem;
+  border-radius: .25rem;
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.drifter-range-input::-ms-track {
+  width: 100%;
+  height: .5rem;
+  border-radius: .25rem;
+  border-color: transparent;
+  color: transparent;
+  background: transparent;
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.drifter-range-input:hover::-webkit-slider-thumb {
+  background-color: var(--accent-color-complement);
+}
+
+.drifter-range-input:hover::-moz-range-thumb {
+  background-color: var(--accent-color-complement);
+}
+
+.drifter-range-input:hover::-ms-thumb {
+  background-color: var(--accent-color-complement);
+}
