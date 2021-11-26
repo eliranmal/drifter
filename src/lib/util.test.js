@@ -5,6 +5,7 @@ import {
   range,
   matrixRotate,
   percentageScale,
+  matrixInsertValue,
 } from './util'
 
 const fixtures = {
@@ -41,6 +42,15 @@ const fixtures = {
       [0, 0],
     ]],
   ],
+  matrixInsertValue: [
+    [[
+      [1, 0, 0],
+      [0, 0, 1],
+    ], 0, 1, true, [
+      [1, true, 0],
+      [0, 0, 1],
+    ]],
+  ],
   percentageScale: [
     [0, 10, 30, 3],
     [0, 10, -30, -3],
@@ -74,6 +84,13 @@ fixtures.matrixRotate.map(([a, expected]) => {
     expect(actual).toEqual(expected)
     // rotating the matrix again should reset it to its original state
     expect(matrixRotate(actual)).toEqual(a)
+  })
+})
+
+fixtures.matrixInsertValue.map(([a, b, c, d, expected]) => {
+  test(stringify`matrixInsertValue(${a}, ${b}, ${c}, ${d}) -> ${expected}`, () => {
+    const actual = matrixInsertValue(a, b, c, d)
+    expect(actual).toEqual(expected)
   })
 })
 
