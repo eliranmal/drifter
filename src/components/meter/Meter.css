@@ -1,8 +1,0 @@
-
-.drifter-meter {
-  opacity: .5;
-}
-
-.drifter-meter:not(:hover) {
-  filter: grayscale();
-}
