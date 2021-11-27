@@ -1,6 +1,6 @@
 import {useEffect, useCallback} from 'react'
 
-import {matrixInsertValue, percentageScale} from '../../lib/util'
+import {matrixInsertValue, percentageScale, proximityDistribution} from '../../lib/util'
 import {sampleMap} from '../../hooks/useSampler'
 import useFixedSampler from '../../hooks/useFixedSampler'
 import useDriftingSampler from '../../hooks/useDriftingSampler'
@@ -23,30 +23,72 @@ const Sampler = ({
   driftingSampler3Analyser,
   onTriggerMatrixChange = () => {},
 }) => {
+  // balance=0: fixed sampler full volume --> balance=100: drifting samplers full volume
 
   const isStoppedCallback = useCallback(() => !isRunning, [isRunning])
 
-  const [sampler, isSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808, {}, fixedSamplerAnalyser)
-
+  const [fixedSampler, isFixedSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808, {}, fixedSamplerAnalyser)
   const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler1Analyser)
   const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler2Analyser)
   const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler3Analyser)
 
+  const asDbSpl = percentageScale(-60, 0)
+
+  const [
+    fixedSamplerVolume,
+    driftingSampler1Volume,
+    driftingSampler2Volume,
+    driftingSampler3Volume
+  ] = proximityDistribution(balance, 4).map(
+    percentageValue => asDbSpl(percentageValue)
+  )
 
   useEffect(() => {
-    const samplerVolumePercentage = 100 - balance
-    const driftingSamplerVolumePercentage = 100 - samplerVolumePercentage
-    const asDbSpl = percentageScale(0, -30)
-    if (isSamplerLoaded) {
-      sampler.volume.value = asDbSpl(samplerVolumePercentage)
+    if (isFixedSamplerLoaded) {
+      fixedSampler.volume.value = fixedSamplerVolume
+      // console.log('F:', fixedSampler.volume.value)
     }
-    if (isDriftingSampler1Loaded && isDriftingSampler2Loaded && isDriftingSampler3Loaded) {
-      [driftingSampler1, driftingSampler2, driftingSampler3].forEach((driftingSampler, index, arr) => {
-        const volumePercentage = (driftingSamplerVolumePercentage / arr.length) * Math.abs(index - arr.length)
-        driftingSampler.volume.value = asDbSpl(volumePercentage)
-      })
+  }, [fixedSamplerVolume, fixedSampler, isFixedSamplerLoaded])
+
+  useEffect(() => {
+    if (isDriftingSampler1Loaded) {
+      driftingSampler1.volume.value = driftingSampler1Volume
+      // console.log('D1:', driftingSampler1.volume.value)
     }
-  }, [balance, sampler, driftingSampler1, driftingSampler2, driftingSampler3, isSamplerLoaded, isDriftingSampler1Loaded, isDriftingSampler2Loaded, isDriftingSampler3Loaded])
+  }, [driftingSampler1Volume, driftingSampler1, isDriftingSampler1Loaded])
+
+  useEffect(() => {
+    if (isDriftingSampler2Loaded) {
+      driftingSampler2.volume.value = driftingSampler2Volume
+      // console.log('D2:', driftingSampler2.volume.value)
+    }
+  }, [driftingSampler2Volume, driftingSampler2, isDriftingSampler2Loaded])
+
+  useEffect(() => {
+    if (isDriftingSampler3Loaded) {
+      driftingSampler3.volume.value = driftingSampler3Volume
+      // console.log('D3:', driftingSampler3.volume.value)
+    }
+  }, [driftingSampler3Volume, driftingSampler3, isDriftingSampler3Loaded])
+
+  // useEffect(() => {
+    // const fixedSamplerVolumePercentage = Math.abs(balance - 100)
+    // const driftingSamplerVolumePercentage = balance
+    // console.log('percentages:', fixedSamplerVolumePercentage, driftingSamplerVolumePercentage)
+    // const asDbSpl = percentageScale(-60, 0)
+    // if (isFixedSamplerLoaded) {
+    //   fixedSampler.volume.value = asDbSpl(fixedSamplerVolumePercentage)
+    //   console.log('fixedSampler volume:', +(fixedSampler.volume.value).toFixed(3))
+    // }
+    // if (isDriftingSampler1Loaded && isDriftingSampler2Loaded && isDriftingSampler3Loaded) {
+    //   [driftingSampler1, driftingSampler2, driftingSampler3].forEach((driftingSampler, index, arr) => {
+    //     const volumePercentage = (driftingSamplerVolumePercentage / (arr.length * 4)) * Math.abs(index - arr.length)/* * (balance / 100)*/
+    //     // driftingSampler.volume.value = asDbSpl(volumePercentage)
+    //     driftingSampler.volume.value = asDbSpl(driftingSamplerVolumePercentage)
+    //     console.log(`driftingSampler${index + 1} volume:`, +(driftingSampler.volume.value).toFixed(3))
+    //   })
+    // }
+  // }, [balance, fixedSampler, driftingSampler1, driftingSampler2, driftingSampler3, isFixedSamplerLoaded, isDriftingSampler1Loaded, isDriftingSampler2Loaded, isDriftingSampler3Loaded])
 
 
   return (
