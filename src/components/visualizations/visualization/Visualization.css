@@ -12,7 +12,6 @@
 }
 
 .drifter-visualization:not(:last-child) {
-  position: relative;
   margin-inline-end: calc(var(--visualization-box-size) * .5);
 }
 
