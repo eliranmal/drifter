@@ -50,3 +50,16 @@ export const matrixInsertValue = (matrix, row, col, value) => matrix.map(
 export const percentageScale = (min, max) => n => (
   (((max - min) / 100) * n) + min
 )
+
+export const proximityDistribution = (centerValue, segmentCount, maxValue = 100) => (
+  range(segmentCount).map(
+    (n, i, arr) => {
+      const limit = (maxValue / (arr.length - 1)) * i
+      return maxValue - Math.abs(limit - centerValue) * .75
+    }
+  )
+)
+
+export const asLogarithmic = () => {
+  // todo - implement
+}

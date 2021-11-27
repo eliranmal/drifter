@@ -6,6 +6,7 @@ import {
   matrixRotate,
   percentageScale,
   matrixInsertValue,
+  proximityDistribution,
 } from './util'
 
 const fixtures = {
@@ -61,6 +62,15 @@ const fixtures = {
     [-10, -50, 30, -22],
     [0, 10, 130, 13],
   ],
+  proximityDistribution: [
+    [0, 4, void 0, [100, 66.66666666666666, 33.33333333333333, 0]],
+    [100, 4, void 0, [0, 33.33333333333334, 66.66666666666667, 100]],
+    [50, 4, void 0, [50, 83.33333333333334, 83.33333333333333, 50]],
+    [33, 4, void 0, [67, 99.66666666666666 ,66.33333333333333 ,33]],
+    // [20, 4, 50, [80, 96.66666666666667, 86.66666666666666, 70]],
+    [20, 4, 100, [80, 86.66666666666666, 53.33333333333333, 20]],
+    [10, 4, 50, [40, 43.33333333333333, 26.666666666666664, 10]],
+  ],
 }
 
 
@@ -98,5 +108,12 @@ fixtures.percentageScale.map(([a, b, c, expected]) => {
   test(`percentageScale(${a}, ${b})(${c}) -> ${expected}`, () => {
     const actual = percentageScale(a, b)(c)
     expect(actual).toBe(expected)
+  })
+})
+
+fixtures.proximityDistribution.map(([a, b, c, expected]) => {
+  test(stringify`proximityDistribution(${a}, ${b}, ${c}) -> ${expected}`, () => {
+    const actual = proximityDistribution(a, b, c)
+    expect(actual).toEqual(expected)
   })
 })
