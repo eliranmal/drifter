@@ -1,17 +1,10 @@
-import {stringify} from '../test/util'
+import {stringify, isPrimitive} from '../test/util'
 
-import {
-  head,
-  range,
-  polarity,
-  matrixRotate,
-  percentageScale,
-  matrixInsertValue,
-  proximityDistribution,
-} from './util'
+import * as util from './util'
 
-// entries in the form <...arguments, expected>
-const fixtures = {
+
+// entries are in the form <...arguments, expected>
+const fixtureMap = {
   polarity: [
     [1, 1],
     [-1, -1],
@@ -85,54 +78,30 @@ const fixtures = {
   ],
 }
 
+const customTestMap = {
+  percentageScale: ([a, b, c], expected) => {
+    test(stringify`percentageScale(${a}, ${b})(${c}) -> ${expected}`, () => {
+      const actual = util.percentageScale(a, b)(c)
+      expect(actual).toEqual(expected)
+    })
+  }
+}
 
-fixtures.polarity.map(([a, expected]) => {
-  test(stringify`polarity(${a}) -> ${expected}`, () => {
-    const actual = polarity(a)
-    expect(actual).toBe(expected)
-  })
-})
+Object.entries(fixtureMap).map(
+  ([sut, fixtures]) => fixtures.map(
+    fixtureData => {
+      const expected = fixtureData.pop()
+      const args = fixtureData
 
-fixtures.range.map(([a, expected]) => {
-  test(`range(${a}) -> array(${expected})`, () => {
-    const actual = range(a)
-    expect(actual).toEqual(expected)
-  })
-})
+      if (customTestMap[sut]) {
+        return customTestMap[sut](args, expected)
+      }
 
-fixtures.head.map(([a, b, expected]) => {
-  test(stringify`head(${a}, ${b}) -> ${expected}`, () => {
-    const actual = head(a, b)
-    expect(actual).toBe(expected)
-  })
-})
-
-fixtures.matrixRotate.map(([a, expected]) => {
-  test(stringify`matrixRotate(${a}) -> ${expected}`, () => {
-    const actual = matrixRotate(a)
-    expect(actual).toEqual(expected)
-    // rotating the matrix again should reset it to its original state
-    expect(matrixRotate(actual)).toEqual(a)
-  })
-})
-
-fixtures.matrixInsertValue.map(([a, b, c, d, expected]) => {
-  test(stringify`matrixInsertValue(${a}, ${b}, ${c}, ${d}) -> ${expected}`, () => {
-    const actual = matrixInsertValue(a, b, c, d)
-    expect(actual).toEqual(expected)
-  })
-})
-
-fixtures.percentageScale.map(([a, b, c, expected]) => {
-  test(`percentageScale(${a}, ${b})(${c}) -> ${expected}`, () => {
-    const actual = percentageScale(a, b)(c)
-    expect(actual).toBe(expected)
-  })
-})
-
-fixtures.proximityDistribution.map(([a, b, c, expected]) => {
-  test(stringify`proximityDistribution(${a}, ${b}, ${c}) -> ${expected}`, () => {
-    const actual = proximityDistribution(a, b, c)
-    expect(actual).toEqual(expected)
-  })
-})
+      test(stringify`${sut}(${args.join(', ')}) -> ${expected}`, () => {
+        const actual = util[sut](...args)
+        const equalityMethod = isPrimitive(expected) ? 'toBe' : 'toEqual'
+        expect(actual)[equalityMethod](expected)
+      })
+    }
+  )
+)
