@@ -15,6 +15,15 @@ const fixtureMap = {
     [.1, 1],
     [-.1, -1],
   ],
+  limit: [
+    [0, 10, 100, 10],
+    [-10, 0, 100, 0],
+    [-20, -10, 0, -10],
+    [0, 10, -100, 0],
+    [-10, 0, -100, -10],
+    [-20, -10, 0, -10],
+    [-20, -10, -100, -20],
+  ],
   range: [
     [0, []],
     [10, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
@@ -93,11 +102,11 @@ Object.entries(fixtureMap).map(
       const expected = fixtureData.pop()
       const args = fixtureData
 
-      if (customTestMap[sut]) {
+      if (sut in customTestMap) {
         return customTestMap[sut](args, expected)
       }
 
-      test(stringify`${sut}(${args.join(', ')}) -> ${expected}`, () => {
+      test(sut + stringify`(${args.join(', ')}) -> ${expected}`, () => {
         const actual = util[sut](...args)
         const equalityMethod = isPrimitive(expected) ? 'toBe' : 'toEqual'
         expect(actual)[equalityMethod](expected)
