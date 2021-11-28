@@ -4,14 +4,17 @@ import Input from '../input/Input'
 import './RangeInput.css'
 
 
-const RangeInput = ({className, onChange = () => {}, ...props}) => {
-  const debouncedOnChange = debounce(onChange, 100)
+const RangeInput = ({className, onChange = () => {}, immediateOnChange = () => {}, ...props}) => {
+  const debouncedOnChange = debounce(onChange, 33)
   return (
     <Input
       {...props}
       type="range"
       className={`drifter-range-input ${className}`}
-      onChange={({currentTarget: {value}}) => debouncedOnChange(value)}
+      onChange={({currentTarget: {value}}) => {
+        immediateOnChange(value)
+        debouncedOnChange(value)
+      }}
     />
   )
 }
