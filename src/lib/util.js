@@ -29,6 +29,13 @@ const calculatePrimes = (iterations, multiplier) => {
 */
 export const blockThread = intensity => calculatePrimes(intensity * 50, intensity * 1000000000)
 
+/**
+* @param {number} n any integer or float number, but not Infinity, -Infinity, 0 or -0
+*
+* @returns {number} 1 for positive values, -1 for negative
+*/
+export const polarity = n => n / Math.abs(n)
+
 export const range = size => [...(new Array(size)).keys()]
 
 export const head = (defaultValue, arr = []) => arr[0] ?? defaultValue
@@ -55,7 +62,7 @@ export const proximityDistribution = (centerValue, segmentCount, maxValue = 100)
   range(segmentCount).map(
     (n, i, arr) => {
       const limit = (maxValue / (arr.length - 1)) * i
-      return maxValue - Math.abs(limit - centerValue) * .75
+      return maxValue - Math.abs(limit - centerValue)
     }
   )
 )

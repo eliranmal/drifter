@@ -3,16 +3,28 @@ import {stringify} from '../test/util'
 import {
   head,
   range,
+  polarity,
   matrixRotate,
   percentageScale,
   matrixInsertValue,
   proximityDistribution,
 } from './util'
 
+// entries in the form <...arguments, expected>
 const fixtures = {
+  polarity: [
+    [1, 1],
+    [-1, -1],
+    [123456789, 1],
+    [-123456789, -1],
+    [0x10000000, 1],
+    [-0x10000000, -1],
+    [.1, 1],
+    [-.1, -1],
+  ],
   range: [
-    [0, 0],
-    [10, 10],
+    [0, []],
+    [10, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
   ],
   head: [
     [true, [false, 0, ''], false],
@@ -74,10 +86,17 @@ const fixtures = {
 }
 
 
-fixtures.range.map(([a, expectedSize]) => {
-  test(`range(${a}) -> array(${expectedSize})`, () => {
+fixtures.polarity.map(([a, expected]) => {
+  test(stringify`polarity(${a}) -> ${expected}`, () => {
+    const actual = polarity(a)
+    expect(actual).toBe(expected)
+  })
+})
+
+fixtures.range.map(([a, expected]) => {
+  test(`range(${a}) -> array(${expected})`, () => {
     const actual = range(a)
-    expect(actual.length).toBe(expectedSize)
+    expect(actual).toEqual(expected)
   })
 })
 
