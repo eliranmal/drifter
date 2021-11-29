@@ -26,7 +26,7 @@ const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => 
 
   const samplerKitDirName = resolveSampleMapDirName(samplerSampleMap)
 
-  const samperRef = useToneRef('Sampler', samplerSampleMap, {
+  const samplerRef = useToneRef('Sampler', samplerSampleMap, {
     ...samplerOptions,
     baseUrl: `audio/drum-machines/${samplerKitDirName}/`,
     onload: () => {
@@ -35,7 +35,7 @@ const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => 
     },
   })
 
-  return [analyserRef ? samperRef.connect(analyserRef) : samperRef, loaded, analyserRef]
+  return [analyserRef ? samplerRef.connect(analyserRef) : samplerRef, loaded, analyserRef]
 }
 
 
