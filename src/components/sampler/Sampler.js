@@ -15,7 +15,7 @@ const Sampler = ({
   balance,
   // todo - replace 'isRunning' with 'cursor' to enable linking animation steps with audio events
   isRunning,
-  loopLengthInSixteenths = 20,
+  loopLengthInSixteenths,
   triggerMatrix = [],
   fixedSamplerAnalyser,
   driftingSampler1Analyser,
@@ -32,7 +32,7 @@ const Sampler = ({
   const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler2Analyser)
   const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler3Analyser)
 
-  const asDbSpl = percentageScale(-60, 0)
+  const asDbSpl = percentageScale(-36, 0)
 
   const [
     fixedSamplerVolume,
