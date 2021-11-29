@@ -1,0 +1,13 @@
+
+.drifter-analysers {
+  display: grid;
+}
+
+.drifter-analysers > * {
+  /* make all grid children overlap on a single cell */
+  grid-row-start: 1;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  opacity: .75;
+}

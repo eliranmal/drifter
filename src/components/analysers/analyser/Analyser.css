@@ -1,0 +1,9 @@
+.drifter-analyser {
+  --visualization-box-height: 2.4rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: stretch;
+  height: var(--visualization-box-height);
+  padding: 0;
+  border-radius: calc(var(--visualization-box-height) * .3);
+}

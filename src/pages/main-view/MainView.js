@@ -9,7 +9,7 @@ import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
 import Transport from '../../components/transport/Transport'
 import RangeInput from '../../components/range-input/RangeInput'
-import Visualizations from '../../components/visualizations/Visualizations'
+import Analysers from '../../components/analysers/Analysers'
 
 import './MainView.css'
 
@@ -22,17 +22,15 @@ const MainView = ({
   bpm,
   resetInterval,
 }) => {
-  const [balance, setBalance] = useState(33)
+  const [balance, setBalance] = useState(0)
   const [isPlaying, setPlaying] = useState(false)
-
+  const [loopLengthInSixteenths, setLoopLengthInSixteenths] = useState(20)
   const [triggerMatrix, setTriggerMatrix] = useLocalStorage('drifter-trigger-matrix', [
     [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ])
-
-  const [loopLengthInSixteenths, setLoopLengthInSixteenths] = useState(20)
 
   useMediaQueries({
     '(max-width: 600px)': setLoopLengthInSixteenths.bind(null, 4),
@@ -77,7 +75,7 @@ const MainView = ({
         defaultValue={balance}
         onChange={value => setBalance(value)}
       />
-      <Visualizations
+      <Analysers
         className="drifter-main-view-panel-end"
         fixedSamplerAnalyser={fixedSamplerAnalyser}
         driftingSampler1Analyser={driftingSampler1Analyser}
