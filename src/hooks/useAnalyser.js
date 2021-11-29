@@ -3,7 +3,7 @@ import useToneRef from './useToneRef'
 
 const useAnalyser = (
   type = 'waveform',
-  size = 32
+  size = 64
 ) => useToneRef('Analyser', type, size)
 
 
