@@ -10,7 +10,9 @@ import './Transport.css'
 
 const init = ({bpm, loop, loopLengthInSixteenths} = {}) => {
   Tone.Transport.loop = loop
-  Tone.Transport.bpm.value = bpm
+  if (bpm) {
+    Tone.Transport.bpm.value = bpm
+  }
   Tone.Transport.setLoopPoints(0, asTransportTime(loopLengthInSixteenths))
 }
 
