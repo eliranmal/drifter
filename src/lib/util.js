@@ -87,7 +87,7 @@ export const unmarshall = data => {
 }
 
 
-const basenameRegex = /[^\/\\]*(?=[.][a-zA-Z]+$)/
+const basenameRegex = /[^/\\]*(?=[.][a-zA-Z]+$)/
 
 export const resolveModuleBasename = module => {
   const matches = basenameRegex.exec(module.id)
