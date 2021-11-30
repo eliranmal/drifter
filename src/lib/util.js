@@ -72,3 +72,26 @@ export const proximityDistribution = (centerValue, segmentCount, maxValue = 100)
 export const asLogarithmic = () => {
   // todo - implement
 }
+
+export const marshall = JSON.stringify
+
+export const unmarshall = data => {
+  if (!data) {
+    return
+  }
+  let unmarshalledData
+  try {
+    unmarshalledData = JSON.parse(data)
+  } catch (e) {}
+  return unmarshalledData
+}
+
+
+const basenameRegex = /[^\/\\]*(?=[.][a-zA-Z]+$)/
+
+export const resolveModuleBasename = module => {
+  const matches = basenameRegex.exec(module.id)
+  if (matches && matches.length) {
+    return matches[0]
+  }
+}

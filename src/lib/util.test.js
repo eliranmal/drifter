@@ -3,6 +3,21 @@ import {stringify, isPrimitive} from '../test/util'
 import * as util from './util'
 
 
+const symmetricMarshallingFixtures = [
+  [0, '0'],
+  [1, '1'],
+  [true, 'true'],
+  [false, 'false'],
+  [null, 'null'],
+  [{}, '{}'],
+  [{foo: 'bar'}, '{"foo":"bar"}'],
+  [{foo: {bar: 'baz'}}, '{"foo":{"bar":"baz"}}'],
+  [[], '[]'],
+  [['a', null], '["a",null]'],
+  [['a', [2, false]], '["a",[2,false]]'],
+  [void 0, undefined],
+]
+
 // entries are in the form <...arguments, expected>
 const fixtureMap = {
   polarity: [
@@ -85,6 +100,22 @@ const fixtureMap = {
     [20, 4, 100, [80, 86.66666666666666, 53.33333333333333, 20]],
     [10, 4, 50, [40, 43.33333333333333, 26.666666666666664, 10]],
   ],
+  marshall: symmetricMarshallingFixtures.map(fixture => [...fixture]).concat([
+    [{foo: () => 'bar'}, '{}'],
+    [['a', () => 'wat'], '["a",null]'],
+  ]),
+  unmarshall: symmetricMarshallingFixtures.map(fixture => fixture.reverse()).concat([
+    [`
+      {
+      }
+      `, {}],
+    ['() => "wat"', void 0],
+    ['{"foo":1,"bar":() => "bar"}', void 0],
+    ['["a",() => "bar"]', void 0],
+  ]),
+  resolveModuleBasename: [
+    [module, 'util.test']
+  ],
 }
 
 const customTestMap = {
@@ -106,7 +137,9 @@ Object.entries(fixtureMap).map(
         return customTestMap[sut](args, expected)
       }
 
-      test(sut + stringify`(${args.join(', ')}) -> ${expected}`, () => {
+      test(`${sut}(${
+        args.map(arg => stringify`${arg}`).join(', ')
+      }) -> ` + stringify`${expected}`, () => {
         const actual = util[sut](...args)
         const equalityMethod = isPrimitive(expected) ? 'toBe' : 'toEqual'
         expect(actual)[equalityMethod](expected)
