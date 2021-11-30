@@ -18,10 +18,10 @@ const BoxedSampler = withBoxWrapper(Sampler, {
   wrapperClassName: 'drifter-main-view-panel',
 })
 
-const MainView = ({
+const MainView = ({appSettings: {
   bpm,
   resetInterval,
-}) => {
+}}) => {
   const [balance, setBalance] = useState(0)
   const [isPlaying, setPlaying] = useState(false)
   const [loopLengthInSixteenths, setLoopLengthInSixteenths] = useState(20)

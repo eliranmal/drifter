@@ -1,3 +1,5 @@
+import {action} from 'mobx'
+import {observer} from 'mobx-react-lite'
 
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
@@ -6,12 +8,7 @@ import NumberInput from '../../components/number-input/NumberInput'
 import './Settings.css'
 
 
-const Settings = ({
-  bpm,
-  setBpm,
-  resetInterval,
-  setResetInterval,
-}) => (
+const Settings = ({appSettings}) => (
   <div className="drifter-settings">
     <div
       className="drifter-setting-bpm"
@@ -23,8 +20,10 @@ const Settings = ({
         id="drifter-setting-input-bpm"
         min={1}
         max={1000}
-        value={bpm}
-        onChange={({currentTarget: {value}}) => setBpm(+value)}
+        value={appSettings.bpm}
+        onChange={action(
+          ({currentTarget: {value}}) => (appSettings.bpm = +value)
+        )}
       />
     </div>
     <div
@@ -38,20 +37,22 @@ const Settings = ({
           id="drifter-setting-input-reset-interval"
           min={0}
           max={64}
-          value={resetInterval.value}
-          onChange={({currentTarget: {value}}) => setResetInterval({
-            ...resetInterval,
-            value: +value,
-          })}
+          value={appSettings.resetInterval.value}
+          onChange={action(
+            ({currentTarget: {value}}) => (appSettings.resetInterval = {
+              ...appSettings.resetInterval,
+              value: +value,
+            })
+          )}
         />
         <Select
           options={[
             { label: 'bars', value: 'bars' },
             { label: 'beats', value: 'beats' },
           ]}
-          defaultValue={resetInterval.unit}
-          onChange={({currentTarget: {value}}) => setResetInterval({
-            ...resetInterval,
+          defaultValue={appSettings.resetInterval.unit}
+          onChange={({currentTarget: {value}}) => (appSettings.resetInterval = {
+            ...appSettings.resetInterval,
             unit: value,
           })}
         />
@@ -63,4 +64,4 @@ const Settings = ({
 Settings.displayName = 'settings'
 
 
-export default Settings
+export default observer(Settings)
