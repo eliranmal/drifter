@@ -1,7 +1,7 @@
 import {observable, autorun} from 'mobx'
 
-import {load, save} from '../lib/storage'
-import {exclusiveReplacer, resolveModuleBasename} from '../lib/util'
+import {load, save} from '../../lib/storage'
+import {exclusiveReplacer, resolveModuleBasename} from '../../lib/util'
 
 
 const persistedStore = (storeModule, storeTarget, unpersistedProps) => {

@@ -1,4 +1,4 @@
-import persistedStore from './persisted-store'
+import persistedStore from './decorators/persisted-store'
 
 
 const appSettings = persistedStore(module, {
