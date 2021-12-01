@@ -1,7 +1,7 @@
 import persistedStore from './persisted-store'
 
 
-  const appSettings = persistedStore(module, {
+const appSettings = persistedStore(module, {
   bpm: 99,
   resetInterval: {
     value: 4,
