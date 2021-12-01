@@ -12,8 +12,8 @@ const RangeInput = ({className, onChange = () => {}, immediateOnChange = () => {
       type="range"
       className={`drifter-range-input ${className}`}
       onChange={({currentTarget: {value}}) => {
-        immediateOnChange(value)
-        debouncedOnChange(value)
+        immediateOnChange(+value)
+        debouncedOnChange(+value)
       }}
     />
   )
