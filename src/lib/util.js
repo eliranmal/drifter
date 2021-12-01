@@ -73,6 +73,10 @@ export const asLogarithmic = () => {
   // todo - implement
 }
 
+export const exclusiveReplacer = excludes => excludes ? (key, value) => (
+  excludes.includes(key) ? void 0 : value
+) : void 0
+
 export const marshall = JSON.stringify
 
 export const unmarshall = data => {
