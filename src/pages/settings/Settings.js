@@ -1,6 +1,7 @@
 import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
 
+import appSettings from '../../store/app-settings'
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
 import NumberInput from '../../components/number-input/NumberInput'
@@ -8,7 +9,7 @@ import NumberInput from '../../components/number-input/NumberInput'
 import './Settings.css'
 
 
-const Settings = ({appSettings}) => (
+const Settings = () => (
   <div className="drifter-settings">
     <div
       className="drifter-setting-bpm"
@@ -22,7 +23,7 @@ const Settings = ({appSettings}) => (
         max={1000}
         value={appSettings.bpm}
         onChange={action(
-          ({currentTarget: {value}}) => (appSettings.bpm = +value)
+          value => (appSettings.bpm = value)
         )}
       />
     </div>
@@ -39,9 +40,9 @@ const Settings = ({appSettings}) => (
           max={64}
           value={appSettings.resetInterval.value}
           onChange={action(
-            ({currentTarget: {value}}) => (appSettings.resetInterval = {
+            value => (appSettings.resetInterval = {
               ...appSettings.resetInterval,
-              value: +value,
+              value,
             })
           )}
         />

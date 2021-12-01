@@ -1,8 +1,11 @@
-import {useState, useEffect, useCallback} from 'react'
+import {action} from 'mobx'
+import {observer} from 'mobx-react-lite'
+import {useEffect, useCallback} from 'react'
 import * as Tone from 'tone'
 
 import {asTransportTime} from '../../lib/audio'
 import useKeyboard, {mapKeyboardEvents} from '../../hooks/useKeyboard'
+import transportStore from '../../store/transport'
 import TransportButton from '../transport-button/TransportButton'
 
 import './Transport.css'
@@ -28,34 +31,36 @@ const stop = () => Tone.loaded()
 const Transport = ({
   bpm,
   loop = true,
-  loopLengthInSixteenths,
   onPlay = () => {},
   onStop = () => {},
   onRecord = () => {},
 }) => {
-  const [isPlaying, setPlaying] = useState(false)
-  const [isRecording, setRecording] = useState(false)
+  const {
+    isPlaying,
+    isRecording,
+    loopLengthInSixteenths,
+  } = transportStore
 
   const playListener = useCallback(
     () => !isPlaying && play()
-      .then(() => setPlaying(true))
+      .then(action(() => (transportStore.isPlaying = true)))
       .then(onPlay),
     [isPlaying, onPlay])
 
   const stopListener = useCallback(
     () => isPlaying && stop()
-      .then(() => {
-        setPlaying(false)
-        setRecording(false)
-      })
+      .then(action(() => {
+        transportStore.isPlaying = false
+        transportStore.isRecording = false
+      }))
       .then(onStop),
     [isPlaying, onStop])
 
-  const recordListener = useCallback(
+  const recordListener = action(useCallback(
     () => {
-      setRecording(true)
+      transportStore.isRecording = true
       onRecord()
-    }, [onRecord])
+    }, [onRecord]))
 
   const toggleListener = useCallback(
     () => isPlaying ? stopListener() : playListener(),
@@ -96,4 +101,4 @@ const Transport = ({
 }
 
 
-export default Transport
+export default observer(Transport)

@@ -1,4 +1,5 @@
 import {action} from 'mobx'
+import {observer} from 'mobx-react-lite'
 import {useEffect, useCallback} from 'react'
 
 import {
@@ -7,6 +8,7 @@ import {
   proximityDistribution,
 } from '../../lib/util'
 import samplerStore from '../../store/sampler'
+import transportStore from '../../store/transport'
 import {sampleMap} from '../../hooks/useSampler'
 import useFixedSampler from '../../hooks/useFixedSampler'
 import useDriftingSampler from '../../hooks/useDriftingSampler'
@@ -20,8 +22,6 @@ import './Sampler.css'
 const Sampler = ({
   className,
   bpm,
-  // todo - replace 'isRunning' with 'cursor' to enable linking animation steps with audio events
-  isRunning,
   loopLengthInSixteenths,
   fixedSamplerAnalyser,
   driftingSampler1Analyser,
@@ -29,8 +29,10 @@ const Sampler = ({
   driftingSampler3Analyser,
 }) => {
   const {balance, triggerMatrix} = samplerStore
+  // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
+  const {isPlaying} = transportStore
 
-  const isStoppedCallback = useCallback(() => !isRunning, [isRunning])
+  const isStoppedCallback = useCallback(() => !isPlaying, [isPlaying])
 
   const [fixedSampler, isFixedSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808, {}, fixedSamplerAnalyser)
   const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler1Analyser)
@@ -79,7 +81,7 @@ const Sampler = ({
 
   return (
     <div
-      className={`drifter-sampler ${isRunning ? 'drifter-sampler-running' : ''} ${className}`}
+      className={`drifter-sampler ${isPlaying ? 'drifter-sampler-running' : ''} ${className}`}
       style={{ '--sampler-ticks': loopLengthInSixteenths }}
     >
       <div className="drifter-sampler-timeline">
@@ -108,6 +110,6 @@ const Sampler = ({
   )
 }
 
-export default withBoxWrapper(Sampler, {
+export default withBoxWrapper(observer(Sampler), {
   useWrapper: false,
 })

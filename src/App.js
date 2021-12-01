@@ -1,7 +1,5 @@
 import ReactTooltip from 'react-tooltip'
 
-import appSettings from './store/app-settings'
-
 import Layout from './pages/layout/Layout'
 import Settings from './pages/settings/Settings'
 import MainView from './pages/main-view/MainView'
@@ -25,9 +23,7 @@ const App = () => (
     <AppErrorBoundary>
       <Layout
         main={MainView}
-        mainProps={{appSettings}}
         sideBar={Settings}
-        sideBarProps={{appSettings}}
       />
       </AppErrorBoundary>
   </>
