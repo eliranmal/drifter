@@ -1,13 +1,10 @@
 import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
-import {useState} from 'react'
-import useLocalStorage from 'use-local-storage'
 
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
 import useAnalyser from '../../hooks/useAnalyser'
 import useMediaQueries from '../../hooks/useMediaQueries'
-import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
 
 import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
@@ -18,11 +15,7 @@ import Analysers from '../../components/analysers/Analysers'
 import './MainView.css'
 
 
-const BoxedSampler = withBoxWrapper(Sampler, {
-  wrapperClassName: 'drifter-main-view-panel',
-})
-
-const MainView = observer(({appSettings: {
+const MainView = ({appSettings: {
   bpm,
   resetInterval,
 }}) => {
@@ -52,7 +45,8 @@ const MainView = observer(({appSettings: {
         onPlay={action(() => (transportStore.isPlaying = true))}
         onStop={action(() => (transportStore.isPlaying = false))}
       />
-      <BoxedSampler
+      <Sampler
+        className="drifter-main-view-panel"
         bpm={bpm}
         isRunning={isPlaying}
         loopLengthInSixteenths={loopLengthInSixteenths}
@@ -76,7 +70,7 @@ const MainView = observer(({appSettings: {
       />
     </div>
   )
-})
+}
 
 
-export default MainView
+export default observer(MainView)

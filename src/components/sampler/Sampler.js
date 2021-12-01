@@ -10,6 +10,8 @@ import samplerStore from '../../store/sampler'
 import {sampleMap} from '../../hooks/useSampler'
 import useFixedSampler from '../../hooks/useFixedSampler'
 import useDriftingSampler from '../../hooks/useDriftingSampler'
+import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
+
 import Input from '../input/Input'
 
 import './Sampler.css'
@@ -106,4 +108,6 @@ const Sampler = ({
   )
 }
 
-export default Sampler
+export default withBoxWrapper(Sampler, {
+  useWrapper: false,
+})
