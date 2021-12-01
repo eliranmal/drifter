@@ -1,6 +1,12 @@
+import {action} from 'mobx'
 import {useEffect, useCallback} from 'react'
 
-import {matrixInsertValue, percentageScale, proximityDistribution} from '../../lib/util'
+import {
+  matrixInsertValue,
+  percentageScale,
+  proximityDistribution,
+} from '../../lib/util'
+import samplerStore from '../../store/sampler'
 import {sampleMap} from '../../hooks/useSampler'
 import useFixedSampler from '../../hooks/useFixedSampler'
 import useDriftingSampler from '../../hooks/useDriftingSampler'
@@ -12,18 +18,15 @@ import './Sampler.css'
 const Sampler = ({
   className,
   bpm,
-  balance,
   // todo - replace 'isRunning' with 'cursor' to enable linking animation steps with audio events
   isRunning,
   loopLengthInSixteenths,
-  triggerMatrix = [],
   fixedSamplerAnalyser,
   driftingSampler1Analyser,
   driftingSampler2Analyser,
   driftingSampler3Analyser,
-  onTriggerMatrixChange = () => {},
 }) => {
-  // balance=0: fixed sampler full volume --> balance=100: drifting samplers full volume
+  const {balance, triggerMatrix} = samplerStore
 
   const isStoppedCallback = useCallback(() => !isRunning, [isRunning])
 
@@ -86,11 +89,13 @@ const Sampler = ({
                 <Input type="checkbox" className="drifter-sampler-tick"
                   key={tickIndex}
                   defaultChecked={tickValue}
-                  onChange={({currentTarget: {checked}}) => {
-                    onTriggerMatrixChange(matrixInsertValue(
+                  onChange={action(({currentTarget: {checked}}) => {
+                    // todo - encapsulate this in the store as an action
+                    const newTriggerMatrix = matrixInsertValue(
                       triggerMatrix, channelIndex, tickIndex, +Boolean(checked)
-                    ))
-                  }}
+                    )
+                    samplerStore.triggerMatrix = newTriggerMatrix
+                  })}
                   />
               ))}
             </div>

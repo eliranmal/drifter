@@ -1,6 +1,8 @@
+import {action} from 'mobx'
 import {useState} from 'react'
 import useLocalStorage from 'use-local-storage'
 
+import samplerStore from '../../store/sampler'
 import useAnalyser from '../../hooks/useAnalyser'
 import useMediaQueries from '../../hooks/useMediaQueries'
 import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
@@ -22,15 +24,10 @@ const MainView = ({appSettings: {
   bpm,
   resetInterval,
 }}) => {
-  const [balance, setBalance] = useState(0)
+  const {balance} = samplerStore
+
   const [isPlaying, setPlaying] = useState(false)
   const [loopLengthInSixteenths, setLoopLengthInSixteenths] = useState(20)
-  const [triggerMatrix, setTriggerMatrix] = useLocalStorage('drifter-trigger-matrix', [
-    [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ])
 
   useMediaQueries({
     '(max-width: 600px)': setLoopLengthInSixteenths.bind(null, 4),
@@ -57,23 +54,18 @@ const MainView = ({appSettings: {
       />
       <BoxedSampler
         bpm={bpm}
-        balance={balance}
         isRunning={isPlaying}
-        triggerMatrix={triggerMatrix}
         loopLengthInSixteenths={loopLengthInSixteenths}
         fixedSamplerAnalyser={fixedSamplerAnalyser}
         driftingSampler1Analyser={driftingSampler1Analyser}
         driftingSampler2Analyser={driftingSampler2Analyser}
         driftingSampler3Analyser={driftingSampler3Analyser}
-        onTriggerMatrixChange={newTriggerMatrix => {
-          setTriggerMatrix(newTriggerMatrix)
-        }}
       />
       <RangeInput
         className="drifter-main-view-panel-center"
         data-tip="set the balance between the fixed sampler's signal and the drifting samplers' signal"
         defaultValue={balance}
-        onChange={value => setBalance(value)}
+        onChange={action(value => (samplerStore.balance = value))}
       />
       <Analysers
         className="drifter-main-view-panel-end"

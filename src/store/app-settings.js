@@ -1,7 +1,7 @@
 import persistedStore from './decorators/persisted-store'
 
 
-const appSettings = persistedStore(module, {
+const appSettingsStore = persistedStore(module, {
   bpm: 99,
   resetInterval: {
     value: 4,
@@ -22,4 +22,4 @@ const appSettings = persistedStore(module, {
 })
 
 
-export default appSettings
+export default appSettingsStore
