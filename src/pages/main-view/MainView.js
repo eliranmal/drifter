@@ -1,8 +1,10 @@
 import {action} from 'mobx'
+import {observer} from 'mobx-react-lite'
 import {useState} from 'react'
 import useLocalStorage from 'use-local-storage'
 
 import samplerStore from '../../store/sampler'
+import transportStore from '../../store/transport'
 import useAnalyser from '../../hooks/useAnalyser'
 import useMediaQueries from '../../hooks/useMediaQueries'
 import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
@@ -20,20 +22,18 @@ const BoxedSampler = withBoxWrapper(Sampler, {
   wrapperClassName: 'drifter-main-view-panel',
 })
 
-const MainView = ({appSettings: {
+const MainView = observer(({appSettings: {
   bpm,
   resetInterval,
 }}) => {
   const {balance} = samplerStore
-
-  const [isPlaying, setPlaying] = useState(false)
-  const [loopLengthInSixteenths, setLoopLengthInSixteenths] = useState(20)
+  const {isPlaying, loopLengthInSixteenths} = transportStore
 
   useMediaQueries({
-    '(max-width: 600px)': setLoopLengthInSixteenths.bind(null, 4),
-    '(min-width: 600px) and (max-width: 800px)': setLoopLengthInSixteenths.bind(null, 8),
-    '(min-width: 800px) and (max-width: 1200px)': setLoopLengthInSixteenths.bind(null, 16),
-    '(min-width: 1200px)': setLoopLengthInSixteenths.bind(null, 32),
+    '(max-width: 600px)': action(() => (transportStore.loopLengthInSixteenths = 4)),
+    '(min-width: 600px) and (max-width: 800px)': action(() => (transportStore.loopLengthInSixteenths = 8)),
+    '(min-width: 800px) and (max-width: 1200px)': action(() => (transportStore.loopLengthInSixteenths = 16)),
+    '(min-width: 1200px)': action(() => (transportStore.loopLengthInSixteenths = 32)),
   })
 
   const fixedSamplerAnalyser = useAnalyser()
@@ -49,8 +49,8 @@ const MainView = ({appSettings: {
         className="drifter-main-view-panel-center"
         bpm={bpm}
         loopLengthInSixteenths={loopLengthInSixteenths}
-        onPlay={() => setPlaying(true)}
-        onStop={() => setPlaying(false)}
+        onPlay={action(() => (transportStore.isPlaying = true))}
+        onStop={action(() => (transportStore.isPlaying = false))}
       />
       <BoxedSampler
         bpm={bpm}
@@ -76,7 +76,7 @@ const MainView = ({appSettings: {
       />
     </div>
   )
-}
+})
 
 
 export default MainView
