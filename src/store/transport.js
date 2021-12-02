@@ -1,12 +1,12 @@
-import persistedStore from './decorators/persisted-store'
+import {observable} from 'mobx'
 
 
-const transportStore = persistedStore(module, {
+const transportStore = observable(module, {
   isLoopOn: true,
   isPlaying: false,
   isRecording: false,
   loopLengthInSixteenths: 20,
-}, ['isLoopOn', 'isPlaying', 'isRecording', 'loopLengthInSixteenths'])
+})
 
 
 export default transportStore
