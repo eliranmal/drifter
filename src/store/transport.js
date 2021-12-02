@@ -9,5 +9,4 @@ const transportStore = observable({
 })
 
 
-
 export default transportStore
