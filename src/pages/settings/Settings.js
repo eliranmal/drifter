@@ -38,24 +38,20 @@ const Settings = () => (
           id="drifter-setting-input-reset-interval"
           min={0}
           max={64}
-          value={appSettings.resetInterval.value}
+          value={appSettings.resetIntervalValue}
           onChange={action(
-            value => (appSettings.resetInterval = {
-              ...appSettings.resetInterval,
-              value,
-            })
+            value => (appSettings.resetIntervalValue = value)
           )}
         />
         <Select
           options={[
-            { label: 'bars', value: 'bars' },
-            { label: 'beats', value: 'beats' },
+            { value: 'bars' },
+            { value: 'beats' },
           ]}
-          defaultValue={appSettings.resetInterval.unit}
-          onChange={({currentTarget: {value}}) => (appSettings.resetInterval = {
-            ...appSettings.resetInterval,
-            unit: value,
-          })}
+          defaultValue={appSettings.resetIntervalUnit}
+          onChange={action(
+            value => (appSettings.resetIntervalUnit = value)
+          )}
         />
       </div>
     </div>
