@@ -1,7 +1,7 @@
 import {observable} from 'mobx'
 
 
-const transportStore = observable(module, {
+const transportStore = observable({
   isLoopOn: true,
   isPlaying: false,
   isRecording: false,
