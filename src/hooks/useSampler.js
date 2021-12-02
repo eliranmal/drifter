@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import kebabCase from 'lodash.kebabcase'
 
 import useToneRef from './useToneRef'
+import {findEntryByValue} from '../lib/util'
 
 
 const sampleMap = {
@@ -13,12 +14,9 @@ const sampleMap = {
   },
 }
 
-const findSampleMapEntry = samplerSampleMap => Object.entries(sampleMap)
-  .find(([key, map]) => Object.is(samplerSampleMap, map))
-
 const resolveSampleMapDirName = samplerSampleMap => {
-  const sampleMapEntry = findSampleMapEntry(samplerSampleMap)
-  return sampleMapEntry && sampleMapEntry[0] && kebabCase(sampleMapEntry[0])
+  const [key] = findEntryByValue(samplerSampleMap, sampleMap)
+  return kebabCase(key)
 }
 
 const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => {

@@ -99,3 +99,6 @@ export const resolveModuleBasename = module => {
     return matches[0]
   }
 }
+
+export const findEntryByValue = (value, object) => Object.entries(object)
+  .find(([key, val]) => Object.is(value, val)) ?? []
