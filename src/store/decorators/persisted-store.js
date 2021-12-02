@@ -6,7 +6,10 @@ import {exclusiveReplacer, resolveModuleBasename} from '../../lib/util'
 
 const persistedStore = (storeModule, storeTarget, unpersistedProps) => {
   const key = `drifter-${resolveModuleBasename(storeModule)}`
-  const target = load(key) ?? storeTarget
+  const target = {
+    ...load(key),
+    ...storeTarget,
+  }
   const store = observable(target)
   autorun(
     reaction => save(key, store, exclusiveReplacer(unpersistedProps))
