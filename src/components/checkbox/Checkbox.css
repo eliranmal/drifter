@@ -1,0 +1,19 @@
+.drifter-checkbox {
+  --checkbox-size: 1rem;
+  appearance: none;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border-radius: calc(var(--checkbox-size) * .25);
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.drifter-checkbox:checked:active,
+.drifter-checkbox:hover:not(:active) {
+  background-color: var(--accent-color-complement);
+}
+
+.drifter-checkbox:active,
+.drifter-checkbox:checked:not(:active) {
+  background-color: var(--accent-color);
+}
