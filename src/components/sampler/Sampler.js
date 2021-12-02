@@ -1,6 +1,5 @@
-import {action} from 'mobx'
+import {useCallback} from 'react'
 import {observer} from 'mobx-react-lite'
-import {useEffect, useCallback} from 'react'
 
 import {
   percentageScale,
@@ -31,15 +30,7 @@ const Sampler = ({
   // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
   const {isPlaying, loopLengthInSixteenths} = transportStore
 
-  const isStoppedCallback = useCallback(() => !isPlaying, [isPlaying])
-
-  const [fixedSampler, isFixedSamplerLoaded] = useFixedSampler(triggerMatrix, sampleMap.rolandTr808, {}, fixedSamplerAnalyser)
-  const [driftingSampler1, isDriftingSampler1Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler1Analyser)
-  const [driftingSampler2, isDriftingSampler2Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler2Analyser)
-  const [driftingSampler3, isDriftingSampler3Loaded] = useDriftingSampler(triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808, {}, driftingSampler3Analyser)
-
   const asDbSpl = percentageScale(-36, 0)
-
   const [
     fixedSamplerVolume,
     driftingSampler1Volume,
@@ -49,33 +40,19 @@ const Sampler = ({
     percentageValue => asDbSpl(percentageValue)
   )
 
-  useEffect(() => {
-    if (isFixedSamplerLoaded) {
-      fixedSampler.volume.value = fixedSamplerVolume
-      // console.log('F:', fixedSampler.volume.value)
-    }
-  }, [fixedSamplerVolume, fixedSampler, isFixedSamplerLoaded])
+  const isStoppedCallback = useCallback(() => !isPlaying, [isPlaying])
 
-  useEffect(() => {
-    if (isDriftingSampler1Loaded) {
-      driftingSampler1.volume.value = driftingSampler1Volume
-      // console.log('D1:', driftingSampler1.volume.value)
-    }
-  }, [driftingSampler1Volume, driftingSampler1, isDriftingSampler1Loaded])
-
-  useEffect(() => {
-    if (isDriftingSampler2Loaded) {
-      driftingSampler2.volume.value = driftingSampler2Volume
-      // console.log('D2:', driftingSampler2.volume.value)
-    }
-  }, [driftingSampler2Volume, driftingSampler2, isDriftingSampler2Loaded])
-
-  useEffect(() => {
-    if (isDriftingSampler3Loaded) {
-      driftingSampler3.volume.value = driftingSampler3Volume
-      // console.log('D3:', driftingSampler3.volume.value)
-    }
-  }, [driftingSampler3Volume, driftingSampler3, isDriftingSampler3Loaded])
+  useFixedSampler(
+    triggerMatrix, sampleMap.rolandTr808, {volume: fixedSamplerVolume}, fixedSamplerAnalyser)
+  useDriftingSampler(
+    triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808,
+    {volume: driftingSampler1Volume}, driftingSampler1Analyser)
+  useDriftingSampler(
+    triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808,
+    {volume: driftingSampler2Volume}, driftingSampler2Analyser)
+  useDriftingSampler(
+    triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808,
+    {volume: driftingSampler3Volume}, driftingSampler3Analyser)
 
 
   return (

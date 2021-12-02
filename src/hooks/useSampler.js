@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import kebabCase from 'lodash.kebabcase'
 
 import useToneRef from './useToneRef'
@@ -25,7 +25,6 @@ const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => 
   const [loaded, setLoaded] = useState(false)
 
   const samplerKitDirName = resolveSampleMapDirName(samplerSampleMap)
-
   const samplerRef = useToneRef('Sampler', samplerSampleMap, {
     ...samplerOptions,
     baseUrl: `audio/drum-machines/${samplerKitDirName}/`,
@@ -34,6 +33,13 @@ const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => 
       samplerOptions.onload && samplerOptions.onload()
     },
   })
+
+  const {volume = 0} = samplerOptions
+  useEffect(() => {
+    if (loaded) {
+      samplerRef.volume.value = volume
+    }
+  }, [volume, samplerRef, loaded])
 
   return [analyserRef ? samplerRef.connect(analyserRef) : samplerRef, loaded, analyserRef]
 }
