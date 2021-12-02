@@ -1,10 +1,10 @@
 
 :root {
   --background-color: #4a4a4a;
-  --background-color-tint: #6a6a6ab0;
-  --background-color-shade: #2a2a2ab0;
-  --background-color-complement: #5c5c5c;
-  --background-color-complement-tint: #7c7c7cb0;
+  --background-color-tint: #7a7a7ab0;
+  --background-color-shade: #1a1a1ab0;
+  --background-color-complement: #6c6c6c;
+  --background-color-complement-tint: #9c9c9cb0;
   --background-color-complement-shade: #3c3c3cb0;
   --foreground-color: #ccc;
   --accent-color: #a3aae5;
