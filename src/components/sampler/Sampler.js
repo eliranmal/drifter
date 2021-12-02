@@ -3,7 +3,6 @@ import {observer} from 'mobx-react-lite'
 import {useEffect, useCallback} from 'react'
 
 import {
-  matrixInsertValue,
   percentageScale,
   proximityDistribution,
 } from '../../lib/util'
@@ -93,13 +92,11 @@ const Sampler = ({
                 <Input type="checkbox" className="drifter-sampler-tick"
                   key={tickIndex}
                   defaultChecked={tickValue}
-                  onChange={action(({currentTarget: {checked}}) => {
-                    // todo - encapsulate this in the store as an action
-                    const newTriggerMatrix = matrixInsertValue(
-                      triggerMatrix, channelIndex, tickIndex, +Boolean(checked)
+                  onChange={({currentTarget: {checked}}) => (
+                    samplerStore.updateTriggerMatrixValue(
+                      channelIndex, tickIndex, +Boolean(checked)
                     )
-                    samplerStore.triggerMatrix = newTriggerMatrix
-                  })}
+                  )}
                   />
               ))}
             </div>

@@ -1,4 +1,5 @@
 import persistedStore from './decorators/persisted-store'
+import {matrixInsertValue} from '../lib/util'
 
 
 const samplerStore = persistedStore(module, {
@@ -10,6 +11,12 @@ const samplerStore = persistedStore(module, {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ],
+  updateTriggerMatrixValue(row, col, value) {
+    // todo - rewrite this as a true update (non-pure) and see what happens
+    this.triggerMatrix = matrixInsertValue(
+      this.triggerMatrix, row, col, value
+    )
+  },
 })
 
 
