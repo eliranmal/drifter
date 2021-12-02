@@ -5,14 +5,15 @@ import * as Tone from 'tone'
 
 import {asTransportTime} from '../../lib/audio'
 import useKeyboard, {mapKeyboardEvents} from '../../hooks/useKeyboard'
+import appSettingsStore from '../../store/app-settings'
 import transportStore from '../../store/transport'
 import TransportButton from '../transport-button/TransportButton'
 
 import './Transport.css'
 
 
-const init = ({bpm, loop, loopLengthInSixteenths} = {}) => {
-  Tone.Transport.loop = !!loop
+const init = ({bpm, isLoopOn, loopLengthInSixteenths} = {}) => {
+  Tone.Transport.loop = !!isLoopOn
   if (bpm) {
     Tone.Transport.bpm.value = bpm
   }
@@ -29,17 +30,17 @@ const stop = () => Tone.loaded()
 
 
 const Transport = ({
-  bpm,
-  loop = true,
   onPlay = () => {},
   onStop = () => {},
   onRecord = () => {},
 }) => {
   const {
+    isLoopOn,
     isPlaying,
     isRecording,
     loopLengthInSixteenths,
   } = transportStore
+  const {bpm} = appSettingsStore
 
   const playListener = useCallback(
     () => !isPlaying && play()
@@ -67,8 +68,8 @@ const Transport = ({
     [isPlaying, playListener, stopListener])
 
   useEffect(() => {
-    init({bpm, loop, loopLengthInSixteenths})
-  }, [bpm, loop, loopLengthInSixteenths])
+    init({bpm, isLoopOn, loopLengthInSixteenths})
+  }, [bpm, isLoopOn, loopLengthInSixteenths])
 
   useKeyboard(useCallback(e => mapKeyboardEvents([
     // space

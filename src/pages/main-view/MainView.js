@@ -1,7 +1,6 @@
 import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
 
-import appSettingsStore from '../../store/app-settings'
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
 import useAnalyser from '../../hooks/useAnalyser'
@@ -17,9 +16,7 @@ import './MainView.css'
 
 
 const MainView = () => {
-  const {bpm} = appSettingsStore
   const {balance} = samplerStore
-  const {loopLengthInSixteenths} = transportStore
 
   useMediaQueries({
     '(max-width: 600px)': action(() => (transportStore.loopLengthInSixteenths = 4)),
@@ -39,12 +36,9 @@ const MainView = () => {
       <Heading text="drifter" />
       <Transport
         className="drifter-main-view-panel-center"
-        bpm={bpm}
       />
       <Sampler
         className="drifter-main-view-panel"
-        bpm={bpm}
-        loopLengthInSixteenths={loopLengthInSixteenths}
         fixedSamplerAnalyser={fixedSamplerAnalyser}
         driftingSampler1Analyser={driftingSampler1Analyser}
         driftingSampler2Analyser={driftingSampler2Analyser}
