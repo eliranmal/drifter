@@ -9,9 +9,9 @@ import useMediaQueries from '../../hooks/useMediaQueries'
 
 import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
+import Analysers from '../../components/analysers/Analysers'
 import Transport from '../../components/transport/Transport'
 import RangeInput from '../../components/range-input/RangeInput'
-import Analysers from '../../components/analysers/Analysers'
 
 import './MainView.css'
 

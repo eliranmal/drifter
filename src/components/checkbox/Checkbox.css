@@ -3,7 +3,7 @@
   appearance: none;
   width: var(--checkbox-size);
   height: var(--checkbox-size);
-  border-radius: calc(var(--checkbox-size) * .25);
+  border-radius: calc(var(--checkbox-size) * .35);
   background-color: var(--background-color-complement);
   cursor: pointer;
 }

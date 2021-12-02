@@ -13,7 +13,7 @@ import useFixedSampler from '../../hooks/useFixedSampler'
 import useDriftingSampler from '../../hooks/useDriftingSampler'
 import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
 
-import Input from '../input/Input'
+import Checkbox from '../checkbox/Checkbox'
 
 import './Sampler.css'
 
@@ -89,15 +89,14 @@ const Sampler = ({
           {triggerMatrix.map((channel, channelIndex) => (
             <div key={channelIndex} className="drifter-sampler-channel">
               {channel.map((tickValue, tickIndex) => (
-                <Input type="checkbox" className="drifter-sampler-tick"
+                <Checkbox
+                  className="drifter-sampler-tick"
                   key={tickIndex}
                   defaultChecked={tickValue}
-                  onChange={({currentTarget: {checked}}) => (
-                    samplerStore.updateTriggerMatrixValue(
-                      channelIndex, tickIndex, +Boolean(checked)
-                    )
+                  onChange={checked => samplerStore.updateTriggerMatrixValue(
+                    channelIndex, tickIndex, +checked
                   )}
-                  />
+                />
               ))}
             </div>
           ))}

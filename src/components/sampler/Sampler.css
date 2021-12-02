@@ -78,21 +78,7 @@
 }
 
 .drifter-sampler-channel .drifter-sampler-tick {
-  appearance: none;
   width: calc(100% / var(--sampler-ticks));
   height: 100%;
-  border-radius: calc(var(--channel-height) * .25);
   border: calc(var(--channel-height) * .1) solid var(--background-color);
-  background-color: var(--background-color-complement);
-  cursor: pointer;
-}
-
-.drifter-sampler-channel .drifter-sampler-tick:checked:active,
-.drifter-sampler-channel .drifter-sampler-tick:hover:not(:active) {
-  background-color: var(--accent-color-complement);
-}
-
-.drifter-sampler-channel .drifter-sampler-tick:active,
-.drifter-sampler-channel .drifter-sampler-tick:checked:not(:active) {
-  background-color: var(--accent-color);
 }
