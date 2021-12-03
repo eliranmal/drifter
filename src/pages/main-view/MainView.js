@@ -52,6 +52,7 @@ const MainView = () => {
       />
       <Analysers
         className="drifter-main-view-panel-end"
+        data-tip="shows waveforms for all samplers"
         fixedSamplerAnalyser={fixedSamplerAnalyser}
         driftingSampler1Analyser={driftingSampler1Analyser}
         driftingSampler2Analyser={driftingSampler2Analyser}

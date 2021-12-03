@@ -14,9 +14,13 @@ const Analysers = ({
   driftingSampler1Analyser,
   driftingSampler2Analyser,
   driftingSampler3Analyser,
+  ...props
 }) => (
-  <div className={`drifter-analysers ${className}`}>
-  <Analyser colors={{active: 'lightblue'}} analyser={driftingSampler1Analyser} />
+  <div
+    {...props}
+    className={`drifter-analysers ${className}`}
+  >
+    <Analyser colors={{active: 'lightblue'}} analyser={driftingSampler1Analyser} />
     <Analyser colors={{active: 'lightgreen'}} analyser={driftingSampler2Analyser} />
     <Analyser colors={{active: 'fuchsia'}} analyser={driftingSampler3Analyser} />
     <Analyser analyser={fixedSamplerAnalyser} />
