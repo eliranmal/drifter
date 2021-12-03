@@ -58,7 +58,13 @@ const Sampler = ({
       className={`drifter-sampler ${isPlaying ? 'drifter-sampler-running' : ''} ${className}`}
       style={{ '--sampler-ticks': loopLengthInSixteenths }}
     >
-      <div className="drifter-sampler-timeline">
+      <div
+        className="drifter-sampler-timeline"
+        data-tip={`
+          use the sequencer by toggling the pads on or off.<br/>
+          each row represent a channel, with has its own sample, while columns represent sixteenth note intervals.
+        `}
+      >
         <div className="drifter-sampler-tape"></div>
         <div className="drifter-sampler-channels">
           {triggerMatrix.map((channel, channelIndex) => (
