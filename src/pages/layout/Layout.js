@@ -21,8 +21,8 @@ const Layout = ({
     </main>
     <Checkbox
       className="drifter-layout-sidebar-pin"
-      value={layoutStore.isMenuOpen}
-      onChange={action(value => (layoutStore.isMenuOpen = true))}
+      checked={layoutStore.isMenuOpen}
+      onChange={action(checked => (layoutStore.isMenuOpen = checked))}
     />
     <aside className="drifter-layout-sidebar"
       data-heading={spaceOut(SideBar.displayName)}>
