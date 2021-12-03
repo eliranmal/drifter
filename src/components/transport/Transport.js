@@ -5,7 +5,6 @@ import * as Tone from 'tone'
 
 import {asTransportTime} from '../../lib/audio'
 import useKeyboard, {mapKeyboardEvents} from '../../hooks/useKeyboard'
-import appSettingsStore from '../../store/app-settings'
 import transportStore from '../../store/transport'
 import TransportButton from '../transport-button/TransportButton'
 
@@ -35,12 +34,12 @@ const Transport = ({
   onRecord = () => {},
 }) => {
   const {
+    bpm,
     isLoopOn,
     isPlaying,
     isRecording,
     loopLengthInSixteenths,
   } = transportStore
-  const {bpm} = appSettingsStore
 
   const playListener = useCallback(
     () => !isPlaying && play()

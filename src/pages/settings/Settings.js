@@ -1,7 +1,9 @@
 import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
 
-import appSettings from '../../store/app-settings'
+import samplerStore from '../../store/sampler'
+import transportStore from '../../store/transport'
+
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
 import NumberInput from '../../components/number-input/NumberInput'
@@ -21,9 +23,9 @@ const Settings = () => (
         id="drifter-setting-input-bpm"
         min={1}
         max={1000}
-        value={appSettings.bpm}
+        value={transportStore.bpm}
         onChange={action(
-          value => (appSettings.bpm = value)
+          value => (transportStore.bpm = value)
         )}
       />
     </div>
@@ -38,9 +40,9 @@ const Settings = () => (
           id="drifter-setting-input-reset-interval"
           min={0}
           max={64}
-          value={appSettings.resetIntervalValue}
+          value={samplerStore.resetIntervalValue}
           onChange={action(
-            value => (appSettings.resetIntervalValue = value)
+            value => (samplerStore.resetIntervalValue = value)
           )}
         />
         <Select
@@ -48,9 +50,9 @@ const Settings = () => (
             { value: 'bars' },
             { value: 'beats' },
           ]}
-          defaultValue={appSettings.resetIntervalUnit}
+          defaultValue={samplerStore.resetIntervalUnit}
           onChange={action(
-            value => (appSettings.resetIntervalUnit = value)
+            value => (samplerStore.resetIntervalUnit = value)
           )}
         />
       </div>

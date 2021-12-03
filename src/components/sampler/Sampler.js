@@ -5,7 +5,6 @@ import {
   percentageScale,
   proximityDistribution,
 } from '../../lib/util'
-import appSettingsStore from '../../store/app-settings'
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
 import {sampleMap} from '../../hooks/useSampler'
@@ -25,10 +24,9 @@ const Sampler = ({
   driftingSampler2Analyser,
   driftingSampler3Analyser,
 }) => {
-  const {bpm} = appSettingsStore
   const {balance, triggerMatrix} = samplerStore
   // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
-  const {isPlaying, loopLengthInSixteenths} = transportStore
+  const {bpm, isPlaying, loopLengthInSixteenths} = transportStore
 
   const asDbSpl = percentageScale(-36, 0)
   const [
