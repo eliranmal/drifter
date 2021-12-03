@@ -5,3 +5,7 @@
   padding: .75em 1em !important;
   font-size: .7rem !important;
 }
+
+.drifter-react-tooltip .multi-line {
+  text-align: inherit !important;
+}

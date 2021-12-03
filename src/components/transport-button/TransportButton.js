@@ -20,6 +20,7 @@ const TransportButton = ({type, isActive, className, ...props}) => (
       className,
     ].filter(Boolean).join(' ')}
     data-tip={tooltipByType[type]}
+    data-class="drifter-transport-button-tooltip"
   ></button>
 )
 

@@ -69,3 +69,7 @@
   border-radius: calc(var(--transport-icon-size) * .5);
   border-width: calc(var(--transport-icon-size) * .5);
 }
+
+.drifter-transport-button-tooltip .multi-line {
+  text-align: center;
+}
