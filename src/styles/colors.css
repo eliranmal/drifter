@@ -1,12 +1,13 @@
 
 :root {
-  --background-color: #4a4a4a;
-  --background-color-tint: #7a7a7ab0;
-  --background-color-shade: #1a1a1ab0;
-  --background-color-complement: #6c6c6c;
-  --background-color-complement-tint: #9c9c9cb0;
-  --background-color-complement-shade: #3c3c3cb0;
+  --background-color: #474747;
+  --background-color-tint: #777777b0;
+  --background-color-shade: #1c1c1cb0;
+  --background-color-complement: #696969;
+  --background-color-complement-tint: #999999b0;
+  --background-color-complement-shade: #363636b0;
   --foreground-color: #ccc;
+  --foreground-color-complement: #222;
   --accent-color: #a3aae5;
   --accent-color-complement: #e4dda3;
 }
