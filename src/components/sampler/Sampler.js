@@ -67,7 +67,7 @@ const Sampler = ({
                 <Checkbox
                   className="drifter-sampler-tick"
                   key={tickIndex}
-                  defaultChecked={tickValue}
+                  defaultChecked={!!tickValue}
                   onChange={checked => samplerStore.updateTriggerMatrixValue(
                     channelIndex, tickIndex, +checked
                   )}
