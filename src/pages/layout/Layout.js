@@ -1,4 +1,9 @@
-import Input from '../../components/input/Input'
+import {action} from 'mobx'
+import {observer} from 'mobx-react-lite'
+
+import layoutStore from '../../store/layout'
+
+import Checkbox from '../../components/checkbox/Checkbox'
 
 import './Layout.css'
 
@@ -14,9 +19,10 @@ const Layout = ({
     <main className="drifter-layout-main">
       { Main ? <Main {...mainProps} /> : children }
     </main>
-    <Input
+    <Checkbox
       className="drifter-layout-sidebar-pin"
-      type="checkbox"
+      value={layoutStore.isMenuOpen}
+      onChange={action(value => (layoutStore.isMenuOpen = true))}
     />
     <aside className="drifter-layout-sidebar"
       data-heading={spaceOut(SideBar.displayName)}>
@@ -31,4 +37,4 @@ const spaceOut = term => term ?
     ''
 
 
-export default Layout
+export default observer(Layout)

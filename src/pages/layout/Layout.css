@@ -33,12 +33,12 @@
   left: .75rem;
 }
 
-.drifter-layout-sidebar:hover {
+.drifter-layout-sidebar:hover,
+.drifter-layout .drifter-layout-sidebar-pin:checked + .drifter-layout-sidebar {
   width: var(--aside-width);
 }
 
 .drifter-layout .drifter-layout-sidebar-pin {
-  appearance: none;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -48,7 +48,7 @@
   justify-content: center;
   width: var(--panel-pad);
   height: var(--panel-pad);
-  cursor: pointer;
+  background-color: transparent !important;
 }
 
 .drifter-layout .drifter-layout-sidebar-pin:before {
@@ -58,10 +58,6 @@
 
 .drifter-layout .drifter-layout-sidebar-pin:checked:before {
   color: var(--accent-color-complement);
-}
-
-.drifter-layout .drifter-layout-sidebar-pin:checked + .drifter-layout-sidebar {
-  width: var(--aside-width);
 }
 
 /* avoid the sidebar jumping back when it's open and the user hovers over the pin button */
