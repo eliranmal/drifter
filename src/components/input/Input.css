@@ -6,7 +6,7 @@
   margin: 0;
   outline: none;
   border: 0 none;
-  border-radius: calc(var(--input-height) * .5);
+  border-radius: calc(var(--input-height) * .35);
   font: bold 1rem trench, sans-serif;
   color: var(--accent-color);
   background-color: transparent;

@@ -11,9 +11,8 @@
   --select-height: 1.5rem;
   padding-inline-start: .5em;
   padding-inline-end: 0;
-  border-radius: calc(var(--select-height) * .5);
+  border-radius: calc(var(--select-height) * .35);
   font: bold 1rem trench, sans-serif;
-  background-color: var(--background-color-complement);
 }
 
 .drifter-select:hover,
