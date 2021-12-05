@@ -16,20 +16,19 @@ const activeColors = [
   'var(--pink)',
 ]
 
-const analysersDisplayMode = {
+const analysersLayout = {
   flow: 'flow',
   stack: 'stack',
 }
 
 const Analysers = ({
   className = '',
-  // todo - expose this as a setting
-  displayMode = analysersDisplayMode.flow,
+  layout = analysersLayout.flow,
   ...props
 }) => (
   <div
     {...props}
-    className={`drifter-analysers drifter-analysers-${displayMode} ${className}`}
+    className={`drifter-analysers drifter-analysers-${layout} ${className}`}
   >
     {observerValues(analysersStore).map((values, index, arr) => (
       <Analyser
@@ -42,7 +41,7 @@ const Analysers = ({
 )
 
 
-export {analysersDisplayMode}
+export {analysersLayout}
 
 export default withBoxWrapper(observer(Analysers), {
   useWrapper: false,

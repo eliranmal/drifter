@@ -1,8 +1,10 @@
 import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
 
+import layoutStore from '../../store/layout'
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
+import {analysersLayout} from '../../components/analysers/Analysers'
 
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
@@ -56,6 +58,24 @@ const Settings = () => (
           )}
         />
       </div>
+    </div>
+    <div
+      className="drifter-setting-analysers-layout"
+      data-tip="the layout mode for the analysers box"
+      data-place="left"
+    >
+      <Label htmlFor="drifter-setting-select-analysers-layout">analysers layout:</Label>
+      <Select
+        id="drifter-setting-select-analysers-layout"
+        options={[
+          { value: analysersLayout.flow },
+          { value: analysersLayout.stack },
+        ]}
+        defaultValue={layoutStore.analysersLayout}
+        onChange={action(
+          value => (layoutStore.analysersLayout = value)
+        )}
+      />
     </div>
   </div>
 )

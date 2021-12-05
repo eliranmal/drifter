@@ -1,6 +1,7 @@
 import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
 
+import layoutStore from '../../store/layout'
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
 import useMediaQueries from '../../hooks/useMediaQueries'
@@ -43,6 +44,7 @@ const MainView = () => {
       <Analysers
         className="drifter-main-view-panel-end"
         data-tip="shows waveforms for all samplers"
+        layout={layoutStore.analysersLayout}
       />
     </div>
   )
