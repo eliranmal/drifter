@@ -93,12 +93,5 @@ export const unmarshall = data => {
 
 const basenameRegex = /[^/\\]*(?=[.][a-zA-Z]+$)/
 
-export const resolveModuleBasename = module => {
-  const matches = basenameRegex.exec(module.id)
-  if (matches && matches.length) {
-    return matches[0]
-  }
-}
-
 export const findEntryByValue = (value, object) => Object.entries(object)
   .find(([key, val]) => Object.is(value, val)) ?? []

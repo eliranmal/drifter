@@ -1,7 +1,7 @@
 import {toJS, autorun, observable} from 'mobx'
 
 import {load, save} from '../../lib/storage'
-import {exclusiveReplacer, resolveModuleBasename} from '../../lib/util'
+import {exclusiveReplacer} from '../../lib/util'
 
 // this implementation uses observable() as it excludes (computed) getters from
 // the JS representation (unilke using makeAutoObservable(), or extendObservable()
@@ -11,11 +11,12 @@ const rehydrateStore = (storeTarget, savedStore) => (
   observable(Object.assign(storeTarget, savedStore ?? {}))
 )
 
-const persistedStore = (storeModule, storeTarget, unpersistedProps) => {
-  const key = `drifter-${resolveModuleBasename(storeModule)}`
+const persistedStore = (storeNamespace, storeTarget, unpersistedProps) => {
+  const key = `drifter-${storeNamespace}`
   const store = rehydrateStore(storeTarget, load(key))
   autorun(
     reaction => (
+      // fixme - exclude redundant saves resulting from changes of unpersisted props
       save(key, toJS(store), exclusiveReplacer(unpersistedProps))
     )
   )

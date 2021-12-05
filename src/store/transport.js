@@ -1,6 +1,6 @@
 import persistedStore from './decorators/persisted-store'
 
-const transportStore = persistedStore(module, {
+const transportStore = persistedStore('transport', {
   bpm: 99,
   isLoopOn: true,
   isPlaying: false,

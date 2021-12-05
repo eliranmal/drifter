@@ -113,9 +113,6 @@ const fixtureMap = {
     ['{"foo":1,"bar":() => "bar"}', void 0],
     ['["a",() => "bar"]', void 0],
   ]),
-  resolveModuleBasename: [
-    [module, 'util.test']
-  ],
 }
 
 const customTestMap = {

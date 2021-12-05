@@ -2,7 +2,7 @@ import persistedStore from './decorators/persisted-store'
 import {matrixInsertValue} from '../lib/util'
 
 
-const samplerStore = persistedStore(module, {
+const samplerStore = persistedStore('sampler', {
   // 0: fixed sampler full volume --> 100: drifting samplers full volume
   balance: 0,
   triggerMatrix: [
