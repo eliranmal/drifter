@@ -90,8 +90,5 @@ export const unmarshall = data => {
   return unmarshalledData
 }
 
-
-const basenameRegex = /[^/\\]*(?=[.][a-zA-Z]+$)/
-
 export const findEntryByValue = (value, object) => Object.entries(object)
   .find(([key, val]) => Object.is(value, val)) ?? []
