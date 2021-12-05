@@ -2,9 +2,9 @@ import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
 import {useEffect, useCallback} from 'react'
 import * as Tone from 'tone'
+import {useKeyboard, mapKeyboardEvents} from '@eliranmal/react-hooks'
 
 import {asTransportTime} from '../../lib/audio'
-import useKeyboard, {mapKeyboardEvents} from '../../hooks/useKeyboard'
 import transportStore from '../../store/transport'
 import TransportButton from '../transport-button/TransportButton'
 
@@ -70,7 +70,7 @@ const Transport = ({
     init({bpm, isLoopOn, loopLengthInSixteenths})
   }, [bpm, isLoopOn, loopLengthInSixteenths])
 
-  useKeyboard(useCallback(e => mapKeyboardEvents([
+  useKeyboard(mapKeyboardEvents([
     // space
     [32, () => toggleListener()],
     // shift+r
@@ -78,7 +78,7 @@ const Transport = ({
       playListener()
       recordListener()
     }],
-  ])(e), [playListener, recordListener, toggleListener]))
+  ]))
 
   return (
     <div className="drifter-transport">

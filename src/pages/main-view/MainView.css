@@ -7,6 +7,24 @@
   margin: var(--panel-pad);
 }
 
+.drifter-main-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin-block-end: -1rem;
+}
+
+.drifter-main-view-header > * {
+  margin-block-end: 1rem;
+}
+
+.drifter-main-view-header > :last-child {
+  flex-grow: 1;
+  margin-inline-end: 2rem;
+}
+
 .drifter-main-view-panel,
 .drifter-main-view-panel-center,
 .drifter-main-view-panel-end {
