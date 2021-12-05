@@ -8,7 +8,7 @@ import Analyser from './analyser/Analyser'
 import './Analysers.css'
 
 
-const activeColors = [
+const analyserColors = [
   'var(--light-yellow)',
   'var(--green)',
   'var(--blue)',
@@ -34,7 +34,7 @@ const Analysers = ({
       <Analyser
         key={index}
         values={values}
-        colors={{active: activeColors[index % arr.length]}}
+        color={analyserColors[index % arr.length]}
       />
     ))}
   </div>
