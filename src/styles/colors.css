@@ -1,12 +1,26 @@
 
 :root {
-  --background-color: #474747;
-  --background-color-tint: #777777b0;
-  --background-color-shade: #1c1c1cb0;
-  --background-color-complement: #696969;
-  --background-color-complement-tint: #999999b0;
-  --background-color-complement-shade: #363636b0;
-  --foreground-color: #d4d4d4;
-  --accent-color: #a3aae5;
-  --accent-color-complement: #e4dda3;
+  --light-purple: #a3aae5;
+  --light-yellow: #e4dda3;
+  --green: lightgreen;
+  --blue: skyblue;
+  --purple: mediumpurple;
+  --pink: lightpink;
+  --gray: #696969;
+  --gray-tint: #999999b0;
+  --gray-shade: #363636b0;
+  --dark-gray: #474747;
+  --dark-gray-tint: #777777b0;
+  --dark-gray-shade: #1c1c1cb0;
+  --light-gray: #d4d4d4;
+
+  --background-color: var(--dark-gray);
+  --background-color-tint: var(--dark-gray-tint);
+  --background-color-shade: var(--dark-gray-shade);
+  --background-color-complement: var(--gray);
+  --background-color-complement-tint: var(--gray-tint);
+  --background-color-complement-shade: var(--gray-shade);
+  --foreground-color: var(--light-gray);
+  --accent-color: var(--light-purple);
+  --accent-color-complement: var(--light-yellow);
 }

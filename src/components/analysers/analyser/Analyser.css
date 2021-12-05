@@ -1,9 +1,25 @@
 .drifter-analyser {
-  --visualization-box-height: 2.4rem;
+  /* public properties */
+  --analyser-color: var(--accent-color-complement);
+  /* protected properties */
+  --analyser-height: 2.4rem;
+  --analyser-line-height: .125rem;
   display: flex;
   align-items: flex-end;
   justify-content: stretch;
-  height: var(--visualization-box-height);
+  height: var(--analyser-height);
   padding: 0;
-  border-radius: calc(var(--visualization-box-height) * .3);
+  border-radius: calc(var(--analyser-height) * .3);
+}
+
+.drifter-analyser-bar {
+  --analyser-bar-amplitude: 0;
+  flex-grow: 1;
+  height: calc(
+    (var(--analyser-height) * .5) +
+    /* for a 'waveform' type analyser, the amplitude value will be in the range [-1, 1] */
+    (var(--analyser-bar-amplitude) * 50%) +
+    (var(--analyser-line-height) * .5)
+  );
+  border-top: var(--analyser-line-height) solid var(--analyser-color);
 }

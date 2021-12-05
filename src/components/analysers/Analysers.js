@@ -1,33 +1,49 @@
-
-// todo - create a visualization based on the deviation of the tick actual delay
-//        from the intended delay (maybe a simple meter)
-
+import {observer} from 'mobx-react-lite'
+import {values as observerValues} from 'mobx'
+import analysersStore from '../../store/analysers'
 import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
+
 import Analyser from './analyser/Analyser'
 
 import './Analysers.css'
 
 
+const activeColors = [
+  'var(--light-yellow)',
+  'var(--green)',
+  'var(--blue)',
+  'var(--purple)',
+  'var(--pink)',
+]
+
+const analysersDisplayMode = {
+  flow: 'flow',
+  stack: 'stack',
+}
+
 const Analysers = ({
   className = '',
-  fixedSamplerAnalyser,
-  driftingSampler1Analyser,
-  driftingSampler2Analyser,
-  driftingSampler3Analyser,
+  // todo - expose this as a setting
+  displayMode = analysersDisplayMode.flow,
   ...props
 }) => (
   <div
     {...props}
-    className={`drifter-analysers ${className}`}
+    className={`drifter-analysers drifter-analysers-${displayMode} ${className}`}
   >
-    <Analyser colors={{active: 'lightblue'}} analyser={driftingSampler1Analyser} />
-    <Analyser colors={{active: 'lightgreen'}} analyser={driftingSampler2Analyser} />
-    <Analyser colors={{active: 'fuchsia'}} analyser={driftingSampler3Analyser} />
-    <Analyser analyser={fixedSamplerAnalyser} />
+    {observerValues(analysersStore).map((values, index, arr) => (
+      <Analyser
+        key={index}
+        values={values}
+        colors={{active: activeColors[index % arr.length]}}
+      />
+    ))}
   </div>
 )
 
 
-export default withBoxWrapper(Analysers, {
+export {analysersDisplayMode}
+
+export default withBoxWrapper(observer(Analysers), {
   useWrapper: false,
 })

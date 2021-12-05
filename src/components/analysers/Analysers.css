@@ -1,9 +1,17 @@
 
-.drifter-analysers {
+.drifter-analysers.drifter-analysers-flow {
+  display: flex;
+}
+
+.drifter-analysers.drifter-analysers-flow > * {
+  flex-grow: 1;
+}
+
+.drifter-analysers.drifter-analysers-stack {
   display: grid;
 }
 
-.drifter-analysers > * {
+.drifter-analysers.drifter-analysers-stack > * {
   /* make all grid children overlap on a single cell */
   grid-row-start: 1;
   grid-row-start: 1;

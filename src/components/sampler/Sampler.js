@@ -1,5 +1,7 @@
-import {useCallback} from 'react'
+import {useEffect, useCallback} from 'react'
+import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
+import {useAnimationFrame} from '@eliranmal/react-hooks'
 
 import {
   percentageScale,
@@ -7,7 +9,9 @@ import {
 } from '../../lib/util'
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
+import analysersStore from '../../store/analysers'
 import {sampleMap} from '../../hooks/useSampler'
+import useAnalyser from '../../hooks/useAnalyser'
 import useFixedSampler from '../../hooks/useFixedSampler'
 import useDriftingSampler from '../../hooks/useDriftingSampler'
 import {withBoxWrapper} from '../../hoc/box-wrapper/BoxWrapper'
@@ -19,10 +23,6 @@ import './Sampler.css'
 
 const Sampler = ({
   className,
-  fixedSamplerAnalyser,
-  driftingSampler1Analyser,
-  driftingSampler2Analyser,
-  driftingSampler3Analyser,
 }) => {
   const {balance, triggerMatrix} = samplerStore
   // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
@@ -40,6 +40,11 @@ const Sampler = ({
 
   const isStoppedCallback = useCallback(() => !isPlaying, [isPlaying])
 
+  const fixedSamplerAnalyser = useAnalyser()
+  const driftingSampler1Analyser = useAnalyser()
+  const driftingSampler2Analyser = useAnalyser()
+  const driftingSampler3Analyser = useAnalyser()
+
   useFixedSampler(
     triggerMatrix, sampleMap.rolandTr808, {volume: fixedSamplerVolume}, fixedSamplerAnalyser)
   useDriftingSampler(
@@ -53,6 +58,20 @@ const Sampler = ({
     {volume: driftingSampler3Volume}, driftingSampler3Analyser)
 
 
+  useAnimationFrame(
+    () => Object.entries({
+      f: fixedSamplerAnalyser,
+      d1: driftingSampler1Analyser,
+      d2: driftingSampler2Analyser,
+      d3: driftingSampler3Analyser,
+    }).forEach(([key, analyser]) => (
+      analysersStore[key] = Array.from(analyser.getValue())
+    )),
+    isStoppedCallback,
+    action
+  )
+
+
   return (
     <div
       className={`drifter-sampler ${isPlaying ? 'drifter-sampler-running' : ''} ${className}`}
@@ -61,8 +80,8 @@ const Sampler = ({
       <div
         className="drifter-sampler-timeline"
         data-tip={`
-          use the sequencer by toggling the pads on or off.<br/>
-          each row represent a channel, with has its own sample, while columns represent sixteenth note intervals.
+          toggle the pads to add or remove notes.<br/>
+          rows are channels, and columns represent sixteenth note intervals.
         `}
       >
         <div className="drifter-sampler-tape"></div>

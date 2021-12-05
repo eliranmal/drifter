@@ -3,7 +3,6 @@ import {observer} from 'mobx-react-lite'
 
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
-import useAnalyser from '../../hooks/useAnalyser'
 import useMediaQueries from '../../hooks/useMediaQueries'
 
 import Heading from '../../components/heading/Heading'
@@ -25,11 +24,6 @@ const MainView = () => {
     '(min-width: 1200px)': action(() => (transportStore.loopLengthInSixteenths = 32)),
   })
 
-  const fixedSamplerAnalyser = useAnalyser()
-  const driftingSampler1Analyser = useAnalyser()
-  const driftingSampler2Analyser = useAnalyser()
-  const driftingSampler3Analyser = useAnalyser()
-
 
   return (
     <div className="drifter-main-view">
@@ -39,10 +33,6 @@ const MainView = () => {
       />
       <Sampler
         className="drifter-main-view-panel"
-        fixedSamplerAnalyser={fixedSamplerAnalyser}
-        driftingSampler1Analyser={driftingSampler1Analyser}
-        driftingSampler2Analyser={driftingSampler2Analyser}
-        driftingSampler3Analyser={driftingSampler3Analyser}
       />
       <RangeInput
         className="drifter-main-view-panel-center"
@@ -53,10 +43,6 @@ const MainView = () => {
       <Analysers
         className="drifter-main-view-panel-end"
         data-tip="shows waveforms for all samplers"
-        fixedSamplerAnalyser={fixedSamplerAnalyser}
-        driftingSampler1Analyser={driftingSampler1Analyser}
-        driftingSampler2Analyser={driftingSampler2Analyser}
-        driftingSampler3Analyser={driftingSampler3Analyser}
       />
     </div>
   )
