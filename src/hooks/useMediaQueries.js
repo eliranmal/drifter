@@ -1,15 +1,18 @@
 import {useEffect} from 'react'
 
 
-const useMediaQueries = listenerByQueryMap => {
+const useMediaQueries = (
+  listenerByQueryMap = {},
+  queryListenerDecorator = fn => fn
+) => {
 
   useEffect(() => {
     const listenerByQueryMappings = Object.entries(listenerByQueryMap)
 
     const mediaQueries = listenerByQueryMappings.map(([queryString, queryListener]) => ([
-        window.matchMedia(queryString),
-        e => e.matches && queryListener(),
-      ]))
+      window.matchMedia(queryString),
+      queryListenerDecorator(e => e.matches && queryListener()),
+    ]))
 
     const queryMatchIndex = mediaQueries.findIndex(([query]) => query.matches)
     if (queryMatchIndex !== -1) {
