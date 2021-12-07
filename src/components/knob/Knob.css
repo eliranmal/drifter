@@ -5,9 +5,9 @@
   --knob-min: 0;
   --knob-max: 100;
   /* protected properties */
-  --knob-track-length: calc(var(--range-input-track-height) * 8);
+  --knob-track-length: calc(var(--range-input-track-height) * 6);
   --knob-dial-size: calc(var(--range-input-track-height) * 4);
-  --knob-mark-size: calc(var(--knob-dial-size) * .125);
+  --knob-mark-size: calc(var(--knob-dial-size) * .0667);
 
   position: relative;
   left: calc((
@@ -36,14 +36,14 @@
   top: 0;
   height: var(--knob-dial-size);
   border-radius: 50%;
-  border: calc(var(--knob-mark-size) * .5) solid var(--accent-color);
+  border: var(--knob-mark-size) solid var(--accent-color);
 }
 
 /* knob mark */
 .drifter-knob:after {
   top: calc((var(--knob-dial-size) * .5) - (var(--knob-mark-size) * .5));
   height: var(--knob-mark-size);
-  border-left: calc(var(--knob-mark-size) * 2) solid var(--accent-color-complement);
+  border-left: calc(var(--knob-dial-size) * .333) solid var(--accent-color-complement);
   transform: rotate(calc(((300deg / var(--knob-max)) * var(--knob-value)) + 30deg));
 }
 
