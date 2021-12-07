@@ -5,7 +5,7 @@ import useSampler from './useSampler'
 
 
 const useDriftingSampler = (
-  triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback,
+  triggerMatrix, bpm, loopLengthInSixteenths, chaosPercentage, isStoppedCallback,
   ...samplerArgs
 ) => {
   const [sampler, isSamplerLoaded] = useSampler(...samplerArgs)
@@ -15,10 +15,10 @@ const useDriftingSampler = (
   useEffect(() => {
     if (isSamplerLoaded) {
       audio.executeTriggers(
-        sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths
+        sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths, chaosPercentage
       )
     }
-  }, [isSamplerLoaded, sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths])
+  }, [isSamplerLoaded, sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths, chaosPercentage])
 
   return [sampler, isSamplerLoaded]
 }

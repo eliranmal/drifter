@@ -16,7 +16,6 @@ import './MainView.css'
 
 
 const MainView = () => {
-  const {balance} = samplerStore
 
   useMediaQueries({
     '(max-width: 600px)': () => (transportStore.loopLengthInSixteenths = 4),
@@ -38,7 +37,7 @@ const MainView = () => {
       <RangeInput
         className="drifter-main-view-panel-center"
         data-tip="set the balance between the fixed sampler's signal and the drifting samplers' signal"
-        defaultValue={balance}
+        defaultValue={samplerStore.balance}
         onChange={action(value => (samplerStore.balance = value))}
       />
       <Analysers

@@ -15,6 +15,7 @@ const samplerStore = persistedStore('sampler', {
     value: 4,
     unit: 'bars',
   },
+  chaos: 0,
   get resetIntervalValue() {
     return this.resetInterval.value
   },

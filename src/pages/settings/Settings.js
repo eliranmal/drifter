@@ -6,6 +6,7 @@ import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
 import {analysersLayout} from '../../components/analysers/Analysers'
 
+import Knob from '../../components/knob/Knob'
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
 import NumberInput from '../../components/number-input/NumberInput'
@@ -74,6 +75,22 @@ const Settings = () => (
         defaultValue={layoutStore.analysersLayout}
         onChange={action(
           value => (layoutStore.analysersLayout = value)
+        )}
+      />
+    </div>
+    <div
+      className="drifter-setting-chaos"
+      data-tip="add undeterministic time drift by making the CPU work harder"
+      data-place="left"
+    >
+      <Label htmlFor="drifter-setting-knob-chaos">chaos:</Label>
+      <Knob
+        id="drifter-setting-knob-chaos"
+        min={0}
+        max={100}
+        defaultValue={samplerStore.chaos}
+        onChange={action(
+          value => (samplerStore.chaos = value)
         )}
       />
     </div>

@@ -44,6 +44,7 @@ export const executeTriggers = (
   bpm,
   stopPredicate = index => index >= matrix.length - 1,
   sliceTo,
+  chaosPercentage = 0,
 ) => {
   if (clearableMap.has(sampler)) {
     clearTimeout(clearableMap.get(sampler))
@@ -64,9 +65,7 @@ export const executeTriggers = (
       return
     }
 
-    // todo - externalize this parameter as part of the 'entropy' knob
-    //        (in addition to the number of concurrent samplers)
-    blockThread(.2)
+    blockThread(chaosPercentage / 100)
 
     const notes = noteSequence[index % noteSequence.length]
     // console.timeEnd(index)

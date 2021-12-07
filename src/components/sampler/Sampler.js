@@ -23,6 +23,7 @@ import './Sampler.css'
 
 const Sampler = ({
   className,
+  style,
 }) => {
   const {balance, triggerMatrix} = samplerStore
   // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
@@ -48,13 +49,13 @@ const Sampler = ({
   useFixedSampler(
     triggerMatrix, sampleMap.rolandTr808, {volume: fixedSamplerVolume}, fixedSamplerAnalyser)
   useDriftingSampler(
-    triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808,
+    triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback, sampleMap.rolandTr808,
     {volume: driftingSampler1Volume}, driftingSampler1Analyser)
   useDriftingSampler(
-    triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808,
+    triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback, sampleMap.rolandTr808,
     {volume: driftingSampler2Volume}, driftingSampler2Analyser)
   useDriftingSampler(
-    triggerMatrix, bpm, loopLengthInSixteenths, isStoppedCallback, sampleMap.rolandTr808,
+    triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback, sampleMap.rolandTr808,
     {volume: driftingSampler3Volume}, driftingSampler3Analyser)
 
 
@@ -75,7 +76,10 @@ const Sampler = ({
   return (
     <div
       className={`drifter-sampler ${isPlaying ? 'drifter-sampler-running' : ''} ${className}`}
-      style={{ '--sampler-ticks': loopLengthInSixteenths }}
+      style={{
+        ...style,
+        '--sampler-ticks': loopLengthInSixteenths
+      }}
     >
       <div
         className="drifter-sampler-timeline"
