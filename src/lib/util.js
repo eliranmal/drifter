@@ -36,8 +36,6 @@ export const blockThread = intensity => calculatePrimes(intensity * 50, intensit
 */
 export const polarity = n => n / Math.abs(n)
 
-export const limit = (min, max, value) => Math.max(min, Math.min(max, value))
-
 export const range = size => [...(new Array(size)).keys()]
 
 export const head = (defaultValue, arr = []) => arr[0] ?? defaultValue
