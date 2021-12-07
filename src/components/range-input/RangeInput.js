@@ -1,18 +1,25 @@
-import debounce from 'lodash.debounce'
+import useDebouncedCallback from '../../hooks/useDebouncedCallback'
+
 import Input from '../input/Input'
 
 import './RangeInput.css'
 
 
-const RangeInput = ({className, onChange = () => {}, immediateOnChange = () => {}, ...props}) => {
-  const debouncedOnChange = debounce(onChange, 33)
+const RangeInput = ({
+  className = '',
+  onChange = () => {},
+  onChangeImmediate = () => {},
+  ...props
+}) => {
+  const [debouncedOnChange] = useDebouncedCallback(onChange)
+
   return (
     <Input
       {...props}
       type="range"
       className={`drifter-range-input ${className}`}
       onChange={({currentTarget: {value}}) => {
-        immediateOnChange(+value)
+        onChangeImmediate(+value)
         debouncedOnChange(+value)
       }}
     />
