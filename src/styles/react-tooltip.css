@@ -7,5 +7,5 @@
 }
 
 .drifter-react-tooltip .multi-line {
-  text-align: inherit !important;
+  text-align: start !important;
 }
