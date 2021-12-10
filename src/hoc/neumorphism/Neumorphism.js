@@ -6,7 +6,10 @@ export const withNeumorphism = (WrappedComponent, {
   tintColor,
   shadeColor,
   backgroundColor
-} = {}) => ({className, ...props}) => (
+} = {}) => ({
+  className = '',
+  ...props
+}) => (
   <WrappedComponent
     {...props}
     className={`drifter-has-neumorphism ${className}`}
