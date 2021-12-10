@@ -1,7 +1,20 @@
 .form-control {
+  --form-control-height: 1.5rem;
+  height: var(--form-control-height);
+  margin: 0;
+  padding: 0;
   border: 0 none;
+  border-radius: calc(var(--form-control-height) * .35);
   outline: none;
+  color: var(--accent-color);
+  background-color: transparent;
   cursor: pointer;
+  font: bold 1rem trench, sans-serif;
+}
+
+.form-control:hover,
+.form-control:focus {
+  color: var(--accent-color-complement);
 }
 
 .form-control:disabled {

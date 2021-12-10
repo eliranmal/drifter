@@ -1,12 +1,15 @@
+import FormControl from '../form-control/FormControl'
+
 import './Input.css'
 
 
 const Input = ({ type = 'text', className, ...props}) => (
-  <input
+  <FormControl
     {...props}
+    tag="input"
     type={type}
     className={`drifter-input ${className ?? ''}`}
-    />
+  />
 )
 
 

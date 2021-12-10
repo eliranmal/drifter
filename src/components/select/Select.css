@@ -1,21 +1,9 @@
 
-.drifter-select,
-.drifter-select .drifter-select-option {
-  height: var(--select-height);
-  outline: none;
-  border: 0 none;
-  color: var(--accent-color);
-}
-
 .drifter-select {
-  --select-height: 1.5rem;
   padding-inline-start: .5em;
   padding-inline-end: 0;
-  border-radius: calc(var(--select-height) * .35);
-  font: bold 1rem trench, sans-serif;
 }
 
-.drifter-select:hover,
-.drifter-select:focus {
-  color: var(--accent-color-complement);
+.drifter-select-option {
+  color: var(--accent-color);
 }

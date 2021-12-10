@@ -1,4 +1,5 @@
 import {withNeumorphism} from '../../hoc/neumorphism/Neumorphism'
+import FormControl from '../form-control/FormControl'
 
 import './Select.css'
 
@@ -9,8 +10,9 @@ const Select = ({
   onChange = () => {},
   ...props
 }) => (
-  <select
+  <FormControl
     {...props}
+    tag="select"
     className={`drifter-select ${className}`}
     onChange={({currentTarget: {value}}) => onChange(value)}
   >
@@ -21,7 +23,7 @@ const Select = ({
         value={value}
         >{label ?? value}</option>
     ))}
-  </select>
+  </FormControl>
 )
 
 
