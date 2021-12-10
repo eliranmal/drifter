@@ -1,0 +1,20 @@
+
+.drifter-form-control-group {
+  --form-control-group-clip-margin: -.05rem;
+  display: flex;
+  align-items: center;
+}
+
+.drifter-form-control-group > :not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: var(--form-control-group-clip-margin);
+  clip-path: inset(-100px -100px -100px 0);
+}
+
+.drifter-form-control-group > :not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: var(--form-control-group-clip-margin);
+  clip-path: inset(-100px 0 -100px -100px);
+}

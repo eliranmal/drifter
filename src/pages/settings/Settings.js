@@ -10,6 +10,7 @@ import Knob from '../../components/knob/Knob'
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
 import NumberInput from '../../components/number-input/NumberInput'
+import FormControlGroup from '../../components/form-control-group/FormControlGroup'
 
 import './Settings.css'
 
@@ -17,7 +18,6 @@ import './Settings.css'
 const Settings = () => (
   <div className="drifter-settings">
     <div
-      className="drifter-setting-bpm"
       data-tip="set the speed in beats per minutes"
       data-place="left"
     >
@@ -33,12 +33,11 @@ const Settings = () => (
       />
     </div>
     <div
-      className="drifter-setting-reset-interval"
       data-tip="synchronize the original source and the drifting source using this interval (0 means never)"
       data-place="left"
     >
       <Label htmlFor="drifter-setting-input-reset-interval">reset every:</Label>
-      <div>
+      <FormControlGroup>
         <NumberInput
           id="drifter-setting-input-reset-interval"
           min={0}
@@ -58,10 +57,9 @@ const Settings = () => (
             value => (samplerStore.resetIntervalUnit = value)
           )}
         />
-      </div>
+      </FormControlGroup>
     </div>
     <div
-      className="drifter-setting-analysers-layout"
       data-tip="the layout mode for the analysers box"
       data-place="left"
     >
@@ -79,7 +77,6 @@ const Settings = () => (
       />
     </div>
     <div
-      className="drifter-setting-chaos"
       data-tip="add undeterministic time drift by making the CPU work harder"
       data-place="left"
     >

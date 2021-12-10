@@ -8,15 +8,3 @@
 .drifter-settings > * {
   margin-block-end: .5rem;
 }
-
-.drifter-settings :not(:last-child) {
-  margin-inline-end: 1.5rem;
-}
-
-.drifter-settings .drifter-setting-reset-interval {
-  white-space: nowrap;
-}
-
-.drifter-settings .drifter-setting-reset-interval :not(:last-child) {
-  margin-inline-end: .1rem;
-}
