@@ -1,0 +1,10 @@
+.form-control {
+  border: 0 none;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-control:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
