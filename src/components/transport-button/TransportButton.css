@@ -12,17 +12,12 @@
   flex-shrink: 0;
   width: var(--transport-button-size);
   height: var(--transport-button-size);
-  margin-inline-end: var(--transport-icon-size);
-  outline: none;
-  border: 0 none;
   border-radius: calc(var(--transport-button-size) * .4);
   background-color: var(--background-color-complement);
-  cursor: pointer;
 }
 
-.drifter-transport-button:last-of-type {
-  margin-inline-end: 0;
-}
+
+/* transport button icon */
 
 .drifter-transport-button:after {
   --transport-button-icon-color: var(--background-color);
@@ -70,6 +65,6 @@
   border-width: calc(var(--transport-icon-size) * .5);
 }
 
-.drifter-transport-button-tooltip .multi-line {
-  text-align: center;
+.drifter-react-tooltip.drifter-transport-button-tooltip .multi-line {
+  text-align: center !important;
 }

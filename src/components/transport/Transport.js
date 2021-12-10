@@ -95,6 +95,7 @@ const Transport = ({
         type="record"
         onClick={recordListener}
         isActive={isRecording}
+        disabled
       />
     </div>
   )
