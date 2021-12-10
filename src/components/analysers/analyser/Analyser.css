@@ -2,7 +2,7 @@
   /* public properties */
   --analyser-color: var(--accent-color-complement);
   /* protected properties */
-  --analyser-height: 2.4rem;
+  --analyser-height: 3.2rem;
   --analyser-line-height: .125rem;
   display: flex;
   align-items: flex-end;
