@@ -104,6 +104,12 @@ const fixtureMap = {
     ['{"foo":1,"bar":() => "bar"}', void 0],
     ['["a",() => "bar"]', void 0],
   ]),
+  filterObjectByKey: [
+    ['wat', {}, {}],
+    ['foo', {wat: 'bar'}, {}],
+    ['foo', {foo: 'bar'}, {foo: 'bar'}],
+    ['foo', {foo: 'bar', wat: 'wow'}, {foo: 'bar'}],
+  ],
 }
 
 const customTestMap = {

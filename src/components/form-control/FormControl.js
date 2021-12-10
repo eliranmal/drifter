@@ -1,3 +1,5 @@
+import {filterObjectByKey} from '../../lib/util'
+
 import './FormControl.css'
 
 
@@ -9,14 +11,8 @@ const FormControl = ({
   className = '',
   ...props
 }) => {
-  const tooltipAttributes = Object.entries(props)
-    .filter(([key, value]) => key.startsWith('data-'))
-    .reduce((accum, [key, value]) => {
-      accum[key] = value
-      return accum
-    }, {})
-
   const formControlClassName = `form-control ${className}`
+  const tooltipAttributes = filterObjectByKey('data-', props)
 
   return props.disabled && tooltipAttributes['data-tip'] ? (
     <span {...tooltipAttributes}>

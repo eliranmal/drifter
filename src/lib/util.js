@@ -90,3 +90,10 @@ export const unmarshall = data => {
 
 export const findEntryByValue = (value, object) => Object.entries(object)
   .find(([key, val]) => Object.is(value, val)) ?? []
+
+export const filterObjectByKey = (includeKey, object) => Object.entries(object)
+  .filter(([key, value]) => key.startsWith(includeKey))
+  .reduce((accum, [key, value]) => {
+    accum[key] = value
+    return accum
+  }, {})
