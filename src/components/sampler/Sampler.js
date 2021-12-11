@@ -24,6 +24,7 @@ import './Sampler.css'
 const Sampler = ({
   className,
   style,
+  'data-tip': tooltip,
 }) => {
   const {balance, triggerMatrix} = samplerStore
   // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
@@ -75,6 +76,7 @@ const Sampler = ({
 
   return (
     <div
+      data-tip={tooltip}
       className={`drifter-sampler ${isPlaying ? 'drifter-sampler-running' : ''} ${className}`}
       style={{
         ...style,
@@ -83,10 +85,6 @@ const Sampler = ({
     >
       <div
         className="drifter-sampler-timeline"
-        data-tip={`
-          toggle the pads to add or remove notes.<br/>
-          rows are channels, and columns represent sixteenth note intervals.
-        `}
       >
         <div className="drifter-sampler-tape"></div>
         <div className="drifter-sampler-channels">

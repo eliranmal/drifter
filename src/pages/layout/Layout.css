@@ -33,9 +33,11 @@
   left: .75rem;
 }
 
+/* sidebar open state */
 .drifter-layout-sidebar:hover,
 .drifter-layout .drifter-layout-sidebar-pin:checked + .drifter-layout-sidebar {
   width: var(--aside-width);
+  padding-right: var(--panel-pad);
 }
 
 .drifter-layout .drifter-layout-sidebar-pin {

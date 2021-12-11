@@ -33,16 +33,21 @@ const MainView = () => {
       </header>
       <Sampler
         className="drifter-main-view-panel"
+        data-tip={`
+          this is a simple step sequencer; toggle the pads to add or remove notes.<br/>
+          rows are channels, and columns represent sixteenth note intervals.
+        `}
       />
       <RangeInput
         className="drifter-main-view-panel-center"
-        data-tip="set the balance between the fixed sampler's signal and the drifting samplers' signal"
+        data-tip="sets the balance between the fixed sampler's signal and the drifting samplers' signal"
         defaultValue={samplerStore.balance}
         onChange={action(value => (samplerStore.balance = value))}
+        style={{flexShrink: 1, flexGrow: 0, margin: '-2rem 0'}}
       />
       <Analysers
         className="drifter-main-view-panel-end"
-        data-tip="shows waveforms for all samplers"
+        data-tip="shows waveforms for all samplers. you can set the analysers layout in the settings."
         layout={layoutStore.analysersLayout}
       />
     </div>

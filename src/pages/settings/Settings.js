@@ -33,7 +33,10 @@ const Settings = () => (
     </Setting>
     <Setting
       label="reset every"
-      tooltip="synchronize the original source and the drifting source using this interval (0 means never)"
+      tooltip={`
+synchronize the original source and the drifting source using this interval (0 means never)<br/>
+coming soon...
+      `}
     >
       <FormControlGroup>
         <NumberInput
@@ -43,6 +46,8 @@ const Settings = () => (
           onChange={action(
             value => (samplerStore.resetIntervalValue = value)
           )}
+          tooltip="coming soon..."
+          disabled
         />
         <Select
           options={[
@@ -53,12 +58,13 @@ const Settings = () => (
           onChange={action(
             value => (samplerStore.resetIntervalUnit = value)
           )}
+          disabled
         />
       </FormControlGroup>
     </Setting>
     <Setting
       label="analysers layout"
-      tooltip="the layout mode for the analysers box"
+      tooltip="the layout mode for the analysers box (play to see the difference)"
     >
       <Select
         options={[
@@ -75,7 +81,10 @@ const Settings = () => (
       label="chaos"
       pad=".5rem"
       align={settingAlign.start}
-      tooltip="add undeterministic time drift by making the CPU work harder"
+      tooltip={`
+add undeterministic time drift by making the CPU work harder.<br/>
+use at your own risk!
+      `}
       className="drifter-setting-chaos"
     >
       <Knob

@@ -1,8 +1,7 @@
 .drifter-settings {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin: 2.4rem .4rem;
+  padding: 2.4rem .4rem;
 }
 
 .drifter-settings > :not(:last-of-type) {
