@@ -8,7 +8,6 @@ import {analysersLayout} from '../../components/analysers/Analysers'
 
 import Setting, {settingAlign} from './setting/Setting'
 import Knob from '../../components/knob/Knob'
-import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
 import Number from '../../components/number/Number'
 import FormControlGroup from '../../components/form-control-group/FormControlGroup'
