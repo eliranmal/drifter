@@ -21,6 +21,7 @@ const Setting = ({
     className={`drifter-setting ${className}`}
     data-tip={tooltip}
     data-place="left"
+    data-offset={JSON.stringify({left: 10})}
   >
     <Label
       className="drifter-setting-wrap"
