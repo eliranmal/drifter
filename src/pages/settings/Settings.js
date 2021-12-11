@@ -10,7 +10,7 @@ import Setting, {settingAlign} from './setting/Setting'
 import Knob from '../../components/knob/Knob'
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
-import NumberInput from '../../components/number-input/NumberInput'
+import Number from '../../components/number/Number'
 import FormControlGroup from '../../components/form-control-group/FormControlGroup'
 
 import './Settings.css'
@@ -22,7 +22,7 @@ const Settings = () => (
       label="bpm"
       tooltip="set the speed in beats per minutes"
     >
-      <NumberInput
+      <Number
         min={1}
         max={1000}
         value={transportStore.bpm}
@@ -39,7 +39,7 @@ coming soon...
       `}
     >
       <FormControlGroup>
-        <NumberInput
+        <Number
           min={0}
           max={64}
           value={samplerStore.resetIntervalValue}

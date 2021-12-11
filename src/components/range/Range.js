@@ -2,10 +2,10 @@ import useDebouncedCallback from '../../hooks/useDebouncedCallback'
 
 import Input from '../input/Input'
 
-import './RangeInput.css'
+import './Range.css'
 
 
-const RangeInput = ({
+const Range = ({
   className = '',
   onChange = () => {},
   onChangeImmediate = () => {},
@@ -17,7 +17,7 @@ const RangeInput = ({
     <Input
       {...props}
       type="range"
-      className={`drifter-range-input ${className}`}
+      className={`drifter-range ${className}`}
       onChange={({currentTarget: {value}}) => {
         onChangeImmediate(+value)
         debouncedOnChange(+value)
@@ -27,4 +27,4 @@ const RangeInput = ({
 }
 
 
-export default RangeInput
+export default Range

@@ -1,0 +1,72 @@
+
+.drifter-range {
+  --range-thumb-size: 1rem;
+  --range-track-height: .5rem;
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+.drifter-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  margin-block-start: calc((var(--range-track-height) * .5) * -1);
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.drifter-range::-moz-range-thumb {
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  margin-block-start: calc((var(--range-track-height) * .5) * -1);
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.drifter-range::-ms-thumb {
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  margin-block-start: calc((var(--range-track-height) * .5) * -1);
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.drifter-range::-webkit-slider-runnable-track {
+  height: var(--range-track-height);
+  border-radius: calc(var(--range-track-height) * .5);
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.drifter-range::-moz-range-track {
+  height: var(--range-track-height);
+  border-radius: calc(var(--range-track-height) * .5);
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.drifter-range::-ms-track {
+  width: 100%;
+  height: var(--range-track-height);
+  border-radius: calc(var(--range-track-height) * .5);
+  border-color: transparent;
+  color: transparent;
+  background: transparent;
+  background-color: var(--background-color-complement);
+  cursor: pointer;
+}
+
+.drifter-range:hover::-webkit-slider-thumb {
+  background-color: var(--accent-color-complement);
+}
+
+.drifter-range:hover::-moz-range-thumb {
+  background-color: var(--accent-color-complement);
+}
+
+.drifter-range:hover::-ms-thumb {
+  background-color: var(--accent-color-complement);
+}

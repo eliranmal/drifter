@@ -5,8 +5,8 @@
   --knob-min: 0;
   --knob-max: 100;
   /* protected properties */
-  --knob-track-length: calc(var(--range-input-track-height) * 6);
-  --knob-dial-size: calc(var(--range-input-track-height) * 4);
+  --knob-track-length: calc(var(--range-track-height) * 6);
+  --knob-dial-size: calc(var(--range-track-height) * 4);
   --knob-mark-size: calc(var(--knob-dial-size) * .0667);
 
   position: relative;
@@ -16,7 +16,7 @@
   ) * -1);
   width: var(--knob-track-length);
   height: max-content;
-  padding-top: calc(var(--knob-dial-size) + var(--range-input-track-height));
+  padding-top: calc(var(--knob-dial-size) + var(--range-track-height));
   transform: rotate(-90deg);
   transform-origin: 50% calc(var(--knob-dial-size) * .5);
 }

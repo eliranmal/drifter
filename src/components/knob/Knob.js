@@ -2,7 +2,7 @@ import {action, observable} from 'mobx'
 import {observer} from 'mobx-react-lite'
 import {useEffect, useCallback} from 'react'
 
-import RangeInput from '../range-input/RangeInput'
+import Range from '../range/Range'
 
 import './Knob.css'
 
@@ -32,7 +32,7 @@ const Knob = ({
 
 
   return (
-    <RangeInput
+    <Range
       {...props}
       className={`drifter-knob ${className}`}
       style={{

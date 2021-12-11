@@ -10,7 +10,7 @@ import Heading from '../../components/heading/Heading'
 import Sampler from '../../components/sampler/Sampler'
 import Analysers from '../../components/analysers/Analysers'
 import Transport from '../../components/transport/Transport'
-import RangeInput from '../../components/range-input/RangeInput'
+import Range from '../../components/range/Range'
 
 import './MainView.css'
 
@@ -38,7 +38,7 @@ const MainView = () => {
           rows are channels, and columns represent sixteenth note intervals.
         `}
       />
-      <RangeInput
+      <Range
         className="drifter-main-view-panel-center"
         data-tip="sets the balance between the fixed sampler's signal and the drifting samplers' signal"
         defaultValue={samplerStore.balance}
