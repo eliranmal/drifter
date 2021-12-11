@@ -1,0 +1,9 @@
+
+.drifter-setting-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.drifter-setting-label {
+  margin-inline-end: .5rem;
+}

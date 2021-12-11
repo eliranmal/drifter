@@ -6,6 +6,7 @@ import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
 import {analysersLayout} from '../../components/analysers/Analysers'
 
+import Setting, {settingAlign} from './setting/Setting'
 import Knob from '../../components/knob/Knob'
 import Label from '../../components/label/Label'
 import Select from '../../components/select/Select'
@@ -17,13 +18,11 @@ import './Settings.css'
 
 const Settings = () => (
   <div className="drifter-settings">
-    <div
-      data-tip="set the speed in beats per minutes"
-      data-place="left"
+    <Setting
+      label="bpm"
+      tooltip="set the speed in beats per minutes"
     >
-      <Label htmlFor="drifter-setting-input-bpm">bpm:</Label>
       <NumberInput
-        id="drifter-setting-input-bpm"
         min={1}
         max={1000}
         value={transportStore.bpm}
@@ -31,15 +30,13 @@ const Settings = () => (
           value => (transportStore.bpm = value)
         )}
       />
-    </div>
-    <div
-      data-tip="synchronize the original source and the drifting source using this interval (0 means never)"
-      data-place="left"
+    </Setting>
+    <Setting
+      label="reset every"
+      tooltip="synchronize the original source and the drifting source using this interval (0 means never)"
     >
-      <Label htmlFor="drifter-setting-input-reset-interval">reset every:</Label>
       <FormControlGroup>
         <NumberInput
-          id="drifter-setting-input-reset-interval"
           min={0}
           max={64}
           value={samplerStore.resetIntervalValue}
@@ -58,14 +55,12 @@ const Settings = () => (
           )}
         />
       </FormControlGroup>
-    </div>
-    <div
-      data-tip="the layout mode for the analysers box"
-      data-place="left"
+    </Setting>
+    <Setting
+      label="analysers layout"
+      tooltip="the layout mode for the analysers box"
     >
-      <Label htmlFor="drifter-setting-select-analysers-layout">analysers layout:</Label>
       <Select
-        id="drifter-setting-select-analysers-layout"
         options={[
           { value: analysersLayout.flow },
           { value: analysersLayout.stack },
@@ -75,14 +70,15 @@ const Settings = () => (
           value => (layoutStore.analysersLayout = value)
         )}
       />
-    </div>
-    <div
-      data-tip="add undeterministic time drift by making the CPU work harder"
-      data-place="left"
+    </Setting>
+    <Setting
+      label="chaos"
+      pad=".5rem"
+      align={settingAlign.start}
+      tooltip="add undeterministic time drift by making the CPU work harder"
+      className="drifter-setting-chaos"
     >
-      <Label htmlFor="drifter-setting-knob-chaos">chaos:</Label>
       <Knob
-        id="drifter-setting-knob-chaos"
         min={0}
         max={100}
         defaultValue={samplerStore.chaos}
@@ -90,7 +86,7 @@ const Settings = () => (
           value => (samplerStore.chaos = value)
         )}
       />
-    </div>
+    </Setting>
   </div>
 )
 

@@ -5,6 +5,6 @@
   margin: 2.4rem .4rem;
 }
 
-.drifter-settings > * {
-  margin-block-end: .5rem;
+.drifter-settings > :not(:last-of-type) {
+  margin-block-end: 1rem;
 }
