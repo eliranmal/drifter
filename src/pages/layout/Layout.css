@@ -1,7 +1,7 @@
 
 .drifter-layout {
   --panel-pad: 2rem;
-  --aside-width: min(max(30vmax, 12rem), 100vmin);
+  --aside-width: min(max(33vmax, 12rem), 100vmin);
   display: flex;
   width: 100vw;
   height: 100vh;
