@@ -1,6 +1,39 @@
-
 .drifter-number {
-  width: fit-content;
-  padding-inline-start: .5rem;
-  padding-inline-end: 0;
+  --number-spinner-width: 2ch;
+  position: relative;
+  line-height: 1;
+}
+
+.drifter-number-input {
+  box-sizing: content-box;
+  width: 2em;
+  padding: 0 var(--number-spinner-width);
+  text-overflow: ellipsis;
+  cursor: initial;
+}
+
+.drifter-number-input::-webkit-inner-spin-button,
+.drifter-number-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.drifter-number-spinner {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--number-spinner-width);
+  font: .8em concolas, monospace;
+  cursor: pointer;
+}
+
+.drifter-number-spinner-minus {
+  left: 0;
+}
+
+.drifter-number-spinner-plus {
+  right: 0;
 }

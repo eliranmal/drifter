@@ -1,4 +1,4 @@
-.form-control {
+.drifter-form-control {
   --form-control-height: 1.5rem;
   height: var(--form-control-height);
   margin: 0;
@@ -12,13 +12,18 @@
   font: bold 1rem trench, sans-serif;
 }
 
-.form-control:hover,
-.form-control:focus {
+.drifter-form-control:hover,
+.drifter-form-control:focus {
   color: var(--accent-color-complement);
 }
 
-.form-control:disabled {
+.drifter-form-control:disabled {
   filter: grayscale(1);
   opacity: .65;
   cursor: not-allowed;
+}
+
+.drifter-form-control:invalid {
+  background-color: hotpink;
+  color: #ddd;
 }

@@ -19,7 +19,10 @@ const Settings = () => (
   <div className="drifter-settings">
     <Setting
       label="bpm"
-      tooltip="set the speed in beats per minutes"
+      tooltip={`
+        set the speed in beats per minutes.<br/>
+        enter a value between 1 and 999
+      `}
     >
       <Number
         min={1}
@@ -28,13 +31,19 @@ const Settings = () => (
         onChange={action(
           value => (transportStore.bpm = value)
         )}
+        onIncrement={action(
+          () => (transportStore.bpm++)
+        )}
+        onDecrement={action(
+          () => (transportStore.bpm--)
+        )}
       />
     </Setting>
     <Setting
       label="reset every"
       tooltip={`
-synchronize the original source and the drifting source using this interval (0 means never)<br/>
-coming soon...
+synchronize the original source and the drifting source using this interval (0 means never).<br/>
+(coming soon...)
       `}
     >
       <FormControlGroup>
@@ -45,7 +54,7 @@ coming soon...
           onChange={action(
             value => (samplerStore.resetIntervalValue = value)
           )}
-          tooltip="coming soon..."
+          tooltip="(coming soon...)"
           disabled
         />
         <Select

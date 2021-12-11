@@ -5,14 +5,16 @@
   align-items: center;
 }
 
-.drifter-form-control-group > :not(:first-child) {
+.drifter-form-control-group > .drifter-form-control:not(:first-child),
+.drifter-form-control-group > :not(:first-child) > .drifter-form-control {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   margin-left: var(--form-control-group-clip-margin);
   clip-path: inset(-100px -100px -100px 0);
 }
 
-.drifter-form-control-group > :not(:last-child) {
+.drifter-form-control-group > .drifter-form-control:not(:last-child),
+.drifter-form-control-group > :not(:last-child) > .drifter-form-control {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   margin-right: var(--form-control-group-clip-margin);

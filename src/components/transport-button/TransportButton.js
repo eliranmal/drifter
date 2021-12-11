@@ -12,7 +12,7 @@ const tooltipByType = {
 
 const disabledTooltipByType = Object.entries(tooltipByType).reduce(
   (accum, [key, value]) => {
-    accum[key] = `${value}<br/>coming soon...`
+    accum[key] = `${value}<br/>(coming soon...)`
     return accum
   },
   {}

@@ -11,7 +11,7 @@ const FormControl = ({
   className = '',
   ...props
 }) => {
-  const formControlClassName = `form-control ${className}`
+  const formControlClassName = `drifter-form-control ${className}`
   const tooltipAttributes = filterObjectByKey('data-', props)
 
   return props.disabled && tooltipAttributes['data-tip'] ? (
