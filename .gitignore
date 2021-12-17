@@ -1,4 +1,8 @@
 
+# IDE
+.idea
+.vscode
+
 # artifacts
 build
 
