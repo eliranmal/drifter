@@ -4,8 +4,7 @@
 }
 
 @font-face {
-  src:  url('../fonts/trench100.ttf') format('truetype'),
-        url('../fonts/trench100.otf') format('opentype');
+  src:  url('../fonts/trench-100.ttf') format('truetype'),
+        url('../fonts/trench-100.otf') format('opentype');
   font-family: trench;
-  font-weight: 700;
 }
