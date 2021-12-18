@@ -19,7 +19,6 @@
 
 .drifter-form-control:disabled {
   filter: grayscale(1);
-  opacity: .65;
   cursor: not-allowed;
 }
 
