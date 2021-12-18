@@ -41,25 +41,19 @@
 }
 
 .drifter-layout .drifter-layout-sidebar-pin {
+  --sidebar-pin-size: calc(var(--panel-pad) * .45);
+  --sidebar-pin-offset: calc((var(--panel-pad) - var(--sidebar-pin-size)) * .5);
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: var(--sidebar-pin-offset);
+  bottom: var(--sidebar-pin-offset);
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--panel-pad);
-  height: var(--panel-pad);
-  background-color: transparent !important;
-}
-
-.drifter-layout .drifter-layout-sidebar-pin:before {
-  content: '\01f588';
-  color: var(--accent-color);
-}
-
-.drifter-layout .drifter-layout-sidebar-pin:checked:before {
-  color: var(--accent-color-complement);
+  width: var(--sidebar-pin-size);
+  height: var(--sidebar-pin-size);
+  border-radius: 50%;
+  background-color: var(--background-color);
 }
 
 /* avoid the sidebar jumping back when it's open and the user hovers over the pin button */
