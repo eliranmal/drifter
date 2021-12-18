@@ -1,31 +1,26 @@
 import {useState, useEffect} from 'react'
-import kebabCase from 'lodash.kebabcase'
 
 import useToneRef from './useToneRef'
-import {findEntryByValue} from '../lib/util'
 
 
 const sampleMap = {
   rolandTr808: {
-    'C4': 'TR-808Kick01.wav',
-    'C#4': 'TR-808Snare01.wav',
-    'D4': 'TR-808Clap01.wav',
-    'D#4': 'TR-808Hat_C01.wav',
+    path: 'drum-machines/roland-tr-808',
+    samplesMap: {
+      'C4': 'TR-808Kick01.wav',
+      'C#4': 'TR-808Snare01.wav',
+      'D4': 'TR-808Clap01.wav',
+      'D#4': 'TR-808Hat_C01.wav',
+    },
   },
-}
-
-const resolveSampleMapDirName = samplerSampleMap => {
-  const [key] = findEntryByValue(samplerSampleMap, sampleMap)
-  return kebabCase(key)
 }
 
 const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => {
   const [loaded, setLoaded] = useState(false)
 
-  const samplerKitDirName = resolveSampleMapDirName(samplerSampleMap)
-  const samplerRef = useToneRef('Sampler', samplerSampleMap, {
+  const samplerRef = useToneRef('Sampler', samplerSampleMap.samplesMap, {
     ...samplerOptions,
-    baseUrl: `audio/drum-machines/${samplerKitDirName}/`,
+    baseUrl: `audio/${samplerSampleMap.path}/`,
     onload: () => {
       setLoaded(true)
       samplerOptions.onload && samplerOptions.onload()

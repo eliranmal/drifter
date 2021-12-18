@@ -88,9 +88,6 @@ export const unmarshall = data => {
   return unmarshalledData
 }
 
-export const findEntryByValue = (value, object) => Object.entries(object)
-  .find(([key, val]) => Object.is(value, val)) ?? []
-
 export const filterObjectByKey = (includeKey, object) => Object.entries(object)
   .filter(([key, value]) => key.startsWith(includeKey))
   .reduce((accum, [key, value]) => {
