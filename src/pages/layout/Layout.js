@@ -3,6 +3,7 @@ import {observer} from 'mobx-react-lite'
 
 import layoutStore from '../../store/layout'
 
+import Heading from '../../components/heading/Heading'
 import Checkbox from '../../components/checkbox/Checkbox'
 
 import './Layout.css'
@@ -24,17 +25,15 @@ const Layout = ({
       checked={layoutStore.isMenuOpen}
       onChange={action(checked => (layoutStore.isMenuOpen = checked))}
     />
-    <aside className="drifter-layout-sidebar"
-      data-heading={spaceOut(SideBar.displayName)}>
+    <aside className="drifter-layout-sidebar">
+      <Heading
+        text={SideBar.displayName}
+        className="drifter-layout-sidebar-heading"
+       />
       <SideBar {...sideBarProps} />
     </aside>
   </div>
 )
-
-// todo - find a better way
-const spaceOut = term => term ?
-  `${term.charAt(0)}${String.fromCharCode('0000a0').repeat(5)}${term.substring(1)}` :
-    ''
 
 
 export default observer(Layout)

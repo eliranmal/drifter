@@ -26,11 +26,12 @@
   transition: all 444ms ease-in 44ms;
 }
 
-.drifter-layout-sidebar:before {
-  content: attr(data-heading);
+.drifter-layout-sidebar .drifter-layout-sidebar-heading {
   position: absolute;
-  top: .75rem;
-  left: .75rem;
+  top: .75em;
+  left: .75em;
+  font-size: 1.25em;
+  line-height: .75em;
 }
 
 /* sidebar open state */
