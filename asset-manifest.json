@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/drifter/static/css/main.9b5eb675.chunk.css",
-    "main.js": "/drifter/static/js/main.2a0691ca.chunk.js",
-    "main.js.map": "/drifter/static/js/main.2a0691ca.chunk.js.map",
-    "runtime-main.js": "/drifter/static/js/runtime-main.7c81ba7c.js",
-    "runtime-main.js.map": "/drifter/static/js/runtime-main.7c81ba7c.js.map",
-    "static/js/2.3426fc44.chunk.js": "/drifter/static/js/2.3426fc44.chunk.js",
-    "static/js/2.3426fc44.chunk.js.map": "/drifter/static/js/2.3426fc44.chunk.js.map",
-    "static/js/3.aa762ae5.chunk.js": "/drifter/static/js/3.aa762ae5.chunk.js",
-    "static/js/3.aa762ae5.chunk.js.map": "/drifter/static/js/3.aa762ae5.chunk.js.map",
+    "main.js": "/drifter/static/js/main.ad4e16af.chunk.js",
+    "main.js.map": "/drifter/static/js/main.ad4e16af.chunk.js.map",
+    "runtime-main.js": "/drifter/static/js/runtime-main.0b8c0bab.js",
+    "runtime-main.js.map": "/drifter/static/js/runtime-main.0b8c0bab.js.map",
+    "static/js/2.9842cf9e.chunk.js": "/drifter/static/js/2.9842cf9e.chunk.js",
+    "static/js/2.9842cf9e.chunk.js.map": "/drifter/static/js/2.9842cf9e.chunk.js.map",
+    "static/js/3.bd7bf643.chunk.js": "/drifter/static/js/3.bd7bf643.chunk.js",
+    "static/js/3.bd7bf643.chunk.js.map": "/drifter/static/js/3.bd7bf643.chunk.js.map",
     "index.html": "/drifter/index.html",
     "static/css/main.9b5eb675.chunk.css.map": "/drifter/static/css/main.9b5eb675.chunk.css.map",
-    "static/js/2.3426fc44.chunk.js.LICENSE.txt": "/drifter/static/js/2.3426fc44.chunk.js.LICENSE.txt",
+    "static/js/2.9842cf9e.chunk.js.LICENSE.txt": "/drifter/static/js/2.9842cf9e.chunk.js.LICENSE.txt",
     "static/media/App.css": "/drifter/static/media/trench100.f4fa94b7.otf"
   },
   "entrypoints": [
-    "static/js/runtime-main.7c81ba7c.js",
-    "static/js/2.3426fc44.chunk.js",
+    "static/js/runtime-main.0b8c0bab.js",
+    "static/js/2.9842cf9e.chunk.js",
     "static/css/main.9b5eb675.chunk.css",
-    "static/js/main.2a0691ca.chunk.js"
+    "static/js/main.ad4e16af.chunk.js"
   ]
 }
