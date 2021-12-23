@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "use your browser's poor timers to make rich beats!",
   "scripts": {
+    "start": "npm run dev",
     "start:pretotype": "npx serve pretotype",
-    "start": "env PUBLIC_URL='.' react-scripts start",
+    "dev": "env PUBLIC_URL='.' react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "preserve": "env PUBLIC_URL=http://localhost:5000 npm run build",
