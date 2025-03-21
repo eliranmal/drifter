@@ -42,13 +42,15 @@ const Transport = ({
   } = transportStore
 
   const playListener = useCallback(
-    () => !isPlaying && play()
+    () => !isPlaying && Promise.resolve()
       .then(action(() => (transportStore.isPlaying = true)))
-      .then(onPlay),
+      .then(onPlay)
+      .then(play),
     [isPlaying, onPlay])
 
   const stopListener = useCallback(
-    () => isPlaying && stop()
+    () => isPlaying && Promise.resolve()
+      .then(stop)
       .then(action(() => {
         transportStore.isPlaying = false
         transportStore.isRecording = false

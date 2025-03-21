@@ -58,7 +58,7 @@ export const executeTriggers = (
   let index = 0
   // console.time(index)
   const tick = () => {
-    if (stopPredicate(index)) {
+    if (sampler.disposed || stopPredicate(index)) {
       if (clearableMap.has(sampler)) {
         clearTimeout(clearableMap.get(sampler))
       }
@@ -71,7 +71,7 @@ export const executeTriggers = (
     // console.timeEnd(index)
     index += 1
     // console.time(index)
-    sampler.triggerAttack(notes, Tone.immediate())
+    sampler.triggerAttackRelease(notes, '0:1:0', Tone.immediate())
     clearableMap.set(sampler, setTimeout(tick, sixteenthInMilliseconds))
   }
 

@@ -7,10 +7,10 @@ import {
   percentageScale,
   proximityDistribution,
 } from '../../lib/util'
+// import {sampleMap} from '../../const'
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
 import analysersStore from '../../store/analysers'
-import {sampleMap} from '../../hooks/useSampler'
 import useAnalyser from '../../hooks/useAnalyser'
 import useFixedSampler from '../../hooks/useFixedSampler'
 import useDriftingSampler from '../../hooks/useDriftingSampler'
@@ -25,10 +25,25 @@ const Sampler = ({
   className,
   style,
   'data-tip': tooltip,
+  samplerSampleMap,
+  // balance, triggerMatrix, sampleMapKey,
+  // // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
+  // bpm, isPlaying, loopLengthInSixteenths,
 }) => {
-  const {balance, triggerMatrix} = samplerStore
-  // todo - replace the usage of 'isPlaying' with a 'cursor' to enable linking animation steps with audio events
+
+
+  // todo - how to resolve the problem of this component not "listening" to
+  //        changes of the 'sampleMap' property in the mobx sampler store?
+  //        currently, the component must rely on prop passing (is this desired?)
+  // todo - see if the same applies for the 'triggerMatrix' prop, as there's a
+  //        current bug where it seem to (intermittently) silence the sampler
+  //        triggers when changing the matrix
+
+
+  const {balance, triggerMatrix/*, sampleMap*/} = samplerStore
   const {bpm, isPlaying, loopLengthInSixteenths} = transportStore
+
+  // const samplerSampleMap = sampleMap[sampleMapKey]
 
   const asDbSpl = percentageScale(-36, 0)
   const [
@@ -47,17 +62,18 @@ const Sampler = ({
   const driftingSampler2Analyser = useAnalyser()
   const driftingSampler3Analyser = useAnalyser()
 
-  useFixedSampler(
-    triggerMatrix, sampleMap.rolandTr808, {volume: fixedSamplerVolume}, fixedSamplerAnalyser)
-  useDriftingSampler(
-    triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback, sampleMap.rolandTr808,
-    {volume: driftingSampler1Volume}, driftingSampler1Analyser)
-  useDriftingSampler(
-    triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback, sampleMap.rolandTr808,
-    {volume: driftingSampler2Volume}, driftingSampler2Analyser)
-  useDriftingSampler(
-    triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback, sampleMap.rolandTr808,
-    {volume: driftingSampler3Volume}, driftingSampler3Analyser)
+
+  useFixedSampler(triggerMatrix,
+    samplerSampleMap, {volume: fixedSamplerVolume}, fixedSamplerAnalyser)
+  // useDriftingSampler(
+  //   triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback,
+  //   samplerSampleMap, {volume: driftingSampler1Volume}, driftingSampler1Analyser)
+  // useDriftingSampler(
+  //   triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback,
+  //   samplerSampleMap, {volume: driftingSampler2Volume}, driftingSampler2Analyser)
+  // useDriftingSampler(
+  //   triggerMatrix, bpm, loopLengthInSixteenths, samplerStore.chaos, isStoppedCallback,
+  //   samplerSampleMap, {volume: driftingSampler3Volume}, driftingSampler3Analyser)
 
 
   useAnimationFrame(

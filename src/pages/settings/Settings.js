@@ -62,13 +62,28 @@ synchronize the original source and the drifting source using this interval (0 m
             { value: 'bars' },
             { value: 'beats' },
           ]}
-          defaultValue={samplerStore.resetIntervalUnit}
+          value={samplerStore.resetIntervalUnit}
           onChange={action(
             value => (samplerStore.resetIntervalUnit = value)
           )}
           disabled
         />
       </FormControlGroup>
+    </Setting>
+    <Setting
+      label="sample map"
+      tooltip="choose a different drum machine or drum kit"
+    >
+      <Select
+        options={[
+          { label: 'roland TR 808', value: 'rolandTr808' },
+          { label: 'akai MPC 60', value: 'akaiMpc60' },
+        ]}
+        value={samplerStore.sampleMapKey}
+        onChange={action(
+          value => (samplerStore.sampleMapKey = value)
+        )}
+      />
     </Setting>
     <Setting
       label="analysers layout"
@@ -79,7 +94,7 @@ synchronize the original source and the drifting source using this interval (0 m
           { value: analysersLayout.flow },
           { value: analysersLayout.stack },
         ]}
-        defaultValue={layoutStore.analysersLayout}
+        value={layoutStore.analysersLayout}
         onChange={action(
           value => (layoutStore.analysersLayout = value)
         )}

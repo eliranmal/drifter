@@ -1,4 +1,5 @@
-import {useEffect} from 'react'
+import * as Tone from 'tone'
+import {useEffect, useCallback} from 'react'
 
 import * as audio from '../lib/audio'
 import useSampler from './useSampler'
@@ -10,15 +11,30 @@ const useDriftingSampler = (
 ) => {
   const [sampler, isSamplerLoaded] = useSampler(...samplerArgs)
 
-  useEffect(() => sampler.unsync(), [sampler, triggerMatrix])
+  const [samplerSampleMap/*, samplerOptions, samplerAnalyser*/] = samplerArgs
+
+  const executeTriggers = useCallback(() => {
+    if (isSamplerLoaded && !sampler.disposed) {
+      Tone.loaded()
+        .then(() => {
+          sampler.unsync()
+          audio.executeTriggers(
+            sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths, chaosPercentage
+          )
+        })
+    }
+  }, [sampler, isSamplerLoaded, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths, chaosPercentage])
+
+  const disposeSampler = useCallback(() => {
+    if (isSamplerLoaded && !sampler.disposed) {
+      sampler.dispose()
+    }
+  }, [sampler, isSamplerLoaded])
 
   useEffect(() => {
-    if (isSamplerLoaded) {
-      audio.executeTriggers(
-        sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths, chaosPercentage
-      )
-    }
-  }, [isSamplerLoaded, sampler, triggerMatrix, bpm, isStoppedCallback, loopLengthInSixteenths, chaosPercentage])
+    executeTriggers()
+    return () => disposeSampler()
+  }, [sampler, isSamplerLoaded, samplerSampleMap, executeTriggers, disposeSampler])
 
   return [sampler, isSamplerLoaded]
 }

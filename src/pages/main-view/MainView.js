@@ -2,6 +2,7 @@ import {action} from 'mobx'
 import {observer} from 'mobx-react-lite'
 import {useMediaQueries} from '@eliranmal/react-hooks'
 
+import {sampleMap} from '../../const'
 import layoutStore from '../../store/layout'
 import samplerStore from '../../store/sampler'
 import transportStore from '../../store/transport'
@@ -37,6 +38,12 @@ const MainView = () => {
           this is a simple step sequencer; toggle the pads to add or remove notes.<br/>
           rows are channels, and columns represent sixteenth note intervals.
         `}
+        _balance={samplerStore.balance}
+        samplerSampleMap={sampleMap[samplerStore.sampleMapKey]}
+        _triggerMatrix={samplerStore.triggerMatrix}
+        _bpm={transportStore.bpm}
+        _isPlaying={transportStore.isPlaying}
+        _loopLengthInSixteenths={transportStore.loopLengthInSixteenths}
       />
       <Range
         className="drifter-main-view-panel-center"

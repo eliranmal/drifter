@@ -3,22 +3,11 @@ import {useState, useEffect} from 'react'
 import useToneRef from './useToneRef'
 
 
-const sampleMap = {
-  rolandTr808: {
-    path: 'drum-machines/roland-tr-808',
-    samplesMap: {
-      'C4': 'TR-808Kick01.wav',
-      'C#4': 'TR-808Snare01.wav',
-      'D4': 'TR-808Clap01.wav',
-      'D#4': 'TR-808Hat_C01.wav',
-    },
-  },
-}
-
-const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => {
+const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyser) => {
   const [loaded, setLoaded] = useState(false)
+  // console.log('> sampler sample map', samplerSampleMap)
 
-  const samplerRef = useToneRef('Sampler', samplerSampleMap.samplesMap, {
+  const sampler = useToneRef('Sampler', samplerSampleMap.samplesMap, {
     ...samplerOptions,
     baseUrl: `audio/${samplerSampleMap.path}/`,
     onload: () => {
@@ -30,14 +19,12 @@ const useSampler = (samplerSampleMap = {}, samplerOptions = {}, analyserRef) => 
   const {volume = 0} = samplerOptions
   useEffect(() => {
     if (loaded) {
-      samplerRef.volume.value = volume
+      sampler.volume.value = volume
     }
-  }, [volume, samplerRef, loaded])
+  }, [volume, sampler, loaded])
 
-  return [analyserRef ? samplerRef.connect(analyserRef) : samplerRef, loaded, analyserRef]
+  return [analyser ? sampler?.connect(analyser) : sampler, loaded, analyser]
 }
 
-
-export {sampleMap}
 
 export default useSampler

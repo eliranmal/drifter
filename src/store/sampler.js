@@ -1,4 +1,5 @@
 import persistedStore from './decorators/persisted-store'
+import {sampleMap} from '../const'
 import {matrixInsertValue} from '../lib/util'
 
 
@@ -16,6 +17,10 @@ const samplerStore = persistedStore('sampler', {
     unit: 'bars',
   },
   chaos: 0,
+  sampleMapKey: 'rolandTr808',
+  get sampleMap() {
+    return sampleMap[this.sampleMapKey]
+  },
   get resetIntervalValue() {
     return this.resetInterval.value
   },

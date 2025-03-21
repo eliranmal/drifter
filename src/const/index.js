@@ -1,0 +1,2 @@
+
+export {sampleMap} from './sampleMap'
